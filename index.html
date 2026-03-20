@@ -1264,31 +1264,13 @@
 
 
 
-<div class="menu-fab" id="menuFab">
 
-<button onclick="mostrarVirtudes()">
-    <span class="material-icons">auto_awesome</span> Virtudes
-  </button>
-
-  <button onclick="mostrarVicios()">
-    <span class="material-icons">dangerous</span> Vicios
-  </button>
-
-  <button onclick="mostrarOraciones()">
-    <span class="material-icons">self_improvement</span> Oraciones
-  </button>
-
-  
 
       <a href="#" id="buttonNa2">
     <span class="material-icons">church</span> Más
   </a>
 
-</div>
 
-<a href="#" id="buttonNa">
-  <span class="material-icons">menu</span>
-</a>
 
 
       
@@ -3417,17 +3399,6 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
             window.addEventListener('load', resetBackground);
         });
   </script>
-
-
-<script>
-const button = document.getElementById("buttonNa");
-const menu = document.getElementById("menuFab");
-
-button.addEventListener("click", function(e) {
-  e.preventDefault();
-  menu.classList.toggle("active");
-});
-</script>
 
 
 
