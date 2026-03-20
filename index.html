@@ -142,19 +142,59 @@
 
     /* Estilos para la animación del botón */
     #buttonNa {
-      position: fixed;
-      bottom: 75px;
-      display: flex;
-      z-index: 3;
-      background-color: #f2f2f2;
-      color: #333;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      cursor: pointer;
-      animation: fadeIn 4s ease-in;
-    }
+        position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4a148c;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 26px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;    }
+
+
+
+/* Menú */
+.menu-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.menu-fab.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-fab a {
+  background: #ede7f6;
+  padding: 10px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #4a148c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  font-size: 14px;
+}
+
+
+      
 
     .tituloN {
       color: #f2f2f2;
@@ -1400,7 +1440,34 @@
     <br>
     <br>
 
-    <a href="#" id="buttonNa">Continuar</a>
+    <a href="#" id="buttonNa2">Continuar</a>
+
+<div class="menu-fab" id="menuFab">
+
+  <a href="#mas">
+    <span class="material-icons">church</span> Más
+  </a>
+
+  <a href="#virtudes">
+    <span class="material-icons">auto_awesome</span> Virtudes
+  </a>
+
+  <a href="#vicios">
+    <span class="material-icons">dangerous</span> Vicios
+  </a>
+
+  <a href="#oraciones">
+    <span class="material-icons">self_improvement</span> Oraciones
+  </a>
+
+</div>
+
+<a href="#" id="buttonNa">
+  <span class="material-icons">menu</span>
+</a>
+
+
+      
 
     <a id="mia"></a>
 
@@ -3494,7 +3561,7 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
             const container1 = document.getElementById('container1');
             const glscreen = document.getElementById('glscreen');
             const qApp = document.getElementById('q-app');
-            const buttonNa = document.getElementById('buttonNa');
+            const buttonNa = document.getElementById('buttonNa2');
 
             // Función para cambiar el fondo de container1
             function resetBackground() {
@@ -3505,7 +3572,7 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
             container1.style.backgroundImage = "radial-gradient(circle at 75.98% 68.19%, #ffb600 0, #ffbf00 8.33%, #f9c700 16.67%, #e5cf00 25%, #d0d500 33.33%, #b9db00 41.67%, #a1e000 50%, #86e42a 58.33%, #64e843 66.67%, #2feb5a 75%, #00ee71 83.33%, #00f087 91.67%, #00f29f 100%)";
 
             // Evento de clic en el botón
-            buttonNa.addEventListener('click', () => {
+            buttonNa2.addEventListener('click', () => {
                 glscreen.style.display = 'none';
                 container1.style.display = 'none';
                 qApp.style.display = 'block';
@@ -3527,6 +3594,22 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
         });
   </script>
 
+
+<script>
+const button = document.getElementById("buttonNa");
+const menu = document.getElementById("menuFab");
+
+button.addEventListener("click", function(e) {
+  e.preventDefault();
+  menu.classList.toggle("active");
+});
+</script>
+
+
+
+
+
+    
  <script>
   // Función para manipular elementos de manera segura
   function manipulateDOM() {
