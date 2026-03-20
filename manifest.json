@@ -1,0 +1,44 @@
+{
+"name": "María Alegra",
+"short_name": "María Alegra",
+"teme_color": "#005954",
+"backgroud_color": "#005954",
+"display": "standalone",
+"orientation": "portrait",
+"scope": "./",
+"id": "./index.html",
+"start_url": "./?utm_source=web_app_manifest",
+"icons": [
+
+{  
+
+	"src": "/Alegra192.png",
+	"type": "image/png",
+	"sizes": "192x192",
+    "purpose": "any maskable"
+
+},
+{  
+
+	"src": "/Alegra360.png",
+	"type": "image/jpeg",
+	"sizes": "512x512",
+    "purpose": "maskable"
+
+},
+{  
+
+	"src": "/Alegra360.png",
+	"type": "image/png",
+	"sizes": "180x180",
+    "purpose": "maskable"
+
+}
+
+
+
+]
+
+
+
+}
