@@ -1446,15 +1446,15 @@
 
 
 
-  <a href="#virtudes">
+  <a href="#virtudes" onclick="mostrarVirtudes()">
     <span class="material-icons">auto_awesome</span> Virtudes
   </a>
 
-  <a href="#vicios">
+  <a href="#vicios" onclick="mostrarVicios()">
     <span class="material-icons">dangerous</span> Vicios
   </a>
 
-  <a href="#oraciones">
+  <a href="#oraciones" onclick="mostrarOraciones()">
     <span class="material-icons">self_improvement</span> Oraciones
   </a>
 
@@ -3609,7 +3609,87 @@ button.addEventListener("click", function(e) {
 </script>
 
 
+<script>
+// Seleccionar elementos de tu card
+const titulo = document.querySelector(".text-titlePrin");
+const texto = document.querySelector(".text-bodyPrin");
 
+// Contenido bíblico
+const virtudes = [
+  {
+    titulo: "Amor",
+    texto: "El amor es paciente, es bondadoso. (1 Corintios 13:4)"
+  },
+  {
+    titulo: "Fe",
+    texto: "Todo es posible para el que cree. (Marcos 9:23)"
+  },
+  {
+    titulo: "Humildad",
+    texto: "El que se humilla será exaltado. (Lucas 14:11)"
+  }
+];
+
+const vicios = [
+  {
+    titulo: "Orgullo",
+    texto: "Antes de la caída está el orgullo. (Proverbios 16:18)"
+  },
+  {
+    titulo: "Envidia",
+    texto: "La envidia corroe los huesos. (Proverbios 14:30)"
+  },
+  {
+    titulo: "Avaricia",
+    texto: "No se puede servir a Dios y al dinero. (Mateo 6:24)"
+  }
+];
+
+const oraciones = [
+  {
+    titulo: "Padre Nuestro",
+    texto: "Padre nuestro que estás en el cielo, santificado sea tu nombre... (Mateo 6:9)"
+  },
+  {
+    titulo: "Confianza en Dios",
+    texto: "El Señor es mi pastor, nada me falta. (Salmo 23:1)"
+  },
+  {
+    titulo: "Petición",
+    texto: "Pidan y se les dará. (Mateo 7:7)"
+  }
+];
+
+// Función para cambiar contenido con animación
+function cambiarContenido(lista) {
+  const item = lista[Math.floor(Math.random() * lista.length)];
+
+  // Animación simple
+  titulo.style.opacity = 0;
+  texto.style.opacity = 0;
+
+  setTimeout(() => {
+    titulo.textContent = item.titulo;
+    texto.textContent = item.texto;
+
+    titulo.style.opacity = 1;
+    texto.style.opacity = 1;
+  }, 200);
+}
+
+// Funciones para tus botones
+function mostrarVirtudes() {
+  cambiarContenido(virtudes);
+}
+
+function mostrarVicios() {
+  cambiarContenido(vicios);
+}
+
+function mostrarOraciones() {
+  cambiarContenido(oraciones);
+}
+</script>
 
 
     
@@ -3682,73 +3762,6 @@ btnCookies.click();
 
 
 
-<script>
-// Esperar a que cargue todo
-document.addEventListener("DOMContentLoaded", function () {
-
-  const titulo = document.querySelector(".text-titlePrin");
-  const texto = document.querySelector(".text-bodyPrin");
-
-  // Contenido bíblico
-  const virtudes = [
-    { titulo: "Amor", texto: "El amor es paciente, es bondadoso. (1 Corintios 13:4)" },
-    { titulo: "Fe", texto: "Todo es posible para el que cree. (Marcos 9:23)" },
-    { titulo: "Humildad", texto: "El que se humilla será exaltado. (Lucas 14:11)" }
-  ];
-
-  const vicios = [
-    { titulo: "Orgullo", texto: "Antes de la caída está el orgullo. (Proverbios 16:18)" },
-    { titulo: "Envidia", texto: "La envidia corroe los huesos. (Proverbios 14:30)" },
-    { titulo: "Avaricia", texto: "No se puede servir a Dios y al dinero. (Mateo 6:24)" }
-  ];
-
-  const oraciones = [
-    { titulo: "Confianza", texto: "El Señor es mi pastor, nada me falta. (Salmo 23:1)" },
-    { titulo: "Petición", texto: "Pidan y se les dará. (Mateo 7:7)" },
-    { titulo: "Fe en Dios", texto: "Todo lo que pidan en oración, crean que ya lo han recibido. (Marcos 11:24)" }
-  ];
-
-  function cambiar(lista) {
-    const item = lista[Math.floor(Math.random() * lista.length)];
-
-    titulo.style.opacity = 0;
-    texto.style.opacity = 0;
-
-    setTimeout(() => {
-      titulo.textContent = item.titulo;
-      texto.textContent = item.texto;
-      titulo.style.opacity = 1;
-      texto.style.opacity = 1;
-    }, 200);
-  }
-
-  // 🔥 Detectar botones del menú flotante automáticamente
-  document.body.addEventListener("click", function(e) {
-
-    const textoBtn = e.target.innerText?.toLowerCase();
-
-    if (!textoBtn) return;
-
-    if (textoBtn.includes("virtud")) {
-      e.preventDefault();
-      cambiar(virtudes);
-    }
-
-    if (textoBtn.includes("vicio")) {
-      e.preventDefault();
-      cambiar(vicios);
-    }
-
-    if (textoBtn.includes("oracion")) {
-      e.preventDefault();
-      cambiar(oraciones);
-    }
-
-  });
-
-});
-</script>
-    
 
 
 </body>
