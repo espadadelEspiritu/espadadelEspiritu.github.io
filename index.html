@@ -3077,20 +3077,26 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
 
 
 
- <q-dialog v-model="carousel">
+ <q-dialog v-model="carousel" persistent
+      :maximized="maximizedToggle"
+      transition-show="slide-up"
+      transition-hide="slide-down">
+                                  
       <q-carousel
-        transition-prev="slide-right"
-        transition-next="slide-left"
-        swipeable
-        animated
-        v-model="slide"
-        control-color="primary"
-        navigation-icon="radio_button_unchecked"
-        navigation
-        padding
-        height="200px"
-        class="bg-white shadow-1 rounded-borders"
-      >
+      v-model="slide"
+      vertical
+      transition-prev="slide-down"
+      transition-next="slide-up"
+      swipeable
+      animated
+      control-color="white"
+      navigation-icon="radio_button_unchecked"
+      navigation
+      padding
+      arrows
+      height="600px"
+      class="bg-purple text-white shadow-1 rounded-borders"
+    >
         <q-carousel-slide :name="1" class="column no-wrap flex-center">
           <q-icon name="style" color="primary" size="56px"></q-icon>
           <div class="q-mt-md text-center">
@@ -3165,7 +3171,7 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
       card: ref(false),
       sliders: ref(false),
       slide: ref(1),
-      lorem: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, ratione eum minus fuga, quasi dicta facilis corporis magnam, suscipit at quo nostrum! JAJAJAJA',                                                                   
+      lorem: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, ratione eum minus fuga, quasi dicta facilis corporis magnam, suscipit at quo nostrum! JAJAJAJA',                                                  
           persistent: ref(false),
           tab: ref('Verdades'),
           fullHeight: ref(false),
