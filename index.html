@@ -3061,6 +3061,18 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
               </q-card>
             </q-dialog>
 
+ <q-page-sticky position="bottom-right" :offset="[18, 18]">
+            <q-fab
+              icon="add"
+              direction="up"
+              color="accent"
+            >
+              <q-fab-action @click="onClick" color="primary" icon="person_add"></q-fab-action>
+              <q-fab-action @click="onClick" color="primary" icon="mail"></q-fab-action>
+            </q-fab>
+          </q-page-sticky>
+
+              
           </q-page>
         </q-page-container>
 
