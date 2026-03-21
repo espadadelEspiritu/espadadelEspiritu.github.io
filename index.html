@@ -3080,7 +3080,7 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
  <q-dialog v-model="carousel" 
       :maximized="maximizedToggle"
      >
-                                  
+                                   
       <q-carousel
       v-model="slide"
       vertical
@@ -3091,10 +3091,11 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
       
       padding
       arrows
-      height="500px"
+      height="85vh"
       class="bg-purple text-white shadow-1 rounded-borders"
     >
-                                                         
+         
+                                                           
         <q-carousel-slide :name="1" class="column no-wrap flex-center">
           <q-icon name="style" color="primary" size="56px"></q-icon>
           <div class="q-mt-md text-center">
@@ -3119,11 +3120,18 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
             {{ lorem }}
           </div>
         </q-carousel-slide>
+                                     
       </q-carousel>
+                                          
+      
+         
+          <q-btn align="around" class="btn-fixed-width" color="red-5" label="Cerrar" icon="lightbulb_outline" />
+                                     
+                                          
     </q-dialog>
              
 
-              
+               
               
           </q-page>
         </q-page-container>
