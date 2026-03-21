@@ -1375,7 +1375,7 @@
 
               </q-banner>
 
-              <q-btn color="purple" id="btncookies" @click="showCustom" label="cookies" v-show="false"></q-btn>
+              <q-btn color="purple" id="btncookies2" @click="showCustom" label="cookies" v-show="false"></q-btn>
             </div>
 
             <div class="q-pa-md q-gutter-sm">
@@ -3069,11 +3069,12 @@ Y aún más: “Podemos tratar de limitar el sufrimiento, luchar contra él, per
             >
               <q-fab-action @click="onClick" color="primary" icon="person_add"></q-fab-action>
               <q-fab-action @click="onClick" color="primary" icon="mail"></q-fab-action>
+              <q-btn label="Carousel" id="btncookies" color="primary" @click="carousel = true"></q-btn>  
             </q-fab>
           </q-page-sticky>
 
 
-<q-btn label="Carousel" color="primary" @click="carousel = true"></q-btn>
+
 
 
  <q-dialog v-model="carousel">
