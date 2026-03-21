@@ -12,7 +12,7 @@
 
 {  
 
-	"src": "/Alegra192.png",
+	"src": "/espada192.png",
 	"type": "image/png",
 	"sizes": "192x192",
     "purpose": "any maskable"
@@ -20,7 +20,7 @@
 },
 {  
 
-	"src": "/Alegra360.png",
+	"src": "/espada.png",
 	"type": "image/jpeg",
 	"sizes": "512x512",
     "purpose": "maskable"
@@ -28,7 +28,15 @@
 },
 {  
 
-	"src": "/Alegra360.png",
+	"src": "/espada360.png",
+	"type": "image/jpeg",
+	"sizes": "360x360",
+    "purpose": "maskable"
+
+},	
+{  
+
+	"src": "/espada192.png",
 	"type": "image/png",
 	"sizes": "180x180",
     "purpose": "maskable"
