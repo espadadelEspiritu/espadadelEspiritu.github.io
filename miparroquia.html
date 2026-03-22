@@ -208,26 +208,23 @@ Chiconcuac México C.P 56270</p>
   <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
 
   <script>
-    /*
-        Example kicking off the UI. Obviously, adapt this to your specific needs.
-        Assumes you have a <div id="q-app"></div> in your <body> above
-       */
-    const {
-      ref
-    } = Vue
-    const app = Vue.createApp({
-      setup() {
-        function goBack() {
-          window.location.href = "https://espadadelespiritu.github.io/";
-        }
-        function shareLink() {
-      const link = "https://espadadelespiritu.github.io/miparroquia.html"; // el link que quieres compartir
+const { ref } = Vue
+
+const app = Vue.createApp({
+  setup() {
+
+    function goBack() {
+      window.location.href = "https://espadadelespiritu.github.io/";
+    }
+
+    function shareLink() {
+      const link = "https://espadadelespiritu.github.io/miparroquia.html"; // link que quieres compartir
 
       if (navigator.share) {
         navigator.share({
           title: 'Comparte este enlace',
           text: 'Mira este contenido católico',
-          url: https://espadadelespiritu.github.io/miparroquia.html
+          url: "https://espadadelespiritu.github.io/miparroquia.html" // <-- CORRECCIÓN: comillas añadidas
         })
         .then(() => console.log('Compartido con éxito'))
         .catch((error) => console.log('Error al compartir', error));
@@ -238,22 +235,20 @@ Chiconcuac México C.P 56270</p>
           .catch(() => alert('No se pudo copiar el link'));
       }
     }
-          
-        return {
-          goBack,
-        shareLink,
-          tab: ref('mails'),
-          slide: ref('style'),
-          lorem: 'Pastorales'
-        }
-      }
-    })
-    app.use(Quasar, {
-      config: {}
-    })
-    app.mount('#q-app')
-  </script>
 
+    return {
+      goBack,
+      shareLink,
+      tab: ref('mails'),
+      slide: ref('style'),
+      lorem: 'Pastorales'
+    }
+  }
+})
+
+app.use(Quasar, { config: {} })
+app.mount('#q-app')
+</script>
 </body>
 
     
