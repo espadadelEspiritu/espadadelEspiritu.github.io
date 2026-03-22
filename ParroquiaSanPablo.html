@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parroquia San Pablo</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- React -->
@@ -20,9 +19,31 @@
     body {
       background: linear-gradient(to bottom, #0b1f3a, #1e3a5f);
     }
+
+    /* Animaciones suaves para scroll */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bounce {
+      animation: bounce 1.2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
   </style>
 </head>
-
 <body>
 
 <div id="root"></div>
@@ -30,24 +51,23 @@
 <script type="text/babel">
 
 function App() {
-
   const [mostrarAviso, setMostrarAviso] = React.useState(false);
 
   return (
     <div className="max-w-md mx-auto min-h-screen text-white">
 
-      {/* 🔝 HEADER CON LOGO */}
-      <div className="backdrop-blur-md bg-white/10 p-4 flex items-center shadow-lg">
-
+      {/* 🔝 HEADER */}
+      <div className="backdrop-blur-md bg-white/10 p-4 flex items-center shadow-lg fade-up">
         <button 
           onClick={() => window.location.href = "https://espadadelespiritu.github.io/"}
-          className="mr-3 text-xl">
+          className="mr-3 text-xl bounce"
+        >
           ←
         </button>
 
-        {/* Logo público */}
+        {/* Logo de la parroquia */}
         <img 
-          src="https://cdn-icons-png.flaticon.com/512/3176/3176363.png"
+          src="https://cdn-icons-png.flaticon.com/512/3176/3176363.png" 
           className="w-10 h-10 mr-3 rounded-full bg-white p-1"
         />
 
@@ -59,22 +79,20 @@ function App() {
             II Vicaria Diócesis de Texcoco A.R
           </p>
         </div>
-
       </div>
 
       {/* 📢 AVISOS ARRIBA */}
-      <div className="p-3">
+      <div className="p-3 fade-up" style={{animationDelay: "0.2s"}}>
         <div 
           className="rounded-2xl overflow-hidden shadow-xl cursor-pointer relative"
           onClick={() => setMostrarAviso(true)}
         >
           <img 
-            src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65"
-            className="w-full h-44 object-cover"
+            src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65" 
+            className="w-full h-60 object-cover"
           />
-
           <div className="absolute inset-0 bg-black/40 flex items-end">
-            <div className="p-3 text-white font-semibold">
+            <div className="p-3 text-white font-semibold text-center">
               Avisos parroquiales (toca para ver)
             </div>
           </div>
@@ -82,9 +100,9 @@ function App() {
       </div>
 
       {/* 📍 CONTENIDO */}
-      <div className="p-3 space-y-4">
+      <div className="p-3 space-y-4 fade-up" style={{animationDelay: "0.4s"}}>
 
-        {/* INFO */}
+        {/* INFORMACIÓN */}
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 shadow-lg">
           <h2 className="font-bold mb-2">Información</h2>
           <p>Dirección: Texcoco, Estado de México</p>
@@ -110,41 +128,42 @@ function App() {
           </ul>
         </div>
 
-        {/* GALERÍA BONITA */}
-        <div className="grid grid-cols-2 gap-3">
-          <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092" className="rounded-xl h-32 object-cover"/>
-          <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334" className="rounded-xl h-32 object-cover"/>
+        {/* IMAGEN DEL TEMPLO */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-2 shadow-lg fade-up" style={{animationDelay:"0.6s"}}>
+          <h2 className="font-bold mb-2 text-center">Imagen del Templo</h2>
+          <img 
+            src="https://images.unsplash.com/photo-1601924638867-3f8a0b8f5f10" 
+            className="w-full h-56 object-cover rounded-xl shadow-lg"
+          />
         </div>
 
       </div>
 
       {/* 🗺️ MAPA ABAJO */}
-      <div className="p-3">
+      <div className="p-3 fade-up" style={{animationDelay:"0.8s"}}>
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 shadow-lg">
           <h2 className="font-bold mb-2">Ubicación</h2>
-
           <iframe
             className="w-full h-56 rounded-xl"
-            src="https://www.google.com/maps?q=Texcoco&output=embed"
-          ></iframe>
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Texcoco%20Estado%20de%20Mexico&t=&z=15&ie=UTF8&iwloc=&output=embed">
+          </iframe>
         </div>
       </div>
 
       {/* 🔥 MODAL AVISO FULLSCREEN */}
       {mostrarAviso && (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col">
-
+        <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
           <button 
             onClick={() => setMostrarAviso(false)}
-            className="text-white text-2xl p-4 self-end">
+            className="text-white text-2xl p-4 absolute top-2 right-2">
             ✕
           </button>
-
           <img 
             src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65"
-            className="w-full h-full object-contain"
+            className="max-h-[95vh] max-w-[95vw] object-contain rounded-lg shadow-2xl"
           />
-
         </div>
       )}
 
