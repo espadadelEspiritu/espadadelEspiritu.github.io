@@ -6,18 +6,24 @@
 
   <title>Parroquia San Pablo</title>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- React -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-  <!-- Babel (para JSX) -->
+  <!-- Babel -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0b1f3a, #1e3a5f);
+    }
+  </style>
 </head>
 
-<body class="bg-gray-100">
+<body>
 
 <div id="root"></div>
 
@@ -28,60 +34,75 @@ function App() {
   const [mostrarAviso, setMostrarAviso] = React.useState(false);
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen shadow">
+    <div className="max-w-md mx-auto min-h-screen text-white">
 
-      {/* 🔝 HEADER */}
-      <div className="bg-blue-900 text-white p-4 flex items-center">
+      {/* 🔝 HEADER CON LOGO */}
+      <div className="backdrop-blur-md bg-white/10 p-4 flex items-center shadow-lg">
+
         <button 
           onClick={() => window.location.href = "https://espadadelespiritu.github.io/"}
           className="mr-3 text-xl">
           ←
         </button>
 
+        {/* Logo público */}
+        <img 
+          src="https://cdn-icons-png.flaticon.com/512/3176/3176363.png"
+          className="w-10 h-10 mr-3 rounded-full bg-white p-1"
+        />
+
         <div>
-          <h1 className="text-sm font-bold leading-tight">
+          <h1 className="text-xs font-bold leading-tight">
             Parroquia de San Pablo Apóstol
           </h1>
-          <p className="text-xs">
+          <p className="text-[10px]">
             II Vicaria Diócesis de Texcoco A.R
           </p>
         </div>
+
       </div>
 
-      {/* 🖼️ LOGO */}
-      <div className="text-center p-4">
-        <img src="logo.png" className="mx-auto w-24"/>
+      {/* 📢 AVISOS ARRIBA */}
+      <div className="p-3">
+        <div 
+          className="rounded-2xl overflow-hidden shadow-xl cursor-pointer relative"
+          onClick={() => setMostrarAviso(true)}
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65"
+            className="w-full h-44 object-cover"
+          />
+
+          <div className="absolute inset-0 bg-black/40 flex items-end">
+            <div className="p-3 text-white font-semibold">
+              Avisos parroquiales (toca para ver)
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* 📍 INFO */}
-      <div className="p-4">
-        <div className="bg-white rounded-xl shadow p-4 mb-4">
+      {/* 📍 CONTENIDO */}
+      <div className="p-3 space-y-4">
+
+        {/* INFO */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 shadow-lg">
           <h2 className="font-bold mb-2">Información</h2>
           <p>Dirección: Texcoco, Estado de México</p>
           <p>Teléfono: 55 0000 0000</p>
         </div>
 
-        {/* 🗺️ MAPA */}
-        <div className="bg-white rounded-xl shadow p-4 mb-4">
-          <h2 className="font-bold mb-2">Ubicación</h2>
-          <iframe
-            className="w-full h-56 rounded-xl"
-            src="https://www.google.com/maps?q=Texcoco&output=embed"
-          ></iframe>
-        </div>
-
-        {/* ⛪ HORARIOS */}
-        <div className="bg-white rounded-xl shadow p-4 mb-4">
+        {/* HORARIOS */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 shadow-lg">
           <h2 className="font-bold mb-2">Horarios</h2>
           <p><b>Misa:</b> Domingo 8:00, 10:00, 12:00</p>
           <p><b>Confesiones:</b> Sábado 5:00 PM</p>
           <p><b>Hora Santa:</b> Jueves 6:00 PM</p>
         </div>
 
-        {/* 🙏 PASTORALES */}
-        <div className="bg-white rounded-xl shadow p-4 mb-4">
+        {/* PASTORALES */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 shadow-lg">
           <h2 className="font-bold mb-2">Pastorales</h2>
-          <ul className="list-disc ml-4">
+          <ul className="list-disc ml-5">
             <li>Pastoral Juvenil</li>
             <li>Pastoral Familiar</li>
             <li>Catequesis</li>
@@ -89,20 +110,27 @@ function App() {
           </ul>
         </div>
 
-        {/* 📢 AVISOS */}
-        <div 
-          className="rounded-xl overflow-hidden shadow cursor-pointer"
-          onClick={() => setMostrarAviso(true)}
-        >
-          <img src="aviso.jpg" className="w-full h-48 object-cover"/>
-          <div className="bg-black bg-opacity-60 text-white p-2 text-center">
-            Avisos parroquiales (tocar)
-          </div>
+        {/* GALERÍA BONITA */}
+        <div className="grid grid-cols-2 gap-3">
+          <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092" className="rounded-xl h-32 object-cover"/>
+          <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334" className="rounded-xl h-32 object-cover"/>
         </div>
 
       </div>
 
-      {/* 🔥 MODAL FULLSCREEN */}
+      {/* 🗺️ MAPA ABAJO */}
+      <div className="p-3">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 shadow-lg">
+          <h2 className="font-bold mb-2">Ubicación</h2>
+
+          <iframe
+            className="w-full h-56 rounded-xl"
+            src="https://www.google.com/maps?q=Texcoco&output=embed"
+          ></iframe>
+        </div>
+      </div>
+
+      {/* 🔥 MODAL AVISO FULLSCREEN */}
       {mostrarAviso && (
         <div className="fixed inset-0 bg-black z-50 flex flex-col">
 
@@ -113,7 +141,7 @@ function App() {
           </button>
 
           <img 
-            src="aviso.jpg" 
+            src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65"
             className="w-full h-full object-contain"
           />
 
