@@ -3082,71 +3082,79 @@
 
             <q-dialog v-model="carousel" :maximized="maximizedToggle">
 
-              <q-carousel swipeable animated transition-prev="scale" autoplay v-model="slide" vertical transition-prev="slide-down" transition-next="slide-up" infinite padding arrows height="90vh" class="bg-black text-white shadow-1 rounded-borders">
+              <q-carousel swipeable animated transition-prev="scale" autoplay v-model="slide" vertical transition-prev="slide-down" transition-next="slide-up" infinite padding arrows height="90vh" class="bg-yellow-2 text-dark shadow-1 rounded-borders">
 
                 <q-carousel-slide :name="1" class="column no-wrap flex-center">
 
-                  <div class="q-mt-md text-center">
-                    <h1 style="font-size:38px; line-height:1.4;">
-                      <sup style="font-size:60%;">3</sup>"Esto es bello y grato ante Dios, nuestro Salvador,
-                      <sup style="font-size:60%;">4</sup>quien quiere que todos se salven y lleguen al conocimiento de la verdad"
-                    </h1>
+  <div class="q-mt-md text-center" style="padding:20px; max-width:90vw;">
+    
+    <h1 style="font-size:6vw; line-height:1.4;">
+      <sup style="font-size:60%;">3</sup>Esto es bello y grato ante Dios, nuestro Salvador,
+      <sup style="font-size:60%;">4</sup>quien quiere que todos se salven y lleguen al conocimiento de la verdad
+    </h1>
 
-                    <p style="font-size:22px; margin-top:20px;">
-                      — 1 Timoteo: 2, 3-4
-                    </p>
+    <p style="font-size:4vw; margin-top:15px;">
+      — 1 Timoteo 2, 3-4
+    </p>
 
-                    <p style="font-size:20px; margin-top:40px; font-style:italic; color:#ffd54f;">
-                      "Jesús le contestó: Yo soy el camino, la verdad y la vida..." (Juan 14:6)
-                    </p>
-                  </div>
-                </q-carousel-slide>
-                <q-carousel-slide :name="2" class="column no-wrap flex-center">
+    <p style="font-size:4.5vw; margin-top:30px; font-style:italic; color:#ff8f00;">
+      "Jesús le contestó: Yo soy el camino, la verdad y la vida..." (Juan 14:6)
+    </p>
 
-                  <div class="q-mt-md text-center">
-                    <h1 style="font-size:38px; line-height:1.4;">
-                      <sup style="font-size:60%;">"Ustedes son la sal de la tierra. Pero si la sal pierde su sabor, ¿cómo podrá recobrarlo? Ya no sirve para nada, sino para tirarla y que la pise la gente.
+  </div>
+</q-carousel-slide>
 
-                    </h1>
 
-                    <p style="font-size:22px; margin-top:20px;">
-                      — Mateo 5, 13
-                    </p>
+<q-carousel-slide :name="2" class="column no-wrap flex-center">
 
-                  </div>
+  <div class="q-mt-md text-center" style="padding:20px; max-width:90vw;">
 
-                </q-carousel-slide>
-                <q-carousel-slide :name="3" class="column no-wrap flex-center">
+    <h1 style="font-size:6vw; line-height:1.4;">
+      "Ustedes son la sal de la tierra. Pero si la sal pierde su sabor, ¿cómo podrá recobrarlo? Ya no sirve para nada, sino para tirarla y que la pise la gente."
+    </h1>
 
-                  <div class="q-mt-md text-center">
+    <p style="font-size:4vw; margin-top:15px;">
+      — Mateo 5, 13
+    </p>
 
-                    <h1 style="font-size:38px; line-height:1.4;">
-                      <sup style="font-size:60%;">14</sup>"Ustedes son la luz del mundo. No se puede ocultar una montaña.
-                      <sup style="font-size:60%;">15</sup>Tampoco se enciende una lámpara y se pone bajo un cajón, sino sobre el calendero para que alumbre a todos los que están en la casa."
+  </div>
+</q-carousel-slide>
 
-                    </h1>
 
-                    <p style="font-size:22px; margin-top:20px;">
-                      — Mateo: 5, 14-15
-                    </p>
+<q-carousel-slide :name="3" class="column no-wrap flex-center">
 
-                  </div>
-                </q-carousel-slide>
-                <q-carousel-slide :name="4" class="column no-wrap flex-center">
+  <div class="q-mt-md text-center" style="padding:20px; max-width:90vw;">
 
-                  <div class="q-mt-md text-center">
-                    <h1 style="font-size:35px; line-height:1.4;">
-                      <sup style="font-size:60%;">16</sup>"Del mismo modo brille la luz en ustedes delante de los demás, para que, viendo sus obras buenas, den gloria al Padre de ustedes que está en los cielos."
-                    </h1>
-                    <p style="font-size:22px; margin-top:20px;">
-                      — Mateo: 5, 16
-                    </p>
+    <h1 style="font-size:6vw; line-height:1.4;">
+      <sup style="font-size:60%;">14</sup>Ustedes son la luz del mundo. No se puede ocultar una ciudad en lo alto de una montaña.
+      <sup style="font-size:60%;">15</sup>Tampoco se enciende una lámpara para ponerla bajo un cajón, sino sobre el candelero para que alumbre a todos.
+    </h1>
 
-                  </div>
-                </q-carousel-slide>
+    <p style="font-size:4vw; margin-top:15px;">
+      — Mateo 5, 14-15
+    </p>
 
-              </q-carousel>
+  </div>
+</q-carousel-slide>
 
+
+<q-carousel-slide :name="4" class="column no-wrap flex-center">
+
+  <div class="q-mt-md text-center" style="padding:20px; max-width:90vw;">
+
+    <h1 style="font-size:6vw; line-height:1.4;">
+      <sup style="font-size:60%;">16</sup>Así brille la luz de ustedes delante de los demás, para que vean sus buenas obras y den gloria al Padre.
+    </h1>
+
+    <p style="font-size:4vw; margin-top:15px;">
+      — Mateo 5, 16
+    </p>
+
+  </div>
+</q-carousel-slide>
+
+</q-carousel>
+                
               <q-btn align="around" class="btn-fixed-width" color="orange" label="Palabra que es Luz (Click para cerrar)" icon="lightbulb_outline" />
 
             </q-dialog>
