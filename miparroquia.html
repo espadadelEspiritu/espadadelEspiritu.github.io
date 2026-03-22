@@ -80,7 +80,7 @@ https://quasar.dev/vue-components/carousel#example--vertical-mode
       <img src="https://espadadelespiritu.github.io/Confesiones%20Oficio.png">
 
       <q-card-actions align="right">
-        <q-btn flat round color="red" icon="favorite"></q-btn>
+        <q-btn flat round color="red" icon="favorite"  @click="shareLink"></q-btn>
         
         <q-btn flat round color="primary" icon="share"></q-btn>
       </q-card-actions>
@@ -235,5 +235,30 @@ Chiconcuac México C.P 56270</p>
   </script>
 
 </body>
+
+    <script>
+export default {
+  methods: {
+    shareLink() {
+      const link = "https://espadadelespiritu.github.io/miparroquia.html"; // el link que quieres compartir
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Comparte este enlace',
+          text: 'Mira este contenido católico',
+          url: https://espadadelespiritu.github.io/miparroquia.html
+        })
+        .then(() => console.log('Compartido con éxito'))
+        .catch((error) => console.log('Error al compartir', error));
+      } else {
+        // Fallback: copia al portapapeles
+        navigator.clipboard.writeText(link)
+          .then(() => alert('Link copiado al portapapeles'))
+          .catch(() => alert('No se pudo copiar el link'));
+      }
+    }
+  }
+}
+</script>
 
 </html>
