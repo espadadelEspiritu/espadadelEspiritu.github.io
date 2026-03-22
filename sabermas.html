@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagrario</title>
+
+  <script type="module">
+    import {
+      menuController
+    } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.menuController = menuController;
+  </script>
+
+  <style>
+.my-card
+  width: 100%
+  max-width: 250px
+  </style>
+
+</head>
+
+<body>
+
+  <!-- example of injection point where you write your app template -->
+  <!--
+Forked from:
+https://quasar.dev/vue-components/carousel#example--vertical-mode
+-->
+  <div id="q-app" style="min-height: 100vh;">
+
+    <div class="q-pa-md">
+      <q-layout view="hHh lpR fFf">
+        <q-header reveal elevated class="bg-white text-grey-8 q-py-xs" height-hint="58">
+          <q-toolbar>
+
+            <q-btn label="" outline rounded padding="none" icon="home" color="white" text-color="black" @click="goBack()"></q-btn>
+
+            <q-toolbar-title>María Alegra </q-toolbar-title>
+
+           
+          </q-toolbar>
+        </q-header>
+        <q-page-container>
+
+          <h3 class="text-center">María Alegra </h3>
+
+         
+  
+
+          <q-responsive :ratio="1" style="width: auto; max-width: 100%; height: 300px;">
+            
+             <q-card class="my-card">
+      <q-card-section>
+       Es una iniciativa que pretende ayudar a combatir la depresión
+
+A través de la promoción de las verdades de la fe y las herramientas que proporciona la psicología.
+      </q-card-section>
+    </q-card>
+<br>
+    <q-card
+      class="my-card text-white"
+      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+    >
+      <q-card-section>
+        <div class="text-h6">Misión</div>
+        <div class="text-subtitle2"></div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+
+Fomentar
+
+la atención
+
+psicológica
+
+en cada
+
+parroquia.      </q-card-section>
+    </q-card>
+            <br>
+
+    <q-card dark bordered class="bg-grey-9 my-card">
+      <q-card-section>
+        <div class="text-h6">Visión</div>
+        <div class="text-subtitle2"></div>
+      </q-card-section>
+
+      <q-separator dark inset></q-separator>
+
+      <q-card-section>
+        
+Llegar a todas las parroquías del mundo.
+      </q-card-section>
+    </q-card>
+
+            <br>
+            
+    <q-card flat bordered class="my-card">
+      <q-card-section>
+        <div class="text-h6">Objetivo:</div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        Evangelzar para combatir la depresión.
+      </q-card-section>
+
+    
+    </q-card>
+            <br>
+
+    <q-card dark bordered class="bg-grey-9 my-card">
+      <q-card-section>
+        <div class="text-h6">Colaboradores:</div>
+        <div class="text-subtitle2"></div>
+      </q-card-section>
+
+      <q-separator dark inset></q-separator>
+
+      <q-card-section>
+<q-avatar>
+          <img src="https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9826cd/9826cd9048597711ce81a196da4f59aa_220_square.jpg">
+        </q-avatar>
+        Psi.Deyanira Lira                                                  
+                <br>                                               
+              <br>                                                
+             <q-avatar>
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBqiBFXExwuzCJ3_bwonachC887vi59r4X47jQxWwFN2qbVyEN6UzPF0BRVaQCtygwogBC8-r-aMBRV0JS4NZqfLdqLZTSSID_hr_1lIpHF9xZjgTopMzgyrR3WRMz3Q/s113/Foto+Ctfca.jpg">
+        </q-avatar>
+        P.Ramiro Pellitero        
+                                                              
+                   <br>                                               
+              <br>                                                
+                                                              
+         <q-avatar>
+          <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+        </q-avatar>
+        John                                                        
+                
+      </q-card-section>
+    </q-card>
+
+         <br>
+    <q-card
+      class="my-card text-white"
+      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+    >
+      <q-card-section>
+        <div class="text-h6">Contacto</div>
+        <div class="text-subtitle2"></div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+
+Si deseas sumarte a la iniciativa, ayudar a pagar una consulta o requieras ayuda para pagarla.
+        O si tienes alguna duda, opinión o sugenerncia.
+        Puedes contactarnos a traves de:
+        
+        <p>Correo: amorvguadalupe@gmail.com</p>
+        <p>Facebook: @amoryverdadcatolica</p>
+        <p>Whatsapp</p>
+          
+      </q-card-section>
+    </q-card>
+            <br>
+
+          </q-responsive>
+
+        </q-page-container>
+      </q-layout>
+
+    </div>
+
+  </div>
+
+
+
+  
+  <script>
+    document.getElementById("cancion");
+  </script>
+
+  <!-- Add the following at the end of your body tag -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
+
+  <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+
+    function onYouTubePlayerAPIReady() {
+      player = new YT.Player('ytplayer', {
+        //Parametros del video
+        playerVars: {
+          'autoplay': 1,
+          'controls': 1,
+          'autohide': 1,
+          'wmode': 'opaque',
+          'mute': 1
+        },
+        height: '95%',
+        width: '95%',
+        //Id del video
+        videoId: 'Dd7YbWyPcQo',
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady() {
+      //Ajustar volumen
+      // player.setVolume(10);
+    }
+  </script>
+  <script>
+    /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+    const {
+      ref
+    } = Vue
+    const app = Vue.createApp({
+      setup() {
+        const dialog = ref(false)
+        const position = ref('top')
+
+        function musica() {
+          cancion.play();
+        }
+
+        function pausa() {
+          cancion.pause();
+        }
+
+        function goBack() {
+          window.location.href = "https://mariavguadalupe.github.io/";
+        }
+        return {
+          dialog,
+          position,
+          open(pos) {
+            position.value = pos
+            dialog.value = true
+          },
+          goBack,
+          musica,
+          pausa,
+          slide: ref('style'),
+          lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.',
+          autoplay: ref(true)
+        }
+      }
+    })
+    app.use(Quasar, {
+      config: {}
+    })
+    app.mount('#q-app')
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,3544 @@
+<!DOCTYPE html>
+<html>
+<!--
+    WARNING! Make sure that you match all Quasar related
+    tags to the same version! (Below it's "@2.12.5")
+  -->
+
+<head>
+  <style>
+    .introtext {
+      position: relative;
+      display: inline-block;
+      padding: 3px 7px;
+      border: solid 7px transparent;
+      margin-right: 50px;
+      z-index: 1;
+      text-decoration: none;
+      color: #222;
+      transition: border .3s;
+      ;
+    }
+
+    .boton-elegante {
+      padding: 10px 20px;
+      border: 2px solid #2c2c2c;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: all 0.4s ease;
+      outline: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      overflow: hidden;
+      font-weight: bold;
+    }
+
+    .boton-elegante::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle,
+          rgba(255, 255, 255, 0.25) 0%,
+          rgba(255, 255, 255, 0) 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease;
+    }
+
+    .boton-elegante:hover::after {
+      transform: scale(4);
+    }
+
+    .boton-elegante:hover {
+      border-color: #666666;
+      background: #292929;
+    }
+
+    #mia {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      padding: 10px 20px;
+      border: 2px;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: all 0.4s ease;
+      outline: none;
+      position: absolute;
+      overflow: hidden;
+      font-weight: bold;
+    }
+
+    /* Estilos para la animación */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #container1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      animation: fadeIn 2s ease-in;
+    }
+
+    /* Estilos para el título */
+    .titulo1 {
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: white;
+      animation: anime 5s alternate infinite;
+    }
+
+    .titulo2 {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    @keyframes anime {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    h3 {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: #f2f2f2;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos para el subtítulo */
+    h4 {
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      color: #f2f2f2;
+      margin-bottom: 10px;
+    }
+
+    /* Estilos para la animación del botón */
+    #buttonNa {
+      position: fixed;
+      bottom: 75px;
+      display: flex;
+      z-index: 3;
+      background-color: #f2f2f2;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      cursor: pointer;
+      animation: fadeIn 4s ease-in;
+    }
+
+    .tituloN {
+      color: #f2f2f2;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      cursor: pointer;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .scale-up-bottom {
+      animation: scale-up-bottom 0.7s;
+    }
+
+    @keyframes scale-up-bottom {
+      0% {
+        transform: scale(.5);
+        transform-origin: center bottom
+      }
+
+      100% {
+        transform: scale(1);
+        transform-origin: center bottom
+      }
+    }
+
+    #container12 {
+      animation: color-change-2x 2s linear infinite alternate both;
+    }
+
+    @keyframes color-change-2x {
+      0% {
+        background: #19dcea;
+      }
+
+      100% {
+        background: #b22cff;
+      }
+    }
+
+    .tracking-in-contract {
+      animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    }
+
+    @keyframes tracking-in-contract {
+      0% {
+        letter-spacing: 1em;
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 0.6;
+      }
+
+      100% {
+        letter-spacing: normal;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes zoomInUp {
+      from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      60% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+      }
+    }
+
+    @keyframes zoomInUp {
+      from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      60% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+      }
+    }
+
+    .zoomInUp {
+      -webkit-animation-name: zoomInUp;
+      animation-name: zoomInUp;
+    }
+
+    .animated {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .color-change-2x {
+      animation: color-change-2x 2s linear infinite alternate both;
+    }
+
+    @keyframes color-change-2x {
+      0% {
+        background: #19dcea;
+      }
+
+      100% {
+        background: #b22cff;
+      }
+    }
+
+    /* ----------------------------------------------
+  Generated by AnimatiSS
+  Licensed under FreeBSD License
+  URL: https://xsgames.co/animatiss
+  Twitter: @xsgames_
+---------------------------------------------- */
+    .tracking-in-expand-forward-top {
+      animation: tracking-in-expand-forward-top 0.7s linear both
+    }
+
+    @keyframes tracking-in-expand-forward-top {
+      0% {
+        letter-spacing: -.2em;
+        transform: translateZ(-700px) translateY(-100px);
+        opacity: 0
+      }
+
+      40% {
+        opacity: .6
+      }
+
+      100% {
+        transform: translateZ(0) translateY(0);
+        opacity: 1
+      }
+    }
+
+    html,
+    body {
+      padding: 0px;
+      margin: 0px;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    #presentacion1a {
+      background-image: radial-gradient(circle at 75.98% 68.19%, #ffb600 0, #ffbf00 8.33%, #f9c700 16.67%, #e5cf00 25%, #d0d500 33.33%, #b9db00 41.67%, #a1e000 50%, #86e42a 58.33%, #64e843 66.67%, #2feb5a 75%, #00ee71 83.33%, #00f087 91.67%, #00f29f 100%);
+    }
+
+    swiper-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 85vh;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 90%;
+      object-fit: cover;
+    }
+
+    .cardT {
+      position: relative;
+      width: 190px;
+      height: 254px;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 12px;
+      gap: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .cardT::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      left: -5px;
+      margin: auto;
+      width: 200px;
+      height: 264px;
+      border-radius: 10px;
+      background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+      z-index: -10;
+      pointer-events: none;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .cardT::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+      transform: translate3d(0, 0, 0) scale(0.95);
+      filter: blur(20px);
+    }
+
+    .headingT {
+      font-size: 20px;
+      text-transform: capitalize;
+      font-weight: 700;
+    }
+
+    .cardT p:not(.headingT) {
+      font-size: 14px;
+    }
+
+    .cardT p:last-child {
+      color: #e81cff;
+      font-weight: 600;
+    }
+
+    .cardT:hover::after {
+      filter: blur(30px);
+    }
+
+    .cardT:hover::before {
+      transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+    }
+
+    .e-card {
+      margin: 100px auto;
+      background: transparent;
+      box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+      position: relative;
+      width: 240px;
+      height: 330px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      width: 540px;
+      height: 700px;
+      opacity: 0.6;
+      left: 0;
+      top: 0;
+      margin-left: -50%;
+      margin-top: -70%;
+      background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    }
+
+    .icon {
+      width: 3em;
+      margin-top: -1em;
+      padding-bottom: 1em;
+    }
+
+    .infotop {
+      text-align: center;
+      font-size: 20px;
+      position: absolute;
+      top: 5.6em;
+      left: 0;
+      right: 0;
+      color: rgb(255, 255, 255);
+      font-weight: 600;
+    }
+
+    .name {
+      font-size: 14px;
+      font-weight: 100;
+      position: relative;
+      top: 1em;
+      text-transform: lowercase;
+    }
+
+    .wave:nth-child(2),
+    .wave:nth-child(3) {
+      top: 210px;
+    }
+
+    .playing .wave {
+      border-radius: 40%;
+      animation: wave 3000ms infinite linear;
+    }
+
+    .wave {
+      border-radius: 40%;
+      animation: wave 55s infinite linear;
+    }
+
+    .playing .wave:nth-child(2) {
+      animation-duration: 4000ms;
+    }
+
+    .wave:nth-child(2) {
+      animation-duration: 50s;
+    }
+
+    .playing .wave:nth-child(3) {
+      animation-duration: 5000ms;
+    }
+
+    .wave:nth-child(3) {
+      animation-duration: 45s;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .containerC {
+      color: white;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    .containerC::before,
+    .containerC::after {
+      content: "";
+      background-color: #fab5704c;
+      position: absolute;
+    }
+
+    .containerC::before {
+      border-radius: 50%;
+      width: 6rem;
+      height: 6rem;
+      top: 30%;
+      right: 7%;
+    }
+
+    .containerC::after {
+      content: "";
+      position: absolute;
+      height: 3rem;
+      top: 8%;
+      right: 5%;
+      border: 1px solid;
+    }
+
+    .containerC .boxC {
+      width: 11.875em;
+      height: 15.875em;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.074);
+      border: 1px solid rgba(255, 255, 255, 0.222);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 0.7rem;
+      transition: all ease 0.3s;
+    }
+
+    .containerC .boxC {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .containerC .boxC .titleC {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    .containerC .boxC div strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .containerC .boxC div p {
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .containerC .boxC div span {
+      font-size: 0.7rem;
+      font-weight: 300;
+    }
+
+    .containerC .boxC div span:nth-child(3) {
+      font-weight: 500;
+      margin-right: 0.2rem;
+    }
+
+    .containerC .boxC:hover {
+      box-shadow: 0px 0px 20px 1px #ffbb763f;
+      border: 1px solid rgba(255, 255, 255, 0.454);
+    }
+
+    .cardR {
+      position: absolute;
+      width: 290px;
+      height: 314px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 0.8em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.5s;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cardR:hover {
+      scale: 1.05;
+      rotate: 3deg;
+    }
+
+    .cardR::after {
+      content: '';
+      width: 93%;
+      height: 95%;
+      position: absolute;
+      border-radius: 0.7em;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: 0;
+    }
+
+    .shadowR {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(315deg, #03a9f4, #ff0058);
+      z-index: -1;
+      filter: blur(25px);
+    }
+
+    .txtR {
+      position: absolute;
+      font-weight: 600;
+      font-size: 1.6em;
+      color: #fff;
+    }
+
+    .cardR:hover .shadowR {
+      animation: rotate 3s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        rotate: 0deg;
+        background: linear-gradient(315deg, #03a9f4, #ff0058);
+      }
+
+      50% {
+        rotate: 180deg;
+        background: linear-gradient(45deg, #ffbc00, #ff0058);
+      }
+
+      100% {
+        rotate: 360deg;
+        background: linear-gradient(315deg, #4dff03, #00d0ff);
+      }
+    }
+
+    .cardL {
+      overflow: visible;
+      position: relative;
+      width: 190px;
+      height: 254px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    }
+
+    .cardL:before,
+    .cardL:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      background: #fff;
+      transition: 0.5s;
+      z-index: -99;
+    }
+
+    .detailsL {
+      position: absolute;
+      left: -10px;
+      right: 0;
+      bottom: 5px;
+      height: 60px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /*Image*/
+    .imgboxL {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      bottom: 10px;
+      right: 10px;
+      background: #222;
+      transition: 0.5s;
+      z-index: 1;
+    }
+
+    .imgL {
+      background: #4158D0;
+      background-image: url("https://www.cartasaldirector.org/wp-content/uploads/2016/03/santa-teresita-de-jesus.jpg");
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /*Text*/
+    .titleL {
+      font-weight: 600;
+      font-size: 20px;
+      color: #777;
+    }
+
+    .captionL {
+      font-weight: 500;
+      font-size: 16px;
+      color: #4158D0;
+      display: block;
+      margin-top: 5px;
+    }
+
+    /*Hover*/
+    .cardL:hover .imgboxL {
+      bottom: 80px;
+    }
+
+    .cardL:hover:before {
+      transform: rotate(20deg);
+    }
+
+    .cardL:hover:after {
+      transform: rotate(10deg);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, .2);
+    }
+
+    .cardEquipo {
+      background-color: rgba(243, 244, 246, 1);
+      padding: 1rem;
+      max-width: 370px;
+      border-radius: 10px;
+      box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);
+    }
+
+    .headerEquipo {
+      display: flex;
+      align-items: right;
+      grid-gap: 1rem;
+      gap: 1rem;
+    }
+
+    .headerEquipo .imageEquipo {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 9999px;
+      object-fit: cover;
+      background-color: royalblue;
+      background-image: url("https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9826cd/9826cd9048597711ce81a196da4f59aa_220_square.jpg");
+      background-size: cover;
+    }
+
+    .nameEquipo {
+      margin-top: 0.25rem;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      --tw-text-opacity: 1;
+      color: rgba(55, 65, 81, 1);
+    }
+
+    .messageEquipo {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      margin-top: 1rem;
+      color: rgba(107, 114, 128, 1);
+    }
+
+    /*Magic card*/
+    .cardPrin {
+      width: 290px;
+      height: 254px;
+      background: #f5f5f5;
+      overflow: visible;
+      box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-infoPrin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
+      padding: 0 1rem;
+    }
+
+    .card-imgPrin {
+      --size: 100px;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: #42caff;
+      background: linear-gradient(to bottom, #42caff 0%, #e81aff 100%);
+      position: relative;
+      transition: all .3s ease-in-out;
+      background-image: url("https://mariavguadalupe.github.io/Alegra512.png");
+      background-size: cover;
+    }
+
+    .card-imgPrin::before {
+      content: "";
+      border-radius: inherit;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      height: 90%;
+      transform: translate(-50%, -50%);
+      border: 1rem solid #e8e8e8;
+    }
+
+    /*Text*/
+    .text-titlePrin {
+      text-transform: uppercase;
+      font-size: 0.75em;
+      color: #42caff;
+      letter-spacing: 0.05rem;
+    }
+
+    .text-bodyPrin {
+      font-size: .8em;
+      text-align: center;
+      color: #6f6d78;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /*Hover*/
+    .cardPrin:hover .card-imgPrin {
+      --size: 110px;
+      width: var(--size);
+      height: var(--size);
+    }
+
+    .cardCont {
+      width: 350px;
+      height: 350px;
+      background: #E8EAEA;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .titleCont,
+    .moreCont {
+      padding: 10px 15px;
+    }
+
+    .userCont {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+    }
+
+    .user__contentCont {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .user__containerCont {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .titleCont {
+      font-weight: 900;
+      font-size: 1.3em;
+    }
+
+    .nameCont {
+      font-weight: 800;
+    }
+
+    .usernameCont {
+      font-size: .9em;
+      color: #64696e;
+    }
+
+    .imageCont {
+      width: 60px;
+      height: 60px;
+      background: rgb(22, 19, 70);
+      background: linear-gradient(295deg, rgba(22, 19, 70, 1) 41%, rgba(89, 177, 237, 1) 100%);
+      border-radius: 50%;
+      margin-right: 15px;
+      background-image: url("https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9826cd/9826cd9048597711ce81a196da4f59aa_220_square.jpg");
+      background-size: cover;
+    }
+
+    .followCont {
+      border: none;
+      border-radius: 25px;
+      background-color: #0f1113;
+      color: white;
+      padding: 8px 15px;
+      font-weight: 700;
+    }
+
+    .moreCont {
+      display: block;
+      text-decoration: none;
+      color: rgb(29, 155, 240);
+      font-weight: 800;
+    }
+
+    .userCont:hover {
+      background-color: #b3b6b6;
+    }
+
+    .moreCont:hover {
+      background-color: #b3b6b6;
+      border-radius: 0px 0px 15px 15px;
+    }
+
+    .followCont:hover {
+      background-color: #2c3136;
+    }
+
+    .card-clientUl {
+      background: #2cb5a0;
+      width: 13rem;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border: 1px;
+      border-radius: 20px;
+      text-align: center;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .card-clientUl:hover {
+      transform: translateY(-10px);
+    }
+
+    .user-pictureUl {
+      overflow: hidden;
+      object-fit: cover;
+      width: 5rem;
+      height: 5rem;
+      border: 1px;
+      border-radius: 999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .user-pictureUl svg {
+      width: 2.5rem;
+      fill: currentColor;
+    }
+
+    .name-clientUl {
+      margin: 0;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .name-clientUl span {
+      display: block;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    .social-mediaUl:before {
+      content: " ";
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin: 20px 0;
+      background: #7cdacc;
+    }
+
+    .social-mediaUl a {
+      position: relative;
+      margin-right: 15px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .social-mediaUl a:last-child {
+      margin-right: 0;
+    }
+
+    .social-mediaUl a svg {
+      width: 1.1rem;
+      fill: currentColor;
+    }
+
+    /*-- Tooltip Social Media --*/
+    .tooltip-socialUl {
+      background: #262626;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      padding: 0.5rem 0.4rem;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -90%);
+      transition: all 0.2s ease;
+      z-index: 1;
+    }
+
+    .tooltip-socialUl:after {
+      content: " ";
+      position: absolute;
+      bottom: 1px;
+      left: 50%;
+      border: solid;
+      border-width: 10px 10px 0 10px;
+      border-color: transparent;
+      transform: translate(-50%, 100%);
+    }
+
+    .social-mediaUl a .tooltip-socialUl:after {
+      border-top-color: #262626;
+    }
+
+    .social-mediaUl a:hover .tooltip-socialUl {
+      opacity: 1;
+      transform: translate(-50%, -130%);
+    }
+
+    .card-containerNar {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .cardNar {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      
+      background-image: url("https://as1.ftcdn.net/v2/jpg/06/09/01/90/1000_F_609019098_RXs3MdNTsWHU1V8EO94WDCkCvCBIXdfD.jpg");
+      background-size: 120% 120%;
+    }
+
+    .cardNar .front-contentNar {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+    }
+
+    .cardNar .front-contentNar p {
+      font-size: 32px;
+      font-weight: 700;
+      opacity: 1;
+      background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+    }
+
+    .cardNar .contentNar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 98%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 5px;
+      background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+      color: #e8e8e8;
+      padding: 5px;
+      line-height: 1.5;
+      border-radius: 5px;
+      pointer-events: none;
+      transform: translateX(-96%);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .cardNar .contentNar .headingNar {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .cardNar:hover .contentNar {
+      transform: translateY(0);
+    }
+
+    .cardNar:hover .front-contentNar {
+      transform: translateX(-30%);
+    }
+
+    .cardNar:hover .front-contentNar p {
+      opacity: 0;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+
+  <link rel="manifest" href="./manifest.json">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#a281b1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content=#a281b1">
+  <title>María alegra</title>
+  <link rel="shortcut icon" type="image/png" href="https://mariavguadalupe.github.io/Alegra512.png">
+  <script>
+
+  </script>
+
+</head>
+
+<body>
+
+  <!-- example of injection point where you write your app template -->
+  <!--
+Forked from:
+https://quasar.dev/vue-components/carousel#example--vertical-mode
+-->
+
+  <canvas id="glscreen"></canvas>
+
+  <div id="container1" class="" style="width: 100%; height: 100vh; margin: auto;  max-width: 100%;  background-image: radial-gradient(circle at 75.98% 68.19%, #ffb600 0, #ffbf00 8.33%, #f9c700 16.67%, #e5cf00 25%, #d0d500 33.33%, #b9db00 41.67%, #a1e000 50%, #86e42a 58.33%, #64e843 66.67%, #2feb5a 75%, #00ee71 83.33%, #00f087 91.67%, #00f29f 100%);">
+
+    <swiper-container class="mySwiper" pagination="true" pagination-type="progressbar" navigation="true" autoplay-delay="3800" autoplay-disable-on-interaction="true">
+      <swiper-slide>
+        <h2 class="tituloN">Bienvenido</h2>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="cardPrin">
+          <div class="card-imgPrin"></div>
+          <div class="card-infoPrin">
+
+            <p class="text-titlePrin">María Alegra</p>
+            <p class="text-bodyPrin"> Es una iniciativa que pretende ayudar a combatir la depresión</p>
+          </div>
+        </div>
+
+      </swiper-slide>
+
+      <swiper-slide>
+        <div class="e-card playing">
+          <div class="image"></div>
+
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+
+          <div class="infotop">
+
+            <br>
+            A través de la fe
+            <br>
+            <div class="name">y la psicología</div>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="containerC">
+          <div class="boxC">
+            <span class="titleC">Visión:</span>
+            <div>
+              <strong>Recordar la belleza de la vida  y el valor de cada persona a través de </strong>
+              <p> la Verdad y el Amor de Dios.</p>
+              <span></span> <span></span>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="cardR">
+          <div class="txtR">
+            <p>Misión :) </p>
+            <p> Fomentar el acompañamiento espiritual y psicológico.<br>
+               </p>
+          </div>
+          <div class="shadowR"></div>
+        </div>
+      </swiper-slide>
+
+      <swiper-slide>
+        <div class="card-containerNar">
+          <div class="cardNar">
+            <div class="front-contentNar">
+              <p>Objetivo</p>
+                                         
+            </div>
+            <div class="contentNar">
+              <p class="headingNar">Ayudar a los más pobres a tener acceso a una terapia adecuada<br></p>
+              <p>y evitar las muertes por suicidio.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </swiper-slide>
+
+      <swiper-slide>
+        <div class="cardCont" style="text-align: left; max-width:330px;">
+          <p class="titleCont">Colaboradores:</p>
+          <div class="user__containerCont">
+            <div class="userCont">
+              <div class="imageCont"></div>
+              <div class="user__contentCont">
+                <div class="textCont">
+                  <span class="nameCont">Mtra. Deyanira Hdz. Lira </span>
+                  <p class="usernameCont">Terapeuta complementario</p>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="userCont">
+              <div class="imageCont" style="background-image: url('https://i1.rgstatic.net/ii/profile.image/607293292953600-1521801412456_Q128prueba/Ramiro-Iglesias.jpg'); background-size: cover;"></div>
+              <div class="user__contentCont">
+                <div class="textCont">
+                  <span class="nameCont">Name</span>
+                  <p class="usernameCont">@namedlorem</p>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="userCont">
+              <div class="imageCont" style="background-image: url('https://cdn.quasar.dev/img/boy-avatar.png'); background-size: cover;"></div>
+              <div class="user__contentCont">
+                <div class="textCont">
+                  <span class="nameCont">Miguel Hernández S.</span>
+                  <p class="usernameCont">Programador web</p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </swiper-slide>
+
+      <swiper-slide>
+        <div class="card-clientUl">
+
+          <p class="name-clientUl"> Contacto
+            <span>
+
+            </span>
+          </p>
+          <p class="name-clientUl">
+            <span>
+              Si deseas ayudar puedes comunicarte a los siguientes enlaces
+            </span>
+          </p>
+          <div class="social-mediaUl">
+            <a href="https://www.instagram.com/amor.verdad_catolica/">
+              <svg viewBox="0 0 16 16" class="socialSvg instagramSvg">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+              </svg> <span class="tooltip-socialUl">Instagram</span>
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=5613695681&text=Hola.+Gracias+por+comunicarte+con+nosotros&type=phone_number&app_absent=0">
+              <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: white">
+                <path fill="white" d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+              </svg>
+              <span class="tooltip-socialUl">WhatsApp</span>
+            </a>
+            <a href="https://www.facebook.com/AmoryVerdadCatolica/">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path>
+              </svg>
+              <span class="tooltip-socialUl">Facebook</span>
+            </a>
+            <a href="mailto:amorvguadalupe@gmail.com?subject=Hello">
+              <svg class="fill-stone-700 group-hover:fill-[#58b0e0]" height="15" width="15" id="mail" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16,14.81,28.78,6.6A3,3,0,0,0,27,6H5a3,3,0,0,0-1.78.6Z" fill=""></path>
+                <path d="M16.54,16.84h0l-.17.08-.08,0A1,1,0,0,1,16,17h0a1,1,0,0,1-.25,0l-.08,0-.17-.08h0L2.1,8.26A3,3,0,0,0,2,9V23a3,3,0,0,0,3,3H27a3,3,0,0,0,3-3V9a3,3,0,0,0-.1-.74Z" fill="#"></path>
+              </svg>
+              <span class="tooltip-socialUl">amorvguadalupe@gmail.com</span>
+            </a>
+            <a href="https://www.tiktok.com/@maria.alegra1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M8.3 1.01c.75-.01 1.5 0 2.25-.01c.05.89.36 1.8 1.01 2.43c.64.65 1.55.94 2.44 1.04v2.35c-.83-.03-1.66-.2-2.42-.56c-.33-.15-.63-.34-.93-.54c0 1.7 0 3.41-.01 5.1c-.04.82-.31 1.63-.78 2.3c-.75 1.12-2.06 1.85-3.4 1.87c-.82.05-1.65-.18-2.35-.6c-1.16-.69-1.98-1.97-2.1-3.33q-.03-.435 0-.87c.1-1.11.65-2.17 1.49-2.89c.95-.84 2.29-1.24 3.54-1c.01.86-.02 1.73-.02 2.59c-.57-.19-1.24-.13-1.74.22c-.37.24-.64.6-.79 1.02c-.12.3-.09.62-.08.94c.14.96 1.05 1.76 2.01 1.67c.64 0 1.26-.39 1.59-.94c.11-.19.23-.39.24-.62c.06-1.04.03-2.08.04-3.13c0-2.35 0-4.7.01-7.04" />
+              </svg>
+              <span class="tooltip-socialUl">TikTok</span>
+            </a>
+
+          </div>
+        </div>
+      </swiper-slide>
+
+    </swiper-container>
+
+    <br>
+    <br>
+
+    <a href="#" id="buttonNa">Continuar</a>
+
+    <a id="mia"></a>
+
+  </div>
+
+  <div id="loaderWrapper" class="container" hidden>
+    <img src="https://mariavguadalupe.github.io/Bienvenida3.gif" alt="Cargando..." style="width: 100%; height: auto; margin: auto;  max-width: 100%;">
+  </div>
+
+  <div id="q-app" style="min-height: 98vh; background: #EEEEEE;" hidden>
+
+    <div class="q-pa-md" style="max-width: 600px;">
+
+      <q-layout view="hHh lpR fFf" class="shadow-2 rounded-borders" style="background: #EEEEEE; ">
+        <q-header elevated style="background: #a281b1" height-hint="98">
+          <q-toolbar>
+            <q-toolbar-title>María alegra</q-toolbar-title>
+            <q-btn flat round dense icon="search" class="q-mr-xs" href="./Buscador.html"></q-btn>
+
+            <q-btn flat @click="drawer = !drawer" round dense icon="menu"></q-btn>
+
+          </q-toolbar>
+
+          <q-page-scroller expand position="top" :scroll-offset="50" :offset="[0, 0]">
+            <div class="col cursor-pointer q-pa-sm bg-accent text-white text-center">
+              Espíritu Santo, fuente del verdadero amor, llénanos. Fuente de sabiduría, guíanos. Fuente de luz, ilumínanos.
+            </div>
+          </q-page-scroller>
+
+        </q-header>
+
+        <q-footer bordered class="bg-grey-3 text-primary">
+          <div style="max-width: 590px">
+            <q-tabs v-model="tab" switch-indicator narrow-indicator class="text-white shadow-2" style="background: #e2bbb4">
+              <q-tab name="Verdades" icon="balance" label="Verdad"></q-tab>
+              <q-tab name="consejos" icon="mdi-book-cross" label="consejo"></q-tab>
+              <q-tab name="Testimonios" icon="volunteer_activism" label="testimonio"></q-tab>
+            </q-tabs>
+          </div>
+
+        </q-footer>
+
+        <q-drawer content-class="bg-transparent" style="background-color: transparent !important; border-right: 5px solid #eac976" v-model="drawer" show-if-above :width="210" :breakpoint="400">
+
+          <q-scroll-area light-dimmed style="height: calc(100% - 150px); margin-top: 150px; max-width: 195px; background-color: transparent !important;" content-class="bg-transparent">
+            <q-list padding id="draweri" style="background-color: transparent !important;" content-class="bg-transparent">
+              <q-item clickable v-ripple href="./SagrarioLive.html">
+                <q-item-section avatar>
+                  <q-icon name="church"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Sagrario en vivo
+                </q-item-section>
+              </q-item>
+
+              <q-item active clickable v-ripple href="./Maria.html">
+                <q-item-section avatar>
+                  <q-icon name="star"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Santa María de Guadalupe
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="./LiturgiaQ.html">
+                <q-item-section avatar>
+                  <q-icon name="auto_stories"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Liturgia
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="./Buscador.html">
+                <q-item-section avatar>
+                  <q-icon name="search"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Buscador católico
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="https://iglesiaynuevaevangelizacion.blogspot.com/">
+                <q-item-section avatar>
+                  <q-icon name="rss_feed"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Iglesia y nueva Evangelización
+                </q-item-section>
+              </q-item>
+              <q-item clickable v-ripple href="./Psicologos.html">
+                <q-item-section avatar>
+                  <q-icon name="psychology"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Psicólogos recomendados
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="./Sobrealegra.html">
+                <q-item-section avatar>
+                  <q-icon name="mdi-information-outline"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Sobre Alegra ...
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-scroll-area>
+
+          <q-img class="absolute-top" src="https://mariavguadalupe.github.io/manto7.png" style="height: 155px; width: 205px; ">
+            <div class="absolute-bottom bg-transparent">
+              <q-avatar size="70px" class="q-mb-sm">
+                <img src="https://mariavguadalupe.github.io/Alegra512.png">
+              </q-avatar>
+              <div class="text-weight-bold" style="color: #0e0e0e;">"¿Acaso no estoy yo aquí, yo que tengo el honor de ser tu madre?"</div>
+              <div></div>
+            </div>
+          </q-img>
+        </q-drawer>
+
+        <q-page-container style="background: #EEEEEE;" transition="flip-right">
+
+          <q-page padding>
+
+            <div id="banner1" style="width: 100%;  border: 0px solid transparent; max-width: 600px; display: none">
+
+              <q-banner rounded :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
+
+                <img src="https://mariavguadalupe.github.io/BannerFin.gif" alt="Banner GIF" style="width: 97%; height: 98%; border: 1px solid transparent; max-width: 400px;">
+
+                <q-btn id="btninstalar" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z"></path>
+                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
+                  </svg>&nbspInstalar App</q-btn>
+
+                <q-btn id="btnChrome" flat label="Abrir Chrome" href="https://www.google.com.mx/url?sa=t&source=web&rct=j&opi=89978449&url=https://play.google.com/store/apps/details%3Fid%3Dcom.android.chrome%26hl%3Des%26gl%3DUS%26referrer%3Dutm_source%253Dgoogle%2526utm_medium%253Dorganic%2526utm_term%253Dchrome%26pcampaignid%3DAPPU_1_2fEyZYznEZ3LkPIPqsCQmAk&ved=2ahUKEwjMt8fWyYWCAxWdJUQIHSogBJMQ8oQBegQIChAB&usg=AOvVaw0151vmFDLSjJUprX_8zi3B" target="_blank"></q-btn>
+
+              </q-banner>
+
+              <q-btn color="purple" @click="showCustom" label="notificacion" v-show="false"></q-btn>
+            </div>
+
+            <div class="q-pa-md q-gutter-sm">
+
+              <a href="https://mariavguadalupe.github.io/Maria.html">
+                <q-avatar size="75px" class="overlapping" :style="'border: 2px solid white'">
+                  <img src="https://mariavguadalupe.github.io/virgencita2.jpg">
+                </q-avatar>
+
+              </a>
+
+              <a href="https://mariavguadalupe.github.io/SagrarioLive.html">
+                <q-avatar size="75px" class="overlapping" :style="'border: 2px solid white'">
+                  <img src="https://mariavguadalupe.github.io/custodia2.png">
+                </q-avatar>
+              </a>
+
+              <a href="https://www.elsantorosario.es/como-rezar-el-rosario/">
+                <q-avatar size="75px" class="overlapping" :style="'border: 2px solid white'">
+                  <img src="https://imagenes.catholic.net/imagenes_db/212344_download.jpg">
+                </q-avatar>
+              </a>
+              <a href="https://www.aciprensa.com/Oracion/laudes.htm">
+                <q-avatar size="75px" class="overlapping" :style="'border: 2px solid white'">
+                  <img src="https://shalombooksny.com/4319-large_default/liturgia-de-las-horas-para-los-fieles.jpg">
+                </q-avatar>
+              </a>
+            </div>
+
+            <q-btn id="bienvenida" label="Click me" color="primary" @click="dialog = true" v-show="false"></q-btn>
+            <q-btn id="bsaber" v-show="false" label="Click" color="primary" @click="persistent = true"></q-btn>
+
+            <q-dialog v-model="dialog" persistent :maximized="maximizedToggle" transition-show="scale" transition-hide="scale">
+
+              <q-card dark bordered class="bg-black my-card">
+                <q-card-section>
+                  <div class="text-h6">
+
+                    <q-carousel swipeable height="700px" animated transition-prev="scale" v-model="slide" :autoplay="autoplay" ref="carousel" class="bg-black text-white shadow-1 rounded-borders" :style="'border: 0px solid white'">
+                      <q-carousel-slide :name="1">
+
+                        <br>
+
+                        <p id="simpleUsage"></p>
+                        <h2> María alegra</h2>
+                        <h6> Es una iniciativa que pretende ayudar a combatir la depresión</h6>
+                        <p> A través de las verdades de la fe y las herramientas que proporciona la psicología </p>
+
+                        <p> </p>
+
+                      </q-carousel-slide>
+                      <q-carousel-slide :name="2" img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMI928lmhtOlfWbV2arxKInvDsBSdbh_c5AQ&usqp=CAU">
+
+                        <h2> Misión</h2>
+                        <p> Fomentar </p>
+
+                        <p>la atención </p>
+                        <p>psicologíca </p>
+                        <p>en cada </p>
+                        <p>parroquia </p>
+
+                      </q-carousel-slide>
+                      <q-carousel-slide :name="3" img-src="">
+                        <h2> Visión</h2>
+                        <p> Legar a todas las parroquías del mundo </p>
+
+                      </q-carousel-slide>
+                      <q-carousel-slide :name="4" img-src="">
+
+                        <h2> Objetivo:</h2>
+                        <p> Evangelzar para combatir la depresión </p>
+
+                      </q-carousel-slide>
+
+                      </q-carousel-slide>
+                      <q-carousel-slide :name="5" img-src="">
+
+                        <h2>Colaboradores</h2>
+
+                        <q-avatar>
+                          <img src="https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9826cd/9826cd9048597711ce81a196da4f59aa_220_square.jpg">
+                        </q-avatar>
+                        Psi.Deyanira Lira
+                        <br>
+                        <br>
+                        <q-avatar>
+                          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBqiBFXExwuzCJ3_bwonachC887vi59r4X47jQxWwFN2qbVyEN6UzPF0BRVaQCtygwogBC8-r-aMBRV0JS4NZqfLdqLZTSSID_hr_1lIpHF9xZjgTopMzgyrR3WRMz3Q/s113/Foto+Ctfca.jpg">
+                        </q-avatar>
+                        P.Ramiro Pellitero
+
+                        <br>
+                        <br>
+
+                        <q-avatar>
+                          <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+                        </q-avatar>
+                        John
+
+                      </q-carousel-slide>
+
+                      <template v-slot:control>
+                        <q-carousel-control position="top-right" :offset="[18, 18]" class="text-white rounded-borders" style="background: rgba(0, 0, 0, .3); padding: 4px 8px;">
+                          <q-btn dense dark v-close-popup label="Omitir"></q-btn>
+                        </q-carousel-control>
+
+                        <q-carousel-control position="bottom-right" :offset="[10, 10]" class="q-gutter-xs">
+                          <q-btn push round dense color="orange" text-color="black" icon="arrow_left" @click="$refs.carousel.previous()"></q-btn>
+                          <q-btn push round dense color="orange" text-color="black" icon="arrow_right" @click="$refs.carousel.next()"></q-btn>
+                        </q-carousel-control>
+                      </template>
+                    </q-carousel>
+
+                  </div>
+
+              </q-card>
+
+            </q-dialog>
+
+            <div style="max-width: 600px font-family: 'Times New Roman'; font-size: 20px;">
+
+              <div class="q-gutter-y-sm">
+                <q-tab-panels v-model="tab" animated transition-prev="scale" transition-next="scale" class="text-center">
+                  <q-tab-panel name="Verdades">
+
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div class="text-h5"></div>
+                            <p> "Dios nos manda amar como quien sabe lo que nos conviene, lo que nos hace mejores, más grandes, más personas, verdaderamente cristianos. Y espera pacientemente nuestra respuesta libre."</p>
+                            <p> (P.Ramiro Pellitero) </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn round icon="volume_up" class="small" style="background: #8ae0db">
+                            <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                              <q-video src="https://www.youtube.com/embed/X-YivGGBP9g?rel=0"></q-video>
+
+                            </q-popup-proxy>
+
+                          </q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2015/05/sobre-el-miedo-y-el-amor.html">
+                            Leer articulo
+                          </q-btn>
+
+                          <q-btn id="debocina" v-show="false" label="Click" color="primary" @click="persistent = true"></q-btn>
+                        </q-card-actions>
+                    </q-card>
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <div class="text-h5"><iframe width="315" height="560" src="https://www.youtube.com/embed/5lYQJsBfuKA" title="El amor vence siempre | San Juan Pablo II" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                            <p> “El amor siempre vence... Dios siempre puede más”
+                            </p>
+                            <p> (Juan Pablo II) </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn icon="mdi-youtube" color="red" href="https://www.youtube.com/watch?v=jqkGXX_8_5I"></q-btn>
+
+                          <q-btn flat color="primary" href="https://www.youtube.com/watch?v=BaPYiF86Ed8l">
+                            Ver Discurso completo
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="">
+                            <div class="text-h5"></div>
+                            <p> Durante su homilía, el párroco de San Pabo Apóstol de la Diócesis de Texcoco,
+                              compartió el testimonio de una mujer que se ha curado de cáncer de colon.
+                              Ella se acercó a él para agradecerle su consejo de tener fe en la bondad y misericordia de Dios,
+                              por el cuál la mujer se curó. Ahora ella quiere dar gracias a Dios por una nueva oportunidad de vida,
+                              y el sacerdote le aconsejó que fuera luz para los demás.
+                            </p>
+                            <p>
+                              Esto ocurrió justo antes de la celebración de la Semana Santa del año 2024.
+                              Y me inspiró para colocarlo como el primer testimonio de esta app, ya que,
+                              poco antes reflexionaba sobre la importancia de colocar testimonios
+                              para comunicar la verdad sobre la fe en Jesús.
+
+                            </p>
+                            <q-separator></q-separator>
+                            (Author de María Alegra )
+                          </div>
+                        </div>
+
+                        <q-card-actions>
+                          <q-btn v-show="false" round icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="fade" transition-next="fade" class=" text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div class="text-h5"></div>
+                            <p> Seamos felices siempre, porque para ser felices hemos nacido y estamos destinados... </p> <br>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://mariavguadalupe.github.io/Articulo1.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <div class="text-h5"></div>
+                            <p> “En mi angustia
+                              llamé al Señor,
+                              pedí ayuda a mi Dios, y Él me escuchó desde
+                              su templo; mis gritos llegaron hasta sus oídos” </p>
+                            <p> (Salmos 18,6). </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>El testimonio de vida de San Francisco fue tan impactante que movió a otros a convertirse y seguirle en pos de Dios. De tal manera que, San Francisco, al ver que el número de hermanos iba creciendo, decidió ordenar sus consejos de manera que todos vivieran bajo una misma forma de vida. Es por ello que se llama “Regla y Vida” (Rb 1, 1). ¿Quieres ordenar tu vida? Empieza por tu cuarto. Dios no es un Dios de confusión (1 Co 14, 33), así que una manera de ser santo es ordenar poco a poco todo tu alrededor. Se necesitan pequeños pasos para ir ordenando todas las piezas de tu existencia.</p>
+
+                            <p>
+
+                            </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+                  <q-tab-panel name="Verdades">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p> “Donde hay más alegría, allí también hay más verdad” </p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn icon="mdi-youtube" color="red">
+                            <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                              <q-video src="https://www.youtube.com/embed/qYnyCEFrmMY?rel=0"></q-video>
+
+                            </q-popup-proxy>
+
+                          </q-btn>                          <q-btn flat color="primary" href="https://es.catholic.net/op/articulos/60123/cat/874/donde-hay-mas-alegria-alli-tambien-hay-mas-verdad.html">
+                            Leer articulo
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p> «No se inquieten
+                              por el día de mañana;
+                              A cada día le bastan sus propias preocupaciones» </p>
+                            <p> (Mateo 6,34). </p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> Cuanto más espacio demos a la oración, más descubriremos “la fuerza concreta del amor de Dios”, a pesar de la aridez, como testimonia la vida de la beata de Calcuta.</p>
+
+                            <p>
+
+                            </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                            “Yo —te dice Jesús—
+                            he probado la muerte por ti,
+                            he cargado sobre mí tu mal. Ahora he resucitado para decírtelo: estoy aquí, contigo, para siempre. ¡No temas!
+                            No tengáis miedo” .
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2022/04/la-pascua-ver-escuchar-y-anunciar-sin.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>"El camino de la
+                              vida humana puede
+                              verse como una
+                              llamada a la felicidad
+                              que se encuentra en el don sincero de sí mismo
+                              a los demás"
+                            </p>
+                            <p>
+                              (San Juan Pablo II)
+                            </p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>En ocasiones cuando alguien nos falla, es fácil juzgarle, cuestionarle e incluso condenarle por la herida que ha causado en nosotros. Sin embargo, una manera de ser santo es vivir lo que San Francisco nos recuerda: “Y deben evitar airarse o turbarse por el pecado de alguno, porque la ira y la turbación impiden en sí y en los otros la caridad.” </p>
+                            <p>(Rb 7, 3).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>“El que trabaja por la paz, según la bienaventuranza de Jesús, es aquel que busca el bien del otro, el bien total del alma y el cuerpo, hoy y mañana”. </p>
+
+                            <p> Benedicto XVI</p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+
+                        <q-card-actions>
+
+                          <q-btn round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2013/01/trabajar-y-educar-para-la-paz.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>
+                              “Aconsejo, también, amonesto y exhorto a mis hermanos en el Señor Jesucristo, a que, cuando van por el mundo, no litigue, ni se enfrente a nadie de palabra ni juzguen a otros sino sean afables, pacíficos y mesurados, mansos y humildes, hablando a todos honestamente, según conviene.”
+                            </p>
+                            <p>(Rb 3, 10-11) San Francisco de Asis</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>San Francisco tuvo amigos, y dentro de esas amistades estuvo Santa Clara de Asís. Hay un escrito de San Francisco que le dirige a Santa Clara y las jóvenes que le acompañaban donde le expresa: “Quiero y prometo, por mí mismo y por medio de mis hermanos, tener siempre diligente cuidado y especial solicitud de ustedes, lo mismo que de ellos.” (ForVi). </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p> «Estaréis tristes, pero vuestra tristeza se convertirá en alegría» </p>
+                            <p> (Jn 16,20)</p>
+                          </div>
+                        </div>
+
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>
+                              “Confía tu suerte al Señor, y Él te sostendrá”
+                            </p>
+                            <p>
+                              (Salmos 55).
+                            </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>"Amaba tanto la Eucaristía, que aún cuando estuvo gravemente enfermo recibía la Sagrada Comunión a diario, y si no le traían a Jesús muy tempranito en la mañana, se trastornaba mucho y no encontraba reposo de ningún modo. "Mi deseo de recibir a Jesús es tanto,- exclamaba,- que no puedo encontrar paz mientras espero"." </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <p> Testimonio de San Felipe Neri </p>
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p> La vida más perfecta es la consciente de sí misma.
+                            </p>
+
+                            <p> Así lo dice Santo Tomás: “El que no entiende, no vive perfectamente, sino que tiene una vida a medias”.</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2015/09/la-vida-como-algo-divino.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> «Señala San Pablo:
+                              estad siempre alegres en
+                              el Señor, os repito,
+                              estad alegres» </p>
+
+                            <p> (Fil 4,4).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>Cuando asistía a la Santa Misa, al voltear hacia el altar, nunca dejaba de mirar al Crucifijo y las velas encendidas. ¿Por qué? Lo hacía para imprimir en su mente y su corazón, dos cosas: El Crucifijo le recordaba lo que Jesús había hecho por ella; las velas encendidas le recordaban lo que ella debía hacer por Jesús,
+                              es decir, sacrificarse y consumirse por El y por las almas.</p>
+
+                            <p>Testimonio de Santa Margarita María Alacoque </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p> “Para Dios, nada es imposible” </p>
+
+                            <p> (Lucas 1:37)</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> “Que Dios me conceda serenidad
+                              para aceptar las cosas que no puedo cambiar, valentía para cambiar las
+                              que sí puedo, y sabiduría
+                              para ver la diferencia”.</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>"Cuando vamos a la Sagrada Comunión, todos nosotros recibimos al mismo Señor Jesús, mas no todos reciben las mismas gracias, ni tampoco los mismos efectos se producen en todos. Esto se debe a nuestra mayor o menor disposición. Para explicar esto, tomaré un ejemplo de la naturaleza. Consideren el proceso de injertar: entre más similar es una planta a la otra, se logra mejor el injerto. De la misma manera, entre mas parecido hay entre el que va a Comunión y Jesús,
+                              mucho mejor serán los frutos de la Sagrada Comunión" </p>
+
+                            <p>San Antonio María Claret </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>“La unión con Dios no aleja del mundo, sino que nos da la fuerza para permanecer de tal modo, que se pueda hacer lo que se debe hacer en el mundo”.</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2012/06/fuerza-de-la-oracion-y-vida-ordinaria.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> Busca oportunidades para servir y ayudar a los demás, mostrando compasión, generosidad y perdón. Ama a tu prójimo como a ti mismo, siguiendo el ejemplo de Jesús
+                            </p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> Cuando se le permitió recibir la Sagrada Eucaristía antes de
+                              ser ejecutada al poste. Cuando Jesús entró a su obscura prisión,
+                              la Santa cayó de rodillas, y, arrastrando sus cadenas, recibió a Jesús
+                              y se perdió absorta en oración. Tan pronto que fue ordenada caminar hacia
+                              el patíbulo, se levantó y sin interrumpir su oración caminó hacia su
+                              muerte. Procedió hasta la estaca y murió entre las llamas, siempre en
+                              unión con Jesús, Quien permaneció en su alma y en ese cuerpo al ser
+                              sacrificado.</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          Santa Juana de Arco
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>La persona prudente no se contenta con que el fin de su obrar sea recto: quiere que sean también rectos los medios y el modo de actuar. </p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2019/08/educacion-de-la-moral-cristiana.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> Rodéate de amistades basadas en Dios</p>
+
+                            <p></p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>Cuando la salud del santo empezó a causar seria alarma, se llamó a dos médicos para consulta. Al notar esto, el santo comprendió la gravedad de su enfermedad, y dijo: "Comprendo, pero primero debemos preocuparnos por el alma, y después por el cuerpo." Y pidió recibir inmediatamente los Sacramentos.
+                              Después de hacer esto, envió por los médicos y les dijo:
+                              "Ahora hagan lo que ustedes gusten".</p>
+
+                            <p>San Antonio María Claret</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>"Dios es amor y alegría y El nos la comunica. Solo Dios basta. Fuera de El no hay felicidad posible". </p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> El Señor irá delante de ti; Él estará contigo, no te desamparará; no temas, no te acobardes”</p>
+
+                            <p> (Deuteronomio 31,8).</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>Una vez, una niñita quería hacer feliz a su padre por el día de su cumpleaños
+                              y, después de pensarlo mucho, decidió envolver una cajita de cartón vacía
+                              con un bonito papel de regalo. Y se lo entregó a su papá con todo cariño.
+                              Su papá, cuando abrió el regalo y vio que la caja estaba vacía, se quedó extrañado y un poco
+                              triste. Pero ella le aclaró: Papá, antes de cerrar la cajita,
+                              la llené de besos para ti.
+                            </p>
+                            <p> ¡Qué hermoso regalo! ¡Una caja llena de besos para su papá! </p>
+
+                            <p> Pues bien, nuestro Padre Dios, quiere que nosotros, sus hijos pequeños,
+                              también le demos alegría todos los días y le digamos que lo amamos y le
+                              demos muchos besos y flores de amor. Le podrías decir:</p>
+
+                            <p> Padre mío, concédeme que toda mi alma se postre ante tu puerta
+                              saludándote. Permíteme que todas mis canciones junten sus melodías
+                              para alegrarte. Que toda mi vida sea un largo caminar hacia tu eterno
+                              cielo, amándote y saludándote a cada paso. Te entrego y te ofrezco todas
+                              las flores del jardín de mi alma y todos los besos de mi corazón.
+                              Te ofrezco mi vida y te ofrezco mi corazón con todo mi amor. </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          Catholic.net
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>Corregir con caridad. Eso es un signo de santidad. </p>
+
+                          </div>
+                        </div>
+
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>
+                              "Sed misericordiosos como vuestro Padre es misericordioso" </p>
+                            <p>(Lc 6,36). </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>La Madre Teresa de Calcuta entregó su vida al cuidado de los más pobres de entre los pobres.
+                              A lo largo de su vida, atendió a millares de enfermos, moribundos,
+                              leprosos y a pobres de toda
+                              clase y condición. Para ella todos los que sufren son,
+                              especialmente, el Cristo
+                              sufriente en la tierra. </p>
+                            <p>Ella decía: "Los pobres son el cuerpo de Cristo que sufre.
+                              Son Cristo mismo".</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>"Jesús dice en el Evangelio: éste es el mandamiento nuevo, que os améis los unos a los
+                              otros como yo los he amado"</p>
+                            <p>(Jn 13,34)</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> "Por tanto, todo cuanto queráis que os hagan los hombres, hacédselo también vosotros a ellos; porque ésta es la Ley y los Profetas" </p>
+                            <p>(Mt 7,12).</p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>"Mi familia son aquellos a quienes nadie se acerca, porque son contagiosos y
+                              están llenos de microbios y suciedad. Aquellos que no van a rezar, porque no pueden ir desnudos.
+                              Aquellos que no comen, porque no les quedan fuerzas para hacerlo. Los que se caen desplomados por las aceras, sabiendo que están para morir y a cuyo lado pasan los vivos sin volver la mirada atrás.
+                              Los que no lloran, porque se les han agotado ya las lágrimas de tanto sufrir"
+
+                            </p>
+
+                            <p>Santa Teresa de Calcuta </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p> Dijo Cristo:
+                              Dad y se os dará</p>
+
+                            <p>(Lc 6,38)</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>"Una respuesta blanda calma la ira, una palabra áspera, enciende la cólera" </p>
+
+                            <p>(Prov 15,1).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> -Adjunto un pequeño cheque. Había decidido comprarme un abrigo para este
+                              invierno. Lo he pensado mejor: el que tengo puede durar todavía uno o
+                              dos años. El cheque corresponde al importe del abrigo, que por ahora
+                              no me compro-. </p>
+
+                            <p> -Soy una telefonista y remito un giro postal. Es el importe de mis
+                              cenas de un mes. He renunciado a la cena en la pensión, donde me hospedo.
+                              Pienso que una persona que, como yo, gracias a Dios, goza de muy buena
+                              salud, puede renunciar tranquilamente a la cena en beneficio de quienes
+                              pasan hambre. Seguiré mandando la misma cantidad todos los meses-. </p>
+
+                            <p> -Somos una pareja de novios. Nos casaremos dentro de un mes.
+                              Hemos propuesto a nuestra familia y amigos que, en lugar de hacernos
+                              algún regalo, ya que queremos hacer una boda íntima y
+                              sin despilfarros, nos den en dinero lo equivalente a sus regalos
+                              para ofrecérselo a los pobres de la Madre Teresa-.</p>
+
+                            <p> -Nosotros somos una familia normal y podemos comer tres veces
+                              al día. Por eso, les he propuesto a mis dos hijos de 5 y 8 años
+                              de compartir nuestro pan con los más pobres. Mi hijo de ocho años
+                              tuvo una idea: renunciar tres veces por semana al postre para darle
+                              el importe a los pobres de la Madre Teresa-.</p>
+                            <p> - La señora Josepha Gosselke de Alemania cuenta el caso de una colaboradora alemana
+                              de la Madre Teresa, que, cuando vio cercana su muerte pidió a sus familiares
+                              que no hubiese flores ni coronas ni gastos supérfluos en su funeral y que, todo lo ahorrado,
+                              se lo diesen a la . Lo recaudado fue de 833 marcos alemanes.</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <p> Estos son algunos testimonios de colaboradores de Santa Teresa de Calcuta</p>
+                          <p> Fuente: Catholic.net</p>
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+
+                            <p>Dice San Juan: Y hemos recibido de él este mandamiento:
+                              quien ama a Dios, ame también a su hermano </p>
+
+                            <p>(1Jn 4,21) </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p> "No amemos sólo de palabra y con la lengua, sino con obras y de verdad
+                              "</p>
+
+                            <p>(1Jn 3,18).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>Todos los días, mucha gente hacemos el bien, una mamá prepara con mucho amor la comida para sus hijos,
+                              un médico se esfuerza por conservar la salud de sus pacientes, cada día alguien celebra el cumpleaños de algún ser querido, muchos niños buscan
+                              ayudar a sus papás con pequeños detalles,etc.
+                            </p>
+
+                            <p>Los pequeños y bellos momentos dan testimonio del proyecto de amor que Dios nos ha regalado al darnos la vida</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+              </div>
+
+            </div>
+
+            <div style="max-width: 600px">
+
+            </div>
+
+            <q-btn id="btn_modal" v-show="false" label="Full Height" color="primary" @click="fullHeight = true"></q-btn>
+
+            <q-dialog v-model="fullHeight" full-height>
+              <q-card class="column full-height" style="width: 300px">
+                <q-card-section>
+                  <div class="text-h6"> </div>
+                </q-card-section>
+
+                <q-card-section class="col q-pt-none">
+                  <p>La principal característica de Alegra es el envio de notificaciones a lo largo del día que permiten recordar la verdad acerca de Dios y ayudan a manterner una vida de oración.
+                  </p>
+                  <p> En este momento las notificaciónes se encuentran bloquedas por el navegador, para poder reactivarlas configure los permisos que se otorgan al sitio por favor.
+                  </p>
+                </q-card-section>
+
+                <q-card-actions align="right" class="bg-white text-teal">
+                  <q-btn flat label="OK" v-close-popup></q-btn>
+                </q-card-actions>
+              </q-card>
+            </q-dialog>
+
+            <q-dialog v-model="persistent" :maximized="maximizedToggle" transition-show="slide-up" transition-hide="slide-down">
+
+              <q-card class="bg-teal">
+                <q-bar>
+                  <q-space></q-space>
+
+                  <q-btn dense flat icon="minimize" @click="maximizedToggle = false" :disable="!maximizedToggle">
+                    <q-tooltip v-if="maximizedToggle" class="bg-white text-primary">Minimize</q-tooltip>
+                  </q-btn>
+                  <q-btn dense flat icon="crop_square" @click="maximizedToggle = true" :disable="maximizedToggle">
+                    <q-tooltip v-if="!maximizedToggle" class="bg-white text-primary">Maximize</q-tooltip>
+                  </q-btn>
+                  <q-btn dense flat icon="close" v-close-popup>
+                    <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+                  </q-btn>
+                </q-bar>
+
+                <q-card-section>
+                  <div class="text-h6">María Alegra</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">
+
+                  <q-card class="my-card">
+                    <q-card-section>
+                      Es una iniciativa que pretende ayudar a combatir la depresión
+
+                      A través de la promoción de las verdades de la fe y las herramientas que proporciona la psicología.
+                    </q-card-section>
+                  </q-card>
+                  <br>
+
+                  <q-card class="my-card text-white" style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
+                    <q-card-section>
+                      <div class="text-h6">Misión</div>
+                      <div class="text-subtitle2"></div>
+                    </q-card-section>
+
+                    <q-card-section class="q-pt-none">
+
+                      Fomentar
+
+                      la atención
+
+                      psicológica
+
+                      en cada
+
+                      parroquia. </q-card-section>
+                  </q-card>
+                  <br>
+
+                  <q-card dark bordered class="bg-grey-9 my-card">
+                    <q-card-section>
+                      <div class="text-h6">Visión</div>
+                      <div class="text-subtitle2"></div>
+                    </q-card-section>
+
+                    <q-separator dark inset></q-separator>
+
+                    <q-card-section>
+
+                      Llegar a todas las parroquías del mundo.
+                    </q-card-section>
+                  </q-card>
+
+                  <br>
+
+                  <q-card flat bordered class="my-card">
+                    <q-card-section>
+                      <div class="text-h6">Objetivo:</div>
+                    </q-card-section>
+
+                    <q-card-section class="q-pt-none">
+                      Evangelzar para combatir la depresión.
+                    </q-card-section>
+
+                  </q-card>
+                  <br>
+
+                  <q-card dark bordered class="bg-grey-9 my-card">
+                    <q-card-section>
+                      <div class="text-h6">Colaboradores:</div>
+                      <div class="text-subtitle2"></div>
+                    </q-card-section>
+
+                    <q-separator dark inset></q-separator>
+
+                    <q-card-section>
+                      <q-avatar>
+                        <img src="https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9826cd/9826cd9048597711ce81a196da4f59aa_220_square.jpg">
+                      </q-avatar>
+                      Psi.Deyanira Lira
+                      <br>
+                      <br>
+                      <q-avatar>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBqiBFXExwuzCJ3_bwonachC887vi59r4X47jQxWwFN2qbVyEN6UzPF0BRVaQCtygwogBC8-r-aMBRV0JS4NZqfLdqLZTSSID_hr_1lIpHF9xZjgTopMzgyrR3WRMz3Q/s113/Foto+Ctfca.jpg">
+                      </q-avatar>
+                      P.Ramiro Pellitero
+
+                      <br>
+                      <br>
+
+                      <q-avatar>
+                        <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+                      </q-avatar>
+                      John
+
+                    </q-card-section>
+                  </q-card>
+
+                  <br>
+                  <q-card class="my-card text-white" style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
+                    <q-card-section>
+                      <div class="text-h6">Contacto</div>
+                      <div class="text-subtitle2"></div>
+                    </q-card-section>
+
+                    <q-card-section class="q-pt-none">
+
+                      Si deseas sumarte a la iniciativa, ayudar a pagar una consulta o requieras ayuda para pagarla.
+                      O si tienes alguna duda, opinión o sugenerncia.
+                      Puedes contactarnos a traves de:
+
+                      <p>Correo: amorvguadalupe@gmail.com</p>
+                      <p>Facebook: @amoryverdadcatolica</p>
+                      <p>Whatsapp</p>
+
+                    </q-card-section>
+                  </q-card>
+                  <br>
+
+                </q-card-section>
+
+                <q-card-actions align="right" class="bg-white text-teal">
+                  <q-btn flat label="Cerrar" v-close-popup></q-btn>
+                </q-card-actions>
+              </q-card>
+            </q-dialog>
+
+          </q-page>
+        </q-page-container>
+
+      </q-layout>
+
+    </div>
+
+  </div>
+
+  <!-- Add the following at the end of your body tag -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
+
+  <script>
+    /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+    const {
+      useQuasar,
+      QSpinnerGears
+    } = Quasar
+    const {
+      ref
+    } = Vue
+    const app = Vue.createApp({
+      setup() {
+        const $q = useQuasar()
+
+        function play2() {
+          var btnBocina = document.getElementById("debocina");
+          btnBocina.click();
+        }
+
+        function atras1() {
+          var audio = document.getElementById("miAudio");
+          audio.currentTime -= 5;
+          if (audio.currentTime < 0) {
+            audio.currentTime = 0;
+          }
+        }
+
+        function adelante1() {
+          var audio = document.getElementById("miAudio");
+          audio.currentTime += 5;
+          audio.play();
+        }
+
+        function showCustom() {
+          $q.notify({
+            spinner: false,
+            message: '<div style="width: 90%;  border: 0px solid transparent; max-width: 300px; height: 40%; ">    En Chrome puedes instalar lA wEB- App </div>',
+            color: 'grey-8',
+            progress: true,
+            position: 'top',
+            timeout: 10000,
+            avatar: 'https://mariavguadalupe.github.io/AvatarAngel1.png',
+            html: true,
+            actions: [{
+              label: 'Instalar',
+              color: 'yellow',
+              handler: () => {
+                let deferredPrompt;
+                window.addEventListener('beforeinstallprompt', (e) => {
+                  e.preventDefault();
+                  deferredPrompt = e;
+                });
+                document.getElementById('btninstalar').addEventListener('click', () => {
+                  // alert('dentro');
+                  if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                      if (choiceResult.outcome === 'accepted') {
+                        console.log('La página se ha instalado correctamente');
+                        document.getElementById('btninstalar').style.display = 'none';
+                        document.getElementById('banner1').style.display = 'none';
+                      }
+                      deferredPrompt = null;
+                    });
+                  }
+                });
+              }
+            }]
+          })
+        }
+        return {
+          atras1,
+          adelante1,
+          play2,
+          showCustom,
+          persistent: ref(false),
+          tab: ref('Verdades'),
+          fullHeight: ref(false),
+          drawer: ref(false),
+          slide: ref(1),
+          slide: ref(1),
+          autoplay: ref(false),
+          persistent: ref(false),
+          dialog: ref(false),
+          maximizedToggle: ref(true)
+        }
+      }
+    })
+    app.use(Quasar, {
+      config: {}
+    })
+    app.mount('#q-app')
+  </script>
+
+  <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+    document.getElementById('btninstalar').addEventListener('click', () => {
+      // alert('dentro');
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('La página se ha instalado correctamente');
+            document.getElementById('btninstalar').style.display = 'none';
+            document.getElementById('banner1').style.display = 'none';
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  </script>
+
+  <script>
+    let promptEvent;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      promptEvent = e;
+    });
+    /*	  
+      if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function() { console.log("Service worker registrado"); });
+        }
+
+    	*/
+    console.log("Service worker tpush");
+  </script>
+
+  <script>
+    const aside = document.querySelector('.q-drawer.q-drawer--left.q-drawer--on-top.q-drawer--mobile.q-drawer--top-padding');
+    aside.style.opacity = "0.8";
+    aside.style.background = "#B2EBF2";
+    //window.addEventListener("load", finicio);
+    function finicio() {
+      if (navigator.userAgent.match(/Android/i)) {
+        // Código para dispositivos Android
+        // alert('Ejecutándose en un dispositivo Android');
+      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        // Código para dispositivos iOS
+        //alert('Ejecutándose en un dispositivo iOS');
+      }
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone || document.referrer.includes('android-app://')) {
+        // La página ha sido instalada      
+      } else {
+        document.getElementById('banner1').style.display = 'block';
+        if (bowser.name !== "Chrome") {
+          document.getElementById('btninstalar').style.display = 'none';
+          console.log("no es Chrome");
+        } else {
+          document.getElementById('btnChrome').style.display = 'none';
+          console.log("Es Chrome");
+        }
+      }
+      if (Notification.permission === 'denied') {
+        const btnModal = document.getElementById('btn_modal');
+        btnModal.click();
+        // $("#notiDes").hide();
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.4/bowser.min.js"></script>
+
+  <script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.4/app.js" async></script>
+  <script>
+    var truepush = window.truepush || [];
+    truepush.push(function() {
+      truepush.Init({
+        id: "64e110cabdb78352b845fe0f"
+      }, function(error) {
+        if (error) console.error(error);
+      })
+    })
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var divQ = document.getElementById('q-app');
+      //  var loaderWrapper = document.getElementById('loaderWrapper');
+      //var pres = document.getElementById('presentacion');
+      var btnomit = document.getElementById('omit');
+      //  pres.style.display = 'block';
+      btnomit.style.display = 'block';
+      setTimeout(function() {
+        //pres.style.display = 'none';
+        // loaderWrapper.style.display = 'none';
+        divQ.style.display = 'block';
+        finicio();
+        //window.addEventListener("load", finicio);                                 
+      }, 1);
+    });
+  </script>
+
+  <script>
+    // this template is pretty old, and the comments no longer reflect my knowledge accurately.  But this template is what helped me learn to code with WebGL
+    // set up global javascript variables
+    var canvas, gl; // canvas and webgl context
+    var shaderScript;
+    var shaderSource;
+    var vertexShader; // Vertex shader.  Not much happens in that shader, it just creates the vertex's to be drawn on
+    var fragmentShader; // this shader is where the magic happens. Fragment = pixel.  Vertex = kind of like "faces" on a 3d model.  
+    var buffer;
+    /* Variables holding the location of uniform variables in the WebGL. We use this to send info to the WebGL script. */
+    var locationOfTime;
+    var locationOfResolution;
+    var startTime = new Date().getTime(); // Get start time for animating
+    var currentTime = 0;
+
+    function init() {
+      // standard canvas setup here, except get webgl context
+      canvas = document.getElementById('glscreen');
+      gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      // give WebGL it's viewport
+      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+      // kind of back-end stuff
+      buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([
+          -1.0, -1.0,
+          1.0, -1.0,
+          -1.0, 1.0,
+          -1.0, 1.0,
+          1.0, -1.0,
+          1.0, 1.0
+        ]),
+        gl.STATIC_DRAW
+      ); // ^^ That up there sets up the vertex's used to draw onto. I think at least, I haven't payed much attention to vertex's yet, for all I know I'm wrong.
+      shaderScript = document.getElementById("2d-vertex-shader");
+      shaderSource = shaderScript.text;
+      vertexShader = gl.createShader(gl.VERTEX_SHADER); //create the vertex shader from script
+      gl.shaderSource(vertexShader, shaderSource);
+      gl.compileShader(vertexShader);
+      shaderScript = document.getElementById("2d-fragment-shader");
+      shaderSource = shaderScript.text;
+      fragmentShader = gl.createShader(gl.FRAGMENT_SHADER); //create the fragment from script
+      gl.shaderSource(fragmentShader, shaderSource);
+      gl.compileShader(fragmentShader);
+      program = gl.createProgram(); // create the WebGL program.  This variable will be used to inject our javascript variables into the program.
+      gl.attachShader(program, vertexShader); // add the shaders to the program
+      gl.attachShader(program, fragmentShader); // ^^
+      gl.linkProgram(program); // Tell our WebGL application to use the program
+      gl.useProgram(program); // ^^ yep, but now literally use it.
+      /* 
+      
+      Alright, so here we're attatching javascript variables to the WebGL code.  First we get the location of the uniform variable inside the program. 
+      
+      We use the gl.getUniformLocation function to do this, and pass thru the program variable we created above, as well as the name of the uniform variable in our shader.
+      
+      */
+      locationOfResolution = gl.getUniformLocation(program, "u_resolution");
+      locationOfTime = gl.getUniformLocation(program, "u_time");
+      /*
+      
+      Then we simply apply our javascript variables to the program. 
+      Notice, it gets a bit tricky doing this.  If you're editing a float value, gl.uniformf works. 
+      
+      But if we want to send over an array of floats, for example, we'd use gl.uniform2f.  We're specifying that we are sending 2 floats at the end.  
+      
+      You can also send it over to the program as a vector, by using gl.uniform2fv.
+      To read up on all of the different gl.uniform** stuff, to send any variable you want, I'd recommend using the table (found on this site, but you need to scroll down about 300px) 
+      
+      https://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html#uniforms
+      
+      */
+      gl.uniform2f(locationOfResolution, canvas.width, canvas.height);
+      gl.uniform1f(locationOfTime, currentTime);
+      render();
+    }
+
+    function render() {
+      var now = new Date().getTime();
+      currentTime = (now - startTime) / 1000; // update the current time for animations
+      gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
+      window.requestAnimationFrame(render, canvas); // request the next frame
+      positionLocation = gl.getAttribLocation(program, "a_position"); // do stuff for those vertex's
+      gl.enableVertexAttribArray(positionLocation);
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+    }
+    window.addEventListener('load', function(event) {
+      init();
+    });
+    window.addEventListener('resize', function(event) {
+      // just re-doing some stuff in the init here, to enable resizing.
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      gl.viewport(0, 0, window.innerWidth, window.innerHeight);
+      locationOfResolution = gl.getUniformLocation(program, "u_resolution");
+    });
+  </script>
+
+  <script id="2d-fragment-shader" type="x-shader/x-fragment">// <![CDATA[
+
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+uniform float u_time;
+
+void main() {
+    vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    st.x *= u_resolution.x/u_resolution.y;
+
+    vec3 color = vec3(0.);
+    color = vec3(st.x,st.y,abs(sin(u_time)));
+
+    gl_FragColor = vec4(color,1.0);
+}
+// ]]></script>
+  <script id="2d-vertex-shader" type="x-shader/x-vertex">// <![CDATA[
+attribute vec2 a_position;
+  void main() {
+    gl_Position = vec4(a_position, 0, 1);
+  }
+// ]]></script>
+
+  <script>
+    document.getElementById('container1').style.backgroundImage = "radial-gradient(circle at 75.98% 68.19%, #ffb600 0, #ffbf00 8.33%, #f9c700 16.67%, #e5cf00 25%, #d0d500 33.33%, #b9db00 41.67%, #a1e000 50%, #86e42a 58.33%, #64e843 66.67%, #2feb5a 75%, #00ee71 83.33%, #00f087 91.67%, #00f29f 100%)";
+    window.addEventListener("load", fun_gradiente);
+
+    function fun_gradiente() {
+      document.getElementById('container1').style.backgroundImage = "none";
+    }
+    const botonNa = document.getElementById("buttonNa");
+    const divConta1 = document.getElementById("container1");
+    const fondoColores = document.getElementById("glscreen");
+    const divQ2 = document.getElementById('q-app');
+    botonNa.addEventListener("click", () => {
+      fondoColores.style.display = 'none';
+      divConta1.style.display = 'none';
+      divQ2.style.display = 'block';
+      finicio();
+      var htmlElement = document.querySelector('html');
+      // Selecciona el elemento 'body'
+      var bodyElement = document.querySelector('body');
+      // Cambia el valor de la propiedad 'overflow' a 'auto' en 'html'
+      htmlElement.style.overflow = 'visible';
+      // Cambia el valor de la propiedad 'overflow' a 'auto' en 'body'
+      bodyElement.style.overflow = 'visible';
+    });
+  </script>
+
+  <script>
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone || document.referrer.includes('android-app://')) {
+      // La página ha sido instalada      
+      const divConta1 = document.getElementById("container1");
+      const fondoColores = document.getElementById("glscreen");
+      const divQ2 = document.getElementById('q-app');
+      fondoColores.style.display = 'none';
+      divConta1.style.display = 'none';
+      divQ2.style.display = 'block';
+      var htmlElement = document.querySelector('html');
+      // Selecciona el elemento 'body'
+      var bodyElement = document.querySelector('body');
+      // Cambia el valor de la propiedad 'overflow' a 'auto' en 'html'
+      htmlElement.style.overflow = 'visible';
+      // Cambia el valor de la propiedad 'overflow' a 'auto' en 'body'
+      bodyElement.style.overflow = 'visible';
+    } else {}
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+</body>
+
+</html>
+                                                                                   

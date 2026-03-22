@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagrario</title>
+  
+  <script type="module">
+    import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.menuController = menuController;
+  </script>
+
+    
+<style>
+
+  #ytplayer {
+  max-width: 580px;
+  max-height: 326px;
+ min-height:326px;
+ 
+  
+
+    
+}
+
+	
+	
+  </style>
+    
+  </head>
+
+  <body>
+
+
+    
+    <!-- example of injection point where you write your app template -->
+   <!--
+Forked from:
+https://quasar.dev/vue-components/carousel#example--vertical-mode
+-->
+<div id="q-app" style="min-height: 100vh;">
+
+  
+  <div class="q-pa-md">
+<q-layout view="hHh lpR fFf" >
+      <q-header reveal elevated class="bg-white text-grey-8 q-py-xs" height-hint="58">
+        <q-toolbar>
+          
+        <q-btn label="" outline rounded padding="none" icon="keyboard_arrow_left" color="white" text-color="black" @click="goBack()"></q-btn>
+
+          <q-toolbar-title>Sagrario en vivo </q-toolbar-title>
+
+          <q-btn flat round dense icon="img:https://mariavguadalupe.github.io/Alegra512.svg" />
+        </q-toolbar>
+      </q-header>
+      <q-page-container>
+
+          <h3 class="text-center">Nuestro Señor Jesús </h3>
+	
+	
+      <div class="row justify-center items-center">
+	  <div  id="ytplayer"></div>
+      
+      </div>
+ 
+  
+  <br>
+        
+   
+      <q-fab
+        v-model="fab1"
+        color="purple"
+        icon="music_note"
+        direction="right"
+        padding="xs"
+      >        
+        <q-fab-action padding="5px" external-label label-position="top" color="primary" @click="musica" icon="play_arrow"></q-fab-action>
+        
+         <q-fab-action padding="5px" color="orange" @click="pausa" icon="pause" ></q-fab-action>
+        
+      </q-fab>
+               
+  <q-responsive :ratio="1" style="width: auto; max-width: 100%; height: 300px;">
+    <q-carousel
+      v-model="slide"
+      transition-prev="scale"
+      transition-next="scale"
+      swipeable
+      animated
+      control-color="white"
+      navigation-icon="radio_button_unchecked"
+      navigation
+      padding
+      arrows
+        animated
+      v-model="slide"
+      navigation
+      infinite
+      :autoplay="autoplay"
+      arrows
+      transition-prev="slide-right"
+      transition-next="slide-left"         
+      height="300px"
+       @mouseenter="autoplay = false"
+      @mouseleave="autoplay = true"         
+      class="shadow-1 rounded-borders"
+    >
+      <q-carousel-slide name="style" class="column no-wrap flex-center">
+        <div class="q-mt-md text-center">
+        <h6>  "Dios es Amor"</h6>
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide name="tv" class="column no-wrap flex-center">
+       
+        <div class="q-mt-md text-center">
+        <h6>  "Dios no manda cosas imposibles, sino que, al mandar, te enseña a que hagas cuanto puedes, y a que pidas lo que no puedes".</h6>
+        </div>
+      </q-carousel-slide>
+
+     <q-carousel-slide name="tv" class="column no-wrap flex-center">
+       
+        <div class="q-mt-md text-center">
+        <h6>  "Conocerse a sí mismo es el fruto que se desprende maduro de conocer a Dios a través de Jesucristo."
+Estanislao Martín Rincón.</h6>
+        </div>
+      </q-carousel-slide>
+
+
+
+	         <q-carousel-slide name="tv" class="column no-wrap flex-center">
+       
+        <div class="q-mt-md text-center">
+        <h6>  "Contemplar consiste en complacerse en lo que se ama y se conoce al mismo tiempo." 
+Estanislao Martín Rincón</h6>
+        </div>
+      </q-carousel-slide>
+
+ <q-carousel-slide name="tv" class="column no-wrap flex-center">
+			 <div class="q-mt-md text-center">
+        <h6> “El Reino de Dios es Dios que cumple su voluntad sin oposición del pecado humano y de los 
+poderes de las tinieblas […]"</h6>
+        </div>
+      </q-carousel-slide>
+
+	     <q-carousel-slide name="tv" class="column no-wrap flex-center">
+					<div class="q-mt-md text-center">
+        <h6> El Reino de Dios es la situación que resulta cuando de verdad
+se hace ​la voluntad de Dios.</h6>
+        </div>
+      </q-carousel-slide>
+
+
+ <q-carousel-slide name="tv" class="column no-wrap flex-center">
+	    					<div class="q-mt-md text-center">
+        <h6> ¿Y cuál es la voluntad de Dios? Según la revelación de Jesús, la
+voluntad de ​Dios es nuestra
+felicidad.</h6>
+        </div>
+      </q-carousel-slide>
+
+
+
+	     <q-carousel-slide name="tv" class="column no-wrap flex-center">
+	    					<div class="q-mt-md text-center">
+        <h6>Dios quiere la plenitud y la salvación de toda criatura
+y de todos y cada ​uno de los
+seres humanos.</h6>
+        </div>
+      </q-carousel-slide>
+
+
+ <q-carousel-slide name="tv" class="column no-wrap flex-center">
+	    			<div class="q-mt-md text-center">
+        <h6>El Reino de Dios, incluye la justicia y la paz entre todos, la ​sanación y la integridad en todas partes, la plenitud disfrutada para todos.</h6>
+        </div>
+      </q-carousel-slide>
+
+ <q-carousel-slide name="tv" class="column no-wrap flex-center">
+	    <div class="q-mt-md text-center">
+        <h6>"A Dios le interesa todo lo nuestro: nuestros cuerpos, nuestras familias, nuestros trabajos y esfuerzos para mejorarnos a nosotros mismos y al mundo.." P.Ramiro Pellitero </h6>
+        </div>
+      </q-carousel-slide>
+
+ <q-carousel-slide name="tv" class="column no-wrap flex-center">
+	    	    <div class="q-mt-md text-center">
+        <h6>“¿Puede una madre olvidarse del hijo de sus entrañas? Pues aunque una madre se olvidara, yo nunca podría olvidarme de ti” (Isaías 49, 15).</h6>
+        </div>
+      </q-carousel-slide>
+
+	  <q-carousel-slide name="tv" class="column no-wrap flex-center">
+	    <div class="q-mt-md text-center">
+        <h6>Santa Teresa del Niño Jesús: “Jesús, mi alegría es amarte a ti” (Poesía 45/7).</h6>
+        </div>
+      </q-carousel-slide>
+
+
+	 <q-carousel-slide name="tv" class="column no-wrap flex-center">	  
+  <div class="q-mt-md text-center">
+        <h6>“La alegría está íntimamente unida al amor; ambos son frutos inseparables del Espíritu Santo” (cf. Ga 5, 23)”</h6>
+        </div>
+      </q-carousel-slide>
+
+	 <q-carousel-slide name="tv" class="column no-wrap flex-center">	  
+  <div class="q-mt-md text-center">
+        <h6>"El hombre, y toda la creación a través de él, está destinado a la gloria de Dios” (CIC, nº 353)</h6>
+        </div>
+      </q-carousel-slide>
+
+	 	 <q-carousel-slide name="tv" class="column no-wrap flex-center">	  
+  <div class="q-mt-md text-center">
+        <h6>Oración humilde: Señor ayúdame o pecaré.</h6>
+        </div>
+      </q-carousel-slide>
+   
+
+	 	 <q-carousel-slide name="tv" class="column no-wrap flex-center">	  
+  <div class="q-mt-md text-center">
+        <h6>Dios que sueña con nosotros. Como si se dijera: “Qué bonito cuando estemos todos juntos, cuando estemos allí" Como sueñan los novios."
+P. Ramiro Pellitero Iglesias</h6>
+        </div>
+      </q-carousel-slide>
+   
+	 <q-carousel-slide name="tv" class="column no-wrap flex-center">	  
+  <div class="q-mt-md text-center">
+        <h6>"Contemplar consiste en complacerse en lo que se ama y se conoce al mismo tiempo." 
+Estanislao Martín Rincón</h6>
+        </div>
+      </q-carousel-slide>
+	    
+
+ <q-carousel-slide name="tv" class="column no-wrap flex-center">	  
+  <div class="q-mt-md text-center">
+        <h6>"Contemplar consiste en complacerse en lo que se ama y se conoce al mismo tiempo." 
+Estanislao Martín Rincón</h6>
+        </div>
+      </q-carousel-slide>
+
+	    
+      <q-carousel-slide name="layers" class="column no-wrap flex-center">
+        <div class="q-mt-md text-center">
+                  <h6>  "El camino de Dios es de renuncia, de mortificación, de entrega, pero no de tristeza o de apocamiento (S. JOSEMARÍA ESCRIVÁ, Amigos de Dios, 128).
+"</h6>
+
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide name="map" class="column no-wrap flex-center">
+        
+        <div class="q-mt-md text-center">
+        <h6>  "El amor produce en el hombre la perfecta alegría. En efecto, sólo disfruta de veras el que vive en caridad (SANTO TOMÁS, Sobre la caridad, 1. c., 205).
+"</h6>
+        </div>
+      </q-carousel-slide>
+    <q-carousel-slide name="style" class="column no-wrap flex-center">
+        <div class="q-mt-md text-center">
+        <h6>  "Al nacer el Señor, los ángeles cantan llenos de gozo: Gloria a Dios en el cielo, y proclaman: y en la tierra paz a los hombres que ama el Señor [...]. ¿Cómo, pues, no habría de alegrarse la pequeñez humana ante esta obra inenarrable de la misericordia divina, cuando incluso los coros sublimes de los ángeles encontraban en ella un gozo tan intenso? (SAN LEÓN MAGNO, Sermón 1, en la Natividad Señor).
+"</h6>
+        </div>
+      </q-carousel-slide>
+	    
+    </q-carousel>
+    </q-responsive>
+       
+
+        
+      </q-page-container>
+    </q-layout>
+  
+</div>
+  
+          </div>
+
+
+<audio id="cancion" src="https://mariavguadalupe.github.io/Bendito,_bendito,_bendito_sea_Dios.mp3"></audio>
+ 
+<script>
+ document.getElementById("cancion");
+
+</script>
+        
+    <!-- Add the following at the end of your body tag -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+      
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
+    
+
+<script>
+  
+    var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+	//Parametros del video
+	 playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque', 'mute':1 },
+      height: '95%',
+      width: '95%',
+	  //Id del video
+      videoId: 'Dd7YbWyPcQo',
+	  events: {
+            'onReady': onPlayerReady}
+    });
+  }
+  
+        function onPlayerReady() {
+		 //Ajustar volumen
+		// player.setVolume(10);
+
+}
+  
+</script>
+    <script>
+      
+      
+
+      /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+    const { ref } = Vue
+
+const app = Vue.createApp({
+  setup () {
+    
+     const dialog = ref(false)
+    const position = ref('top')
+   
+    function musica() { 
+    cancion.play();
+ 
+                    }
+    
+    function pausa() { 
+   cancion.pause();
+ 
+                    }
+    
+    
+    function goBack() {
+ window.location.href = "https://mariavguadalupe.github.io/";
+}
+    
+    return {
+       dialog,
+      position,
+
+      open (pos) {
+        position.value = pos
+        dialog.value = true
+      },
+      goBack,
+      musica,
+      pausa,
+       slide: ref('style'),
+      lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.',
+        autoplay: ref(true)
+    }
+  }
+})
+
+app.use(Quasar, { config: {} })
+app.mount('#q-app')
+
+    </script>
+
+
+
+
+    
+  </body>
+</html>

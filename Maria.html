@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <base target="_top">
+    
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<style>
+
+  .html,body{
+     /* Para que funcione correctamente en Smartphones y Tablets */
+     height:100vh;
+}
+body {
+
+
+     /* Ruta relativa o completa a la imagen */
+     background-image: url();
+     /* Centramos el fondo horizontal y verticalmente */
+     background-position: center center;
+     /* El fonde no se repite */
+     background-repeat: no-repeat;
+     /* Fijamos la imagen a la ventana para que no supere el alto de la ventana */
+   /*  background-attachment: fixed;
+     /* El fonde se re-escala automáticamente */
+   /*  background-size: cover;
+     /* Color de fondo si la imagen no se encuentra o mientras se está cargando */
+     background-color: #FDFEFE;
+
+}
+
+
+h1 {
+	text-align: center;
+	color: #154360;	
+	}
+	
+	 a {
+	text-align: center;
+	color: #FFFFFF;	
+	}
+	
+
+
+
+	     
+  #ytplayer {
+  max-width: 580px;
+  max-height: 326px;
+ min-height:326px;
+}
+
+	
+  .containerE {
+	   max-width: 580px;   
+  justify-content: center;
+  height: 100vh;
+}
+
+.img {
+  max-width: 600 px;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.expanded {
+  
+  top: 2;
+  left: 2;
+  width: 100%;
+  height: 100%;
+}
+ 
+  .guadalupe-button {
+
+  
+  align-items: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.guadalupe-button img {
+  width: 100%;
+  height: auto;
+}
+
+.guadalupe-button span {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+  
+  </style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+<div class="app-container">
+
+  <header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="./index.html"> Inicio </a>
+      <div class="collapse navbar-collapse" id="navbarText">
+ 
+    
+    </div>
+  </div>
+</nav>
+
+  </header>
+	
+	
+
+<section "background-color:#FFFFFF;" >
+	
+	
+  <div class="container" style="text-align:center;">
+  </br>
+  <h1 class="alin">Santa María de Guadalupe</h1>
+ <div class="containerE" style="text-align:center;">
+	  
+  <img src="https://morenita.tv/img/codice/virgen1.jpg" class="img" alt="Image">
+ </br>
+	<a href="https://youtube.com/@inbguadalupe3618?si=TCDG11tXAMyf6GMf">
+  <button class="guadalupe-button">
+   
+    <span> Contemplar en vivo</span>
+  </button>
+</a>
+ </div>
+</div>
+
+	
+<div class="container">
+  
+<h1>Nican Mopohua</h1>
+  
+  <button id="toggleButton" class="btn btn-light floating-button"><ion-icon name="volume-mute-outline"></ion-icon></button>
+  <button id="backButton" class="btn btn-secondary floating-button" style="display: none;"><ion-icon name="volume-high-outline"></ion-icon></button>
+<button class="btn btn-outline-warning" id="aumentar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-zoom-in" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+  <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z"/>
+  <path fill-rule="evenodd" d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5z"/>
+</svg></button>
+    <button class="btn btn-outline-info" id="disminuir"><i class="bi bi-dash"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-zoom-out" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+  <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z"/>
+  <path fill-rule="evenodd" d="M3 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+</svg></button>
+  
+<p>Traducción y comentarios de Mons. José Luis Guerrero Rosado</p>
+<br>
+<h2>INTRODUCCIÓN</h2>
+<br>
+<p>Aquí se cuenta, se ordena, cómo hace poco, en forma por demás maravillosa, el amor de la perfecta Virgen Santa María, Madre de Dios, nuestra venerable Señora y Reina, la hizo visible allá en el Tepeyac, que se conoce [ahora] como Guadalupe. En un principio se dignó dejarse ver de un indito de nombre Juan Diego, y, al final, su amor nos entregó su preciosa y amada imagen en la presencia del reciente Obispo Don Fray Juan de Zumárraga.</p>
+
+
+
+<p><strong>AMBIENTACIÓN</strong></p>
+
+
+
+<p>1.- Diez años después de sojuzgada la ciudad de México, ya por tierra la flecha y el escudo, [acabada la guerra], ya por doquier sosegados sus aguas y sus montes, [las ciudades],</p>
+
+
+
+<p>2.- así como brotó, ya macolla, ya revienta sus yemas la adquisición de la verdad, el conocimiento de Quien es causa de toda vida: el verdadero Dios.</p>
+
+
+
+<p>3.- Entonces, en el año 1531, a los pocos días del mes de diciembre, sucedió que había un caballero indio, pobre pero digno,</p>
+
+
+
+<p>4.- su nombre era Juan Diego, casateniente, por lo que se dice, allá en Cuautitlán,</p>
+
+
+
+<p>5.- y, en lo eclesiástico, todo aquello era aún jurisdicción de Tlaltelolco.</p>
+
+
+
+<h4 class="wp-block-heading">PRIMERA APARICIÓN</h4>
+
+
+
+<p>6.- Era sábado, muy de madrugada, lo movía su interés por Dios [respondiendo a] su insistente llamada.</p>
+
+
+
+<p>7.- Y cuando vino a llegar al costado del cerrito, en el sitio llamado Tepeyac, despuntaba ya el alba.</p>
+
+
+
+<p>8.- Oyó claramente sobre el cerrito cantar, como cantan diversos pájaros preciosos. Al interrumpir su gorjeo, como que les coreaba el cerro, sobremanera suave, agradabilísimo, su trino sobrepujaba al del coyoltótotl y del tzinitzcan y al de otras preciosas aves canoras.</p>
+
+
+
+<p>9.- Se detuvo a ver Juan Diego. Se dijo: ¿Por ventura es mi mérito, mi merecimiento lo que ahora oigo? ¿Quizá solamente estoy soñando? ¿Acaso estoy dormido y sólo me lo estoy imaginando?</p>
+
+
+
+<p>10.- ¿Dónde estoy? ¿Dónde me veo? ¿Acaso ya en el sitio del que siempre nos hablaron los ancianos, nuestros antepasados, todos nuestros abuelos: en su tierra florida, en su tierra de nuestro sustento, en su patria celestial?</p>
+
+
+
+<p>11.- Tenía fija la mirada en la cumbre del cerrito, hacia el rumbo por donde sale el sol, porque desde allí algo hacía prorrumpir el maravilloso canto celestial.</p>
+
+
+
+<p>12.- Y tan pronto como cesó el canto, cuando todo quedó en calma, entonces oye que lo llaman de arriba del cerrito, le convocan: &lt;&lt;-Mi Juanito, mi Juan Dieguito&ggt;&gt;.</p>
+
+
+
+<p>13.- En seguida, pero al momento, se animó a ir allá a donde era llamado. En su corazón no se agitaba turbación alguna, ni en modo alguno nada lo perturbaba, antes se sentía muy feliz, rebosante de dicha. Fue pues a subir al montecito, fue a ver de dónde era llamado.</p>
+
+
+
+<p>14.- Y al llegar a la cumbre del cerrito, tuvo la dicha de ver a una Doncella, que por amor a él estaba allí de pie,</p>
+
+
+
+<p>15.- la cual tuvo la delicadeza de invitarlo a que viniera ‘juntito’ a Ella.</p>
+
+
+
+<p>16.- Y cuando llegó a su adorable presencia, mucho se sorprendió por la manera que, sobre toda ponderación, destacaba su maravillosa majestad:</p>
+
+
+
+<p>17.- sus vestiduras resplandecían como el sol, como que reverberaban,</p>
+
+
+
+<p>18.- y la piedra, el risco en que estaba de pie, como que lanzaba flechas de luz;</p>
+
+
+
+<p>19.- su excelsa aureola semejaba al jade más precioso, a una joya,</p>
+
+
+
+<p>20.- la tierra como que bullía de resplandores, cual el arco iris en la niebla.</p>
+
+
+
+<p>21.- Y los mezquites y nopales, y las otras varias yerbezuelas que ahí se dan, parecían esmeraldas. Cual la más fina turquesa su follaje, y sus troncos, espinas y ahuates deslumbraban como el oro.</p>
+
+
+
+<p>22.- Ante su presencia se postró. Escuchó su venerable aliento, su amada palabra, infinitamente grata, aunque al mismo tiempo majestuosa, fascinante, como de un amor que del todo se entrega.</p>
+
+
+
+<p>23.- Se dignó decirle: &lt;&lt;-Escucha bien, hijito mío el más pequeño, mi Juanito: ¿A dónde te diriges?&gt;&gt;</p>
+
+
+
+<p>24.- Y él le contestó: &lt;&lt;-Mi señora, mi reina, mi muchachita, allá llegaré a tu casita de México Tlatelolco. Voy en pos de las cosas de Dios que se dignan darnos, enseñarnos, quienes son imágenes del Señor, nuestro Dueño, nuestros sacerdotes&gt;&gt;.</p>
+
+
+
+<p>25.- Acto continuo con él dialoga, le hace el favor de descubrirle su preciosa y santa voluntad,</p>
+
+
+
+<p>26.- le comunica: &lt;&lt;-Ten la bondad de enterarte, por favor pon en tu corazón, hijito mío el más amado, que yo soy la perfecta siempre Virgen Santa María, y tengo el privilegio de ser Madre del verdaderísimo Dios, de Ipalnemohuani, (Aquel por quien se vive), de Teyocoyani (del Creador de las personas), de Tloque Nahuaque (del Dueño del estar junto a todo y del abarcarlo todo), de Ilhuicahua Tlaltipaque (del Señor del Cielo y de la Tierra). Mucho quiero, ardo en deseos de que aquí tengan la bondad de construirme mi templecito,</p>
+
+
+
+<p>27.- para allí mostrárselo a Ustedes, engrandecerlo,</p>
+
+
+
+<p>28.- entregárselo a Él, a Él que es todo mi amor, a Él que es mi mirada compasiva, a Él que es mi auxilio, a Él que es mi salvación.</p>
+
+
+
+<p>29.- Porque en verdad yo me honro en ser madre compasiva de todos Ustedes,</p>
+
+
+
+<p>30.- tuya y de todas las gentes que aquí en esta tierra están en uno,</p>
+
+
+
+<p>31.- y de los demás variados linajes de hombres, mis amadores, los que a mí clamen, los que me busquen, los que me honren confiando en mi intercesión.</p>
+
+
+
+<p>32.- Porque allí estaré siempre dispuesta a escuchar su llanto, su tristeza, para purificar, para curar todas sus diferentes miserias, sus penas, sus dolores.</p>
+
+
+
+<p>33.- Y para realizar con toda certeza lo que pretende Él, mi mirada misericordiosa, ojalá aceptes ir a al palacio del Obispo de México, y le narres cómo nada menos que yo te envío de embajador para que le manifiestes cuan grande y ardiente deseo tengo de que aquí me provea de una casa, de que me levante en el llano mi templo. Absolutamente todo, con todos sus detalles, le contarás: cuanto has visto y admirado, y lo que has oído.</p>
+
+
+
+<p>34.- Y quédate seguro de que mucho te lo voy a agradecer y a pagártelo,</p>
+
+
+
+<p>35.- pues te enriqueceré, te glorificaré,</p>
+
+
+
+<p>36.- Y mucho merecerás con esto que yo recompense tu cansancio, tu molestia de ir a ejecutar la embajada que te confiero.</p>
+
+
+
+<p>37.- Ya has oído, Hijo mío el más amado, mi aliento, mi palabra: ¡Ojalá aceptes ir y tengas la bondad de poner todo tu esfuerzo!&gt;&gt;</p>
+
+
+
+<h4 class="wp-block-heading">ENTREVISTA CON ZUMARRAGA</h4>
+
+
+
+<p>38.- E inmediatamente en su presencia se postró, respetuosamente le dijo: &lt;&lt;-Señora mía, mi Niña, por supuesto que ya voy para poner por obra tu venerable aliento, tu amada palabra. Por ahora de ti me despido, yo, tu humilde servidor.&gt;&gt;</p>
+
+
+
+<p>39.- En seguida bajó para ir a poner por obra su encargo: Vino a tomar la calzada que viene derecho a México.</p>
+
+
+
+<p>40.- Y cuando hubo llegado al interior de la ciudad, de inmediato y directo se fue al palacio del Obispo que muy recientemente había llegado de Jefe de Sacerdotes, cuyo reverendo nombre era D. Fray Juan de Zumárraga, Sacerdote de San Francisco.</p>
+
+
+
+<p>41.- Y al llegar, de inmediato hace el intento de verlo, rogando a sus servidores, sus domésticos, que vayan a anunciarlo.</p>
+
+
+
+<p>42.- Al cabo de una espera un tanto excesiva, vienen a llamarlo cuando el Señor Obispo tuvo a bien convocarlo para que pasara.</p>
+
+
+
+<p>43.- Y en cuanto entró, en seguida en su presencia se arrodilló, se postró. Luego ya le declara, le narra el venerable aliento, la preciosa palabra de la Reina del Cielo, su mensaje, y también le refirió respetuosamente todas las cosas que admiró, que miró, que escuchó.</p>
+
+
+
+<p>44.- Y cuando hubo escuchado todas sus palabras, su mensaje, como que no del todo le dio crédito.</p>
+
+
+
+<p>45.- Le respondió, se dignó decirle: &lt;&lt;-Hijito mío, otra vez vendrás, aún con calma te oiré, muy aun desde el principio lo miraré, pensaré lo que te hizo venir acá, tu voluntad, tu deseo.&gt;&gt;</p>
+
+
+
+<h4 class="wp-block-heading">SEGUNDA APARICIÓN</h4>
+
+
+
+<p>46.- Salió, pues, abatido de tristeza porque su encomienda no se realizó de inmediato.</p>
+
+
+
+<p>47.- En seguida se regresó. Poco después, ya al acabar el día, se vino luego en derechura a la cumbre del cerrito,</p>
+
+
+
+<p>48.- y allí tuvo la grande suerte de reencontrar a la Reina del Cielo, allí precisamente donde por primera vez la había visto. Lo estaba esperando bondadosamente.</p>
+
+
+
+<p>49.- Y apenas la miró, se postró en su presencia, se arrojó por tierra, tuvo el honor de decirle:</p>
+
+
+
+<p>50.- &lt;&lt;Dueña mía, Señora, Reina, Hijita mía la más amada, mi Virgencita, fui allá donde Tú me enviaste como mensajero, fui a cumplir tu venerable aliento, tu amable palabra. Aunque muy difícilmente, entré al lugar del estrado del Jefe de los Sacerdotes. Lo vi, en su presencia expuse tu venerable aliento, tu amada palabra, como tuviste la bondad de mandármelo&gt;&gt;.</p>
+
+
+
+<p>51.- &lt;&lt;Me recibió amablemente y me escuchó bondadosamente, pero, por la manera como me respondió, su corazón no quedó satisfecho, no lo estima cierto.</p>
+
+
+
+<p>52.- Me dijo: Otra vez vendrás, aún con más calma te oiré, muy aun desde el principio examinaré la razón por la que has venido, tu deseo, tu voluntad.&gt;&gt;</p>
+
+
+
+<p>53.- &lt;&lt;Me di perfecta cuenta, por la forma cómo me contestó, que piensa que el templo que Tú te dignas concedernos el privilegio de edificarte aquí, quizá es mera invención mía, que tal vez no es de tus venerados labios.</p>
+
+
+
+<p>54.-Por lo cual, mucho te ruego, Señora mía, mi Reina, mi Virgencita, que ojalá a alguno de los ilustres nobles, que sea conocido, respetado, honrado, a él le concedas que se haga cargo de tu venerable aliento, de tu preciosa palabra para que sea creído.&gt;&gt;</p>
+
+
+
+<p>55.- &lt;&lt;Porque yo en verdad no valgo nada, soy mecapal, soy cacaxtle, soy cola, soy ala, sometido a hombros y a cargo ajeno, no es mi paradero ni mi paso allá donde te dignas enviarme, Virgencita mía, Hijita mía la más amada, Señora, Reina.</p>
+
+
+
+<p>56.- Por favor, perdóname: afligiré tu venerado rostro, tu amado corazón. Iré a caer en tu justo enojo, en tu digna cólera, Señora, Dueña mía&gt;&gt;.</p>
+
+
+
+<p>57.- Y la siempre gloriosa Virgen tuvo la afabilidad de responderle:</p>
+
+
+
+<p>58.- &lt;&lt;-Escucha, hijito mío el más pequeño, ten por seguro que no son pocos mis servidores, mis embajadores mensajeros a quienes podría confiar que llevaran mi aliento, mi palabra, que ejecutaran mi voluntad;</p>
+
+
+
+<p>59.- mas es indispensable que seas precisamente tú quien negocie y gestione, que sea totalmente por tu intervención que se verifique, que se lleve a cabo mi voluntad, mi deseo.</p>
+
+
+
+<p>60.- Y muchísimo te ruego, hijito mi consentido, y con rigor te mando, que mañana vayas otra vez a ver al Obispo.</p>
+
+
+
+<p>61.- Y de mi parte adviértele, hazle oír muy claro mi voluntad, mi deseo para que realice, para que haga mi templo que le pido.</p>
+
+
+
+<p>62.- Y de nuevo comunícale de que manera nada menos que yo, yo la siempre Virgen María, la Venerable Madre de Dios, allá te envío de mensajero.&gt;&gt;</p>
+
+
+
+<p>63.- Y Juan Diego le respondió respetuosamente, le dijo reverentemente: &lt;&lt;-Señora mía, Reina, Virgencita mía, ojalá que no aflija yo tu venerable rostro, tu amado corazón; con el mayor gusto iré, voy ciertamente a poner en obra tu venerable aliento, tu amada palabra; de ninguna manera me permitiré dejar de hacerlo, ni considero penoso el camino.</p>
+
+
+
+<p>64.- Iré, pues, desde luego, a poner en obra tu venerable voluntad, pero bien puede suceder que no sea favorablemente oído, o, si fuere oído, quizá no seré creído; pero</p>
+
+
+
+<p>65.- mañana, por la tarde, cuando se ponga el sol, vendré a devolver a tu venerable aliento, a tu amada palabra lo que me responda el Jefe de los Sacerdotes&gt;&gt;</p>
+
+
+
+<p>66.- &lt;&lt;Ya me despido, Hijita mía la más amada, Virgencita mía, Señora, Reina. Por favor, quédate tranquila&gt;&gt;.</p>
+
+
+
+<p>67.- Y, acto continuo, él se fue a su casa a descansar.</p>
+
+
+
+<h4 class="wp-block-heading">SEGUNDA ENTREVISTA CON ZUMARRAGA</h4>
+
+
+
+<p>68.- Al día siguiente, Domingo, muy de madrugada, cuando todo estaba aún muy oscuro, de allá salió de su casa hacia acá, a Tlaltelolco: viene a aprender las cosas divinas, a ser pasado en lista; luego a ver al Gran Sacerdote.</p>
+
+
+
+<p>69.- Y como a las diez de la mañana estuvo dispuesto: se había oído Misa, se había pasado lista, se había dispersado toda la gente.</p>
+
+
+
+<p>70.- Y él, Juan Diego, luego fue al palacio del Señor Obispo.</p>
+
+
+
+<p>71.- Y tan pronto como llegó, hizo todo lo posible para tener el privilegio de verlo, y con mucha dificultad otra vez tuvo ese honor.</p>
+
+
+
+<p>72.- A sus pies hincó las rodillas, llora, se pone triste, en tanto que dialoga, mientras le expone el venerable aliento, la amada palabra de la Reina del Cielo,</p>
+
+
+
+<p>73.- para ver si al fin era creída la embajada, la voluntad de la Perfecta Virgen, tocante a que le hagan, le edifiquen, le levanten, su templo donde se dignó indicarlo, en donde se digna quererlo.</p>
+
+
+
+<p>74.- Y el Señor Obispo muchísimas cosas le preguntó, le examinó, para que bien en su corazón constase (para cerciorarse) dónde fue a verla, qué aspecto tenía. Todo lo narró al Señor Obispo, con todos sus detalles,</p>
+
+
+
+<p>75.- pero, pese a que todo absolutamente se lo pormenorizó, hasta en los más menudos detalles, y que en todas las cosas vio, se asombró porque clarísimamente aparecía que Ella era la perfecta Virgen, la venerable, gloriosa y preciosa Madre de nuestro Salvador Jesucristo,</p>
+
+
+
+<p>76.- a fin de cuentas, no estuvo de acuerdo de inmediato,</p>
+
+
+
+<p>77.- sino que le dijo que no nada más por su palabra, su petición, se haría, se ejecutaría lo que solicitaba,</p>
+
+
+
+<p>78.- que era todavía indispensable algo como señal para que poder creerle que era precisamente Ella, la Reina del Cielo, quien se dignaba enviarlo de mensajero.</p>
+
+
+
+<p>79.- Y tan pronto como lo oyó, Juan Diego dijo respetuosamente al Obispo:</p>
+
+
+
+<p>80.- &lt;&lt;-Señor Gobernante, por favor sírvete ver cuál será la señal que tienes a bien pedirle, pues en seguida me pondré en camino para solicitársela a la Reina del Cielo, que se dignó enviarme acá de mensajero&gt;&gt;.</p>
+
+
+
+<p>81.- Y cuando vio el Obispo que todo lo confirmaba, que desde su primera reacción en nada titubeaba o dudaba, luego lo despidió; pero</p>
+
+
+
+<p>82.- apenas hubo salido, luego ordenó a algunos criados, en quienes tenía gran confianza, que fueran detrás de él, que cuidadosamente lo espiaran a dónde iba, y a quién veía o hablaba.</p>
+
+
+
+<p>83.- Y así se hizo. Y Juan Diego en seguida se vino derecho, enfiló la calzada.</p>
+
+
+
+<p>84.- Y lo siguieron, pero allí donde sale la barranca, cerca del Tepeyac, por el puente de madera, lo perdieron de vista, y por más que por todas partes lo buscaron, ya en ningún lugar lo vieron,</p>
+
+
+
+<p>85.- por lo que se regresaron. Y con eso no sólo se vinieron a enfadar grandemente, sino también porque los frustró, los dejó furiosos,</p>
+
+
+
+<p>86.- de manera que le fueron a insistir al Señor Obispo, le metieron en la cabeza que no le creyera, le inventaron que lo que hacía era sólo engañarlo deliberadamente, que era mera ficción lo que forjaba, o bien que sólo lo había soñado, sólo imaginado en sueños lo que decía, lo que solicitaba.</p>
+
+
+
+<p>87.- Y en este sentido se confabularon unos con otros, que si llegaba a volver, a regresar, allí lo habían de agarrar y castigar duramente para que otra vez ya no ande contando mentiras, ni alborotando a la gente.</p>
+
+
+
+<p>88.- Entre tanto Juan Diego estaba en la presencia de la Santísima Virgen, comunicándole la respuesta que venía a traerle de parte del Señor Obispo.</p>
+
+
+
+<p>89.- Y cuando se lo hubo notificado, la Gran Señora y Reina le respondió:</p>
+
+
+
+<p>90.- &lt;&lt;-Así está bien, Hijito mío el más amado, mañana de nuevo vendrás aquí para que lleves al Gran Sacerdote la prueba, la señal que te pide.</p>
+
+
+
+<p>91.- Con eso en seguida te creerá, y ya, a ese respecto, para nada desconfiará de ti ni de ti sospechará.</p>
+
+
+
+<p>92.- Y ten plena seguridad, Hijito mío predilecto, que yo te pagaré tu cuidado, tu servicio, tu cansancio que por amor a mí has prodigado.</p>
+
+
+
+<p>93.- ¡Animo, mi muchachito! que mañana aquí con sumo interés habré de esperarte&gt;&gt;.</p>
+
+
+
+<h4 class="wp-block-heading">TERCERA APARICIÓN</h4>
+
+
+
+<p>EL TIO MORIBUNDO</p>
+
+
+
+<p>94.- Pero a la mañana siguiente, lunes, cuando Juan Diego debería llevarle alguna señal suya para ser creído, ya no regresó,</p>
+
+
+
+<p>95.- porque cuando fue a llegar a su casa, a un tío suyo, de nombre Juan Bernardino, se le había asentado la enfermedad, estaba en las últimas,</p>
+
+
+
+<p>96.- por lo que se pasó el día buscando médicos, todavía hizo cuanto pudo al respecto; pero ya no era tiempo, ya estaba muy muy grave.</p>
+
+
+
+<p>97.- Y al anochecer, le rogó instantemente su tío que, todavía de noche, antes del alba, le hiciera el favor de ir a Tlaltelolco a llamar a algún sacerdote para que viniera, para que se dignara confesarlo, se sirviera disponerlo,</p>
+
+
+
+<p>98.- porque estaba del todo seguro que ya era el ahora, ya era el aquí para morir, que ya no habría de levantarse, que ya no sanaría.</p>
+
+
+
+<p>99.- Y el martes, todavía en plena noche, de allá salió, de su casa, Juan Diego, a llamar al sacerdote, allá en Tlatelolco.</p>
+
+
+
+<p>100.- Y cuando ya vino a llegar a la cercanía del cerrito Tepeyac, a su pie, donde sale el camino, hacia el lugar donde se pone el sol, donde antes él pasara, se dijo:</p>
+
+
+
+<p>101.- &lt;&lt;-Si sigo de frente por el camino, no vaya a ser que me vea la noble Señora, porque como antes me hará el honor de detenerme para que lleve la señal al Jefe de los Sacerdotes, conforme a lo que se dignó mandarme.</p>
+
+
+
+<p>102.- Que por favor primero nos deje nuestra aflicción, que pueda yo ir rápido a llamar respetuosamente el sacerdote religioso. Mi venerable tío no hace sino estar aguardándolo&gt;&gt;.</p>
+
+
+
+<p>103.- En seguida le dio la vuelta al monte por la falda, subió a la otra parte, por un lado, hacia donde sale el sol, para ir a llegar rápido a México, para que no lo demorara la Reina del Cielo.</p>
+
+
+
+<p>104.- Se imaginaba que por dar allí la vuelta, de plano no iba a verlo Aquella cuyo amor hace que absolutamente y siempre nos esté mirando.</p>
+
+
+
+<p>105.- Pero la vio como hacia acá bajaba de lo alto del montecito, desde donde se había dignado estarlo observando, allá donde desde antes lo estuvo mirando atentamente.</p>
+
+
+
+<p>106.- Le vino a salir al encuentro de lado del monte, vino a cerrarle el paso, se dignó decirle:</p>
+
+
+
+<p>107.- &lt;&lt;-¿Qué hay, Hijo mío el más pequeño? ¿A dónde vas? ¿A dónde vas a ver?&gt;&gt;.</p>
+
+
+
+<p>108.- Y él, ¿acaso un poco por eso se apenó, tal vez se avergonzó, o acaso por eso se alteró, se atemorizó?</p>
+
+
+
+<p>109.- En su presencia se postró, con gran respeto la saludó, tuvo el honor de decirle:</p>
+
+
+
+<p>110.- &lt;&lt;-Mi Virgencita, Hija mía la más amada, mi Reina, ojalá estés contenta; ¿Cómo amaneciste? ¿Estás bien de salud?, Señora mía, mi Niñita adorada?</p>
+
+
+
+<p>111.- Causaré pena a tu venerado rostro, a tu amado corazón: Por favor, toma en cuenta, Virgencita mía, que está gravísimo un criadito tuyo, tío mío.</p>
+
+
+
+<p>112.- Una gran enfermedad en él se ha asentado, por lo que no tardará en morir.</p>
+
+
+
+<p>113.- Así que ahora tengo que ir urgentemente a tu casita de México, a llamar a alguno de los amados de nuestro Señor, de nuestros sacerdotes, para que tenga la bondad de confesarlo, de prepararlo.</p>
+
+
+
+<p>114.- Puesto que en verdad para esto hemos nacido: vinimos a esperar el tributo de nuestra muerte.</p>
+
+
+
+<p>115.- Pero, aunque voy a ejecutar esto, apenas termine, de inmediato regresaré aquí para ir a llevar tu venerable aliento, tu amada palabra, Señora, Virgencita mía.</p>
+
+
+
+<p>116.- Por favor, ten la bondad de perdonarme, de tenerme toda paciencia. De ninguna manera en esto te engaño, Hija mía la más pequeña, mi adorada Princesita, porque lo primero que haré mañana será venir a toda prisa&gt;&gt;.</p>
+
+
+
+<p>117.- Y tan pronto como hubo escuchado la palabra de Juan Diego, tuvo la gentileza de responderle la venerable y piadosísima Virgen:</p>
+
+
+
+<p>118.- &lt;&lt;-Por favor presta atención a esto, ojalá que quede muy grabado en tu corazón, Hijo mío el más querido: No es nada lo que te espantó, te afligió, que no se altere tu rostro, tu corazón. Por favor no temas esta enfermedad, ni en ningún modo a enfermedad otra alguna o dolor entristecedor.</p>
+
+
+
+<p>119.- ¿Acaso no estoy yo aquí, yo que tengo el honor de ser tu madre? ¿Acaso no estás bajo mi sombra, bajo mi amparo? ¿Acaso no soy yo la fuente de tu alegría? ¿Qué no estás en mi regazo, en el cruce de mis brazos? ¿Por ventura aun tienes necesidad de cosa otra alguna?</p>
+
+
+
+<p>120.- Por favor, que ya ninguna otra cosa te angustie, te perturbe, ojalá que no te angustie la enfermedad de tu honorable tío, de ninguna manera morirá ahora por ella. Te doy la plena seguridad de que ya sanó&gt;&gt;. 121.- (Y luego, exactamente entonces, sanó su honorable tío, como después se supo).</p>
+
+
+
+<h4 class="wp-block-heading">LAS FLORES</h4>
+
+
+
+<p>122.- Y Juan Diego, apenas oyó el venerable aliento, la amada palabra de la Reina del Cielo, muchísimo con ello se consoló, mucho con ello quedó satisfecho su corazón.</p>
+
+
+
+<p>123.- Y le suplicó instantemente que de inmediato tuviera a bien enviarlo de mensajero para ver al gobernante Obispo, para llevarle la señal, su comprobación, para que le crea.</p>
+
+
+
+<p>124.- Y la Reina del Cielo de inmediato se sirvió mandarle que subiera arriba del cerrito, allí donde antes había tenido el honor de verla.</p>
+
+
+
+<p>125.- Se dignó decirle: &lt;&lt;-Sube, Hijito mío queridísimo, arriba del cerrito, donde me viste y te dí&nbsp;órdenes.</p>
+
+
+
+<p>126.- Allí verás que están sembradas diversas flores: Córtalas, reúnelas, ponlas juntas. Luego bájalas acá, aquí ante mí tráemelas&gt;&gt;.</p>
+
+
+
+<p>127.- Y acto continuo, Juan Diego subió al cerrito.</p>
+
+
+
+<p>128.- Y al alcanzar la cumbre, quedó mudo de asombro ante las variadas, excelentes, maravillosas flores, todas extendidas, cuajadas de capullos reventones, cuando todavía no era su tiempo de darse.</p>
+
+
+
+<p>129.- Porque en verdad entonces las heladas son muy fuertes.</p>
+
+
+
+<p>130.- Su perfume era intenso, y el rocío de la noche como que las cuajaba de perlas preciosas.</p>
+
+
+
+<p>131.- En seguida se puso a cortarlas, todas absolutamente las juntó, llenó con ellas el hueco de su tilma.</p>
+
+
+
+<p>132.- Y conste que la cúspide del cerrito para nada es lugar donde se den flores, porque lo que hay en abundancia son riscos, abrojos, gran cantidad de espinas, de nopales, de mezquites.</p>
+
+
+
+<p>133.- y si algunas hierbezuelas se dan, entonces era el mes de diciembre, en que todo lo devora, lo aniquila el hielo.</p>
+
+
+
+<p>134.- Bajó en seguida trayendo a la Reina del Cielo las diversas flores que le había ido a cortar,</p>
+
+
+
+<p>135.- y Ella, al verlas, tuvo la afabilidad de tomarlas en sus manecitas,</p>
+
+
+
+<p>136.- y volvió amablemente a colocárselas en el hueco de su tilma. Se dignó decirle:</p>
+
+
+
+<p>137.- &lt;&lt;-Hijito queridísimo, estas diferentes flores son la prueba, la señal que le llevarás al Obispo.</p>
+
+
+
+<p>138.- De parte mía le dirás que por favor vea en ella mi deseo, y con eso ejecute mi deseo, mi voluntad.</p>
+
+
+
+<p>139.- Y tú… tú eres mi plenipotenciario, puesto que en ti pongo toda mi confianza.</p>
+
+
+
+<p>140.- Y con todo rigor te ordeno que sólo exclusivamente frente al Obispo despliegues tu tilma y le muestres lo que llevas.</p>
+
+
+
+<p>141.- Y le contarás con todo detalle cómo yo te mandé que subieras al cerrito para cortar las flores, y todo lo que viste y admiraste.</p>
+
+
+
+<p>142.- Y con esto le conmoverás el corazón al Gran Sacerdote para que interceda y se haga, se erija mi templo que he pedido.</p>
+
+
+
+<p>143.- Y al dignarse despedirlo la Reina del Cielo, vino a tomar la calzada, viene derecho a México, viene feliz, rebosante de alegría,</p>
+
+
+
+<p>144.- ya así viene, rebosante de dicha su corazón, porque esta vez todo saldrá bien, lo desempeñará bien.</p>
+
+
+
+<p>145.- Pone exquisito cuidado en lo que trae en el hueco de su tilma, no vaya a ser que algo se le caiga.</p>
+
+
+
+<p>146.- Viene extasiado por el perfume de las flores, tan diferentes y maravillosas.</p>
+
+
+
+<h4 class="wp-block-heading">CUARTA APARICIÓN</h4>
+
+
+
+<p>TERCERA ENTREVISTA CON ZUMÁRRAGA</p>
+
+
+
+<p>147.- Y al llegar al palacio episcopal le salió al encuentro el mayordomo e incluso otros criados del señor Obispo.</p>
+
+
+
+<p>148.- Y les rogó que por favor le dijeran que quería verlo; pero ninguno accedió, no querían hacerle caso, quizá porque aún no amanecía,</p>
+
+
+
+<p>149.- o quizá porque ya lo conocen, que sólo los fastidia, que les es insoportable,</p>
+
+
+
+<p>150.- y porque ya les habían hablado de él sus compañeros que lo habían perdido de vista cuando pretendieron seguirlo.</p>
+
+
+
+<p>151.- Muy largo tiempo estuvo esperando la respuesta,</p>
+
+
+
+<p>152.- y cuando vieron que llevaba ahí tan largo tiempo, cabizbajo, sin hacer nada, a ver si era llamado, notaron que al parecer traía algo en su tilma, y se le acercaron para ver lo que traía, para dar gusto a su corazón.</p>
+
+
+
+<p>153.- Y al ver Juan Diego que era imposible ocultarles lo que llevaba, y que por eso lo molestarían, lo expulsarían a empellones o lo maltratarían, un poquito les mostró que eran flores.</p>
+
+
+
+<p>154.- Y al ver que se trataba de diversas y finísimas flores, siendo que no era su tiempo, se asombraron muchísimo, y más al ver cuán frescas estaban, cuán abiertas, cuán exquisito su perfume, cuán preciosas,</p>
+
+
+
+<p>155.- y ansiaron coger unas cuantas, arrebatárselas.</p>
+
+
+
+<p>156.- Y no una, sino tres veces se atrevieron a agarrarlas, pero fracasaron,</p>
+
+
+
+<p>157.- porque cuando pretendían tomarlas, ya no podían ver flores, sino las veían como pinturas, como bordados o aplicaciones en la tilma.</p>
+
+
+
+<p>158.- Con eso, en seguida fueron a decirle respetuosamente al Señor Obispo lo que habían visto,</p>
+
+
+
+<p>159.- y que pretendía verlo el indito que ya tantas veces había venido, quien tenía mucho esperando el recado, porque suplicaba permiso para verlo.</p>
+
+
+
+<p>160.- Y tan pronto como el Señor Obispo escuchó eso, captó su corazón que esa era la prueba para que aceptara lo que ese hombre había estado gestionando.</p>
+
+
+
+<p>161.- De inmediato se sirvió llamarlo, que en seguida entrara a casa para verlo.</p>
+
+
+
+<p>162.- Y cuando entró, se prosternó en su presencia, como toda persona bien educada.</p>
+
+
+
+<p>163.- Y de nueva cuenta, y con todo respeto, le narró todo lo que había visto, admirado, y su mensaje.</p>
+
+
+
+<h4 class="wp-block-heading">LA VERSION DE JUAN DIEGO</h4>
+
+
+
+<p>164.- Le dijo con gran respeto: &lt;&lt;-Mi Señor, Gobernante, ya hice, ya cumplí lo que tuviste a bien mandarme.</p>
+
+
+
+<p>165.- y así tuve el honor de ir a comunicarle a la Señora, mi Ama, la Reina del Cielo, venerable y preciosa Madre de Dios, que tú respetuosamente pedías una señal para creerme, y para hacerle su templecito, allí donde tiene la bondad de solicitarte que se lo levantes. 166.- Y también tuve el honor de decirle que me había permitido darte mi palabra de que tendría el privilegio de traerte algo como señal, como prueba de su venerable voluntad, conforme a lo que tú te dignaste indicarme&gt;&gt;.</p>
+
+
+
+<p>167.- &lt;&lt;Y tuvo a bien oír tu venerable aliento, tu venerable palabra y se prestó gustosa a tu solicitud de alguna cosa como prueba, como señal, para que se haga, se ejecute su amada voluntad.</p>
+
+
+
+<p>168.- Y hoy, siendo aún noche cerrada, se sirvió mandarme que tuviera el honor de venir de nuevo a verte.</p>
+
+
+
+<p>169.- Y yo me honré pidiéndole algo como su señal para que fuera creído, conforme a lo que me había dicho que me daría, y de inmediato, pero al instante, condescendió en realizarlo,</p>
+
+
+
+<p>170.- y se sirvió enviarme a la cumbre del cerrito, donde antes había tenido el honor de verla, para que fuera a cortar flores diferentes y preciosas&gt;&gt;.</p>
+
+
+
+<p>171.- &lt;&lt;Y luego que tuve el privilegio de ir a cortarlas, se las llevé abajo.</p>
+
+
+
+<p>172.- Y se dignó tomarlas en sus manecitas,</p>
+
+
+
+<p>173.- para de nuevo dignarse ponerlas en el hueco de mi tilma,</p>
+
+
+
+<p>174.- para que tuviera el honor de traértelas y sólo a ti te las entregara&gt;&gt;.</p>
+
+
+
+<p>175.- &lt;&lt;Pese a que yo sabía muy bien que la cumbre del cerrito no es lugar donde se den flores, puesto que sólo abundan los riscos, abrojos, espinas, nopales escuálidos, mezquites, no por ello dudé, no por eso vacilé.</p>
+
+
+
+<p>176.- Cuando fui a alcanzar la cumbre del montecito, quedé sobrecogido: ¡Estaba en el paraíso!.</p>
+
+
+
+<p>177.- Allí estaban reunidas todas las flores preciosas imaginables, de suprema calidad, cuajadas de rocío, resplandecientes, de manera que yo -emocionado- me puse en seguida a cortarlas.</p>
+
+
+
+<p>178.- Y se dignó concederme el honor de venir a entregártelas, que es lo que ahora hago, para que en ellas te sirvas ver la señal que pedías, para que te sirvas poner todo en ejecución.</p>
+
+
+
+<p>179.- Y para que quede patente la verdad de mi palabra, de mi embajada,</p>
+
+
+
+<p>180.- ¡Aquí las tienes, hazme el honor de recibirlas!&gt;&gt;</p>
+
+
+
+<h4 class="wp-block-heading">LA IMAGEN EN LA TILMA</h4>
+
+
+
+<p>181.- Y en ese momento desplegó su blanca tilma, en cuyo hueco, estando de pie, llevaba las flores.</p>
+
+
+
+<p>182.- Y así, al tiempo que se esparcieron las diferentes flores preciosas,</p>
+
+
+
+<p>183.- en ese mismo instante se convirtió en señal, apareció de improviso la venerada imagen de la siempre Virgen María, Madre de Dios, tal como ahora tenemos la dicha de conservarla,</p>
+
+
+
+<p>184.- guardada ahí en lo que es su hogar predilecto, su templo del Tepeyac, que llamamos Guadalupe.</p>
+
+
+
+<p>185.- Y tan pronto como la vio el señor Obispo, y todos los que allí estaban, se arrodillaron pasmados de asombro,</p>
+
+
+
+<p>186.- se levantaron para verla, profundamente conmovidos y convertidos, suspensos su corazón, su pensamiento.</p>
+
+
+
+<p>187.- Y el señor Obispo, con lágrimas de compunción le rogó y suplicó le perdonara por no haber ejecutado de inmediato su santa voluntad, su venerable aliento, su amada palabra.</p>
+
+
+
+<p>188.- Y poniéndose de pie, desató del cuello la vestidura, el manto de Juan Diego,</p>
+
+
+
+<p>189.- en donde se dignó aparecer, en donde está estampada la Señora del Cielo,</p>
+
+
+
+<p>190.- y en seguida, con gran respeto, la llevó y la dejó instalada en su oratorio.</p>
+
+
+
+<p>191.- Y todavía un día entero pasó Juan Diego en casa del Obispo, él tuvo a bien retenerlo.</p>
+
+
+
+<p>192.- Y al día siguiente le dijo: &lt;&lt;-¡Vamos! para que muestres dónde es la voluntad de la Reina del Cielo que le erijan su templecito&gt;&gt;.</p>
+
+
+
+<p>193.- De inmediato se convidó gente para hacerlo, para levantarlo.</p>
+
+
+
+<h4 class="wp-block-heading">QUINTA APARICIÓN</h4>
+
+
+
+<p>EL TIO SANO</p>
+
+
+
+<p>194.- Y Juan Diego, una vez que les hubo mostrado dónde se había dignado mandarle la Señora del Cielo que se levantara su templecito, luego les pidió permiso.</p>
+
+
+
+<p>195.- Aun quería ir a su casa para ver a su honorable tío Juan Bernardino, que estaba en cama gravísimo cuando lo había dejado y venido para llamar a algún sacerdote, allá en Tlatelolco, para que lo confesara y dispusiera, de quien la Reina del Cielo se había dignado decirle que ya estaba sano.</p>
+
+
+
+<p>196.- Y no solamente no lo dejaron ir solo, sino que lo escoltaron hasta su casa.</p>
+
+
+
+<p>197.- Y al llegar vieron a su venerable tío que estaba muy contento, ya nada le dolía.</p>
+
+
+
+<p>198.- Y él quedó muy sorprendido de ver a su sobrino tan escoltado y tan honrado.</p>
+
+
+
+<p>199.- Y le preguntó a su sobrino por qué ocurría aquello, por qué tanto lo honraran.</p>
+
+
+
+<p>200.- Y él le dijo cómo cuando salió a llamar al sacerdote para que lo confesara y preparara, allá en el Tepeyac bondadosamente se le apareció la Señora del Cielo,</p>
+
+
+
+<p>201.- y lo mandó como su mensajero a ver al Señor Obispo para que se sirviera hacerle una casa en el Tepeyac,</p>
+
+
+
+<p>202.- y tuvo la bondad de decirle que no se afligiera, que ya estaba bien, con lo que quedó totalmente tranquilo.</p>
+
+
+
+<p>203.- Y le dijo su venerable tío que era verdad, que precisamente en ese momento se dignó curarlo.</p>
+
+
+
+<p>204.- Y que la había visto ni más ni menos que en la forma exacta como se había dignado aparecérsele a su sobrino.</p>
+
+
+
+<p>205.- Y le dijo cómo a él también se dignó enviarlo a México para ver al Obispo.</p>
+
+
+
+<p>206.- Y que, cuando fuera a verlo, que por favor le manifestara, le informara con todo detalle lo que había visto,</p>
+
+
+
+<p>207.- y cuán maravillosamente se había dignado sanarlo,</p>
+
+
+
+<p>208.- y que condescendía a solicitar como un favor que a su preciosa imagen precisamente se le llame, se le conozca como la SIEMPRE VIRGEN SANTA MARÍA DE GUADALUPE.</p>
+
+
+
+<h4 class="wp-block-heading">INICIO DEL CULTO</h4>
+
+
+
+<p>209.- Y en seguida traen a Juan Bernardino a la presencia del Señor Obispo, para rendir su informe y dar fe ante él.</p>
+
+
+
+<p>210.- Y a ambos, a él y a su sobrino, los hospedó el Obispo en su casa unos cuantos días,</p>
+
+
+
+<p>211.- durante todo el tiempo que se erigió el templecito de la Soberana Señora allá en el Tepeyac, donde se dignó dejarse ver de Juan Diego.</p>
+
+
+
+<p>212.- Y el señor Obispo trasladó a la Iglesia Mayor la preciosa y venerada imagen de la preciosa Niña del Cielo.</p>
+
+
+
+<p>213.- Tuvo a bien sacarla de su palacio, de su oratorio, donde estaba, para que toda la gente pudiera ver y admirar su maravillosa imagen.</p>
+
+
+
+<p>214.- Absolutamente toda la ciudad se puso en movimiento ante la oportunidad de ver y admirar su preciosa y amada imagen.</p>
+
+
+
+<h4 class="wp-block-heading">LA CONVERSIÓN DE MÉXICO</h4>
+
+
+
+<p>215.- Venían a reconocer su carácter divino,</p>
+
+
+
+<p>216.- a tener la honra de presentarle sus plegarias,</p>
+
+
+
+<p>217.- y mucho admiraban todos la forma tan manifiestamente divina que había elegido para hacerles la gracia de aparecerse,</p>
+
+
+
+<p>218.- como que es un hecho que a ninguna persona de este mundo le cupo el privilegio de pintar lo esencial de su preciosa y amada imagen.</p>
+
+
+<p><a href="https://virgendeguadalupe.org.mx/el-relato/" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Fuente: https://virgendeguadalupe.org.mx </a></p>
+	
+<br>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" id="botonm" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="https://morenita.tv/img/codice/virgen1.jpg" class="expanded" alt="Image">
+
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+	
+</section>
+
+ <audio id="cancion" src="https://asisapp.github.io/Asisapp/Santa%20Mar%C3%ADa%20de%20Guadalupe%20en%20vivo.ogg"></audio>
+  
+<script>
+
+
+
+
+
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+	//Parametros del video
+	 playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1,'wmode':'opaque', 'mute':1 },
+      height: '95%',
+      width: '95%',
+	  //Id del video
+      videoId: 'rd0RYbLDHeM',
+	  events: {
+            'onReady': onPlayerReady}
+    });
+  }
+  
+        function onPlayerReady() {
+		 //Ajustar volumen
+		// player.setVolume(10);
+
+}
+	  
+
+
+
+
+/*
+
+
+Alegra192.png" width="30" height="20" class="d-inline-block align-top" alt="">
+
+
+<li class="nav-item">
+
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="./Jesús.html">Jesús en vivo</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="./Maria.html">Sta. María </a>
+
+        </li>
+
+  <img
+
+      src="https://scontent.fmex5-1.fna.fbcdn.net/v/t39.30808-6/271207225_120254293832702_2190276228864984400_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=p_zDS7gagyEAX-1EiwB&_nc_ht=scontent.fmex5-1.fna&oh=00_AfA2KA58EvwJjmFucSmy59nzqoelKTV-vzQXbdtpIksffw&oe=6471200F"
+
+      alt="Caritas Texcoco"
+
+    />
+
+https://docs.google.com/document/d/1VX3csnAoXpTe8_Rx58DH2CtatWi1Pak9/edit?usp=sharing&ouid=110209637001854403086&rtpof=true&sd=true
+
+<a href="https://pastoralsocialtexcoco.mx/">
+    <img
+      src="iconocaritas.png"
+      alt="Caritas Texcoco"
+    />
+  </a>
+
+
+navigator.serviceWorker.register('/sw.js')
+
+let button = document.querySelector("header button");
+
+  let promptEvent = null;
+
+window.addEventListener("beforeinstallprompt",(e)=>{
+console.log("Lista para instalar");
+  promptEvent=e;
+  button.classList.add("active");
+});
+
+button.addEventListener("click", (e)=>{
+
+  promptEvent.prompt();
+})
+  <button>Instala o agrega a tu pantalla principal</button>
+
+onclick="location.href='https://docs.google.com/document/d/1VX3csnAoXpTe8_Rx58DH2CtatWi1Pak9/edit?usp=sharing&ouid=110209637001854403086&rtpof=true&sd=true';" style="cursor: pointer;"
+
+<div id="ytplayer"></div>
+
+*/
+</script>
+
+
+</div>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+ 
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+<script>
+    $(document).ready(function() {
+      $("#toggleButton").click(function() {
+        $(this).hide();
+        $("#backButton").show();
+        cancion.play();
+      });
+
+      $("#backButton").click(function() {
+        $(this).hide();
+        $("#toggleButton").show();
+        cancion.pause();
+      });
+    });
+  </script>
+
+<script>
+    $(document).ready(function() {
+      var fontSize = 16;
+
+      $("#aumentar").click(function() {
+        fontSize += 2;
+        $("p").css("font-size", fontSize + "px");
+      });
+
+      $("#disminuir").click(function() {
+        fontSize -= 2;
+        $("p").css("font-size", fontSize + "px");
+      });
+    });
+
+
+
+
+const img = document.querySelector('.img');
+
+img.addEventListener('click', () => {
+  botonm.click();
+});
+
+
+
+
+
+
+
+
+	
+  </script>
+
+
+
+
+	  
+
+  </body>

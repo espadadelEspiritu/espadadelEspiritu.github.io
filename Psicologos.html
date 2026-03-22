@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <!--
+    WARNING! Make sure that you match all Quasar related
+    tags to the same version! (Below it's "@2.12.5")
+  -->
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicólogos recomendados</title>
+  
+  <script type="module">
+    import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.menuController = menuController;
+  </script>
+
+    
+  </head>
+
+  <body>
+
+
+    
+    <!-- example of injection point where you write your app template -->
+   <!--
+Forked from:
+https://quasar.dev/vue-components/carousel#example--vertical-mode
+-->
+<div id="q-app" style="min-height: 100vh;">
+
+  
+  <div class="q-pa-md">
+<q-layout view="hHh lpR fFf" >
+      <q-header reveal elevated class="bg-white text-grey-8 q-py-xs" height-hint="58">
+        <q-toolbar>
+          
+        <q-btn label="" outline rounded padding="none" icon="keyboard_arrow_left" color="white" text-color="black" @click="goBack()"></q-btn>
+
+          <q-toolbar-title>Psicólogos recomendados </q-toolbar-title>
+
+          <q-btn flat round dense icon="img:https://mariavguadalupe.github.io/Alegra512.svg" />
+        </q-toolbar>
+      </q-header>
+      <q-page-container>
+<br>
+        
+       <div class="q-pa-md" style="max-width: 480px">
+    <q-toolbar class="bg-primary text-white shadow-2">
+      <q-toolbar-title>Contactos</q-toolbar-title>
+    </q-toolbar>
+
+    <q-list bordered>
+      <q-item v-for="contact in contacts" :key="contact.id" class="q-my-sm" clickable v-ripple>
+   
+          <q-item-section avatar>
+          <q-avatar rounded size="65px">
+            <img :src="`${contact.avatar}`">
+          </q-avatar>
+        </q-item-section>
+
+        <q-item-section>
+          <q-item-label @click="linkDoc(contact.link)" class="text-subtitle2">{{ contact.name }}</q-item-label>
+          <q-item-label caption lines="1">{{ contact.email }}</q-item-label>
+        </q-item-section>
+
+      
+      </q-item>
+
+      <q-separator></q-separator>
+      <q-item-label class="text-subtitle2" header>Contactos externos</q-item-label>
+
+     
+
+      <q-item v-for="contact in offline" :key="contact.id" class="q-mb-sm" clickable v-ripple>
+ 
+             <q-item-section thumbnail>
+          
+            <img :src="`${contact.avatar}`" class="q-pl-md rounded-borders" style="height: 50px; max-width:180px">
+         
+        </q-item-section>
+        
+        
+        <q-item-section >
+          <q-item-label  @click="linkDoc(contact.link)" class="text-subtitle2">{{ contact.name }}</q-item-label>
+          <q-item-abel caption lines="1">{{ contact.email }}</q-item-abel>
+        </q-item-section>
+        
+    
+
+       
+      </q-item>
+    </q-list>
+  </div>
+        
+        
+        
+        
+     
+<br>
+      
+  <br>     
+ 
+<br>    
+      </q-page-container>
+    </q-layout>
+  
+</div>
+  
+          </div>
+  
+
+ 
+
+        
+    <!-- Add the following at the end of your body tag -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
+    
+    <script>
+      /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+    const { ref } = Vue
+
+const app = Vue.createApp({
+  setup () {
+    
+    function goBack() {
+ window.location.href = "https://mariavguadalupe.github.io/";
+}
+        function linkDoc(link) {
+         
+ window.location.href = link;
+}
+    
+    const contacts = [ {
+ id: 1,
+  name: 'Mtra. Deyanira Hernández Lira',
+  email: '',
+  avatar: 'https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9826cd/9826cd9048597711ce81a196da4f59aa_large.jpg',
+  link: 'https://www.doctoralia.com.mx/deyanira-hernandez-lira-2/terapeuta-complementario/benito-juarez'
+
+} ]
+
+const offline = [ {         
+  id: 2,
+  name: 'Consultorio de Catholic.net',
+  email: '',
+  avatar: 'https://es.catholic.net/images/logo_catholic.png',
+    link: 'https://www.es.catholic.net/op/consultorio/8/psicologos-catolicos.html'
+}, 
+  {               
+  id: 3,
+  name: 'Asesoría Valora',
+  email: '',
+  avatar: 'https://3.bp.blogspot.com/-UaonUxv7bWQ/UJGhtQe-5iI/AAAAAAAAAAo/c-VnQtxhcjM/s400/logo%2B_blog.png',
+    link: 'https://valoraradio.org/asesoria-valora/'
+  }, 
+  {               
+  id: 4,
+  name: 'Centro de escucha Cenyeliztli',
+  email: '',
+  avatar: 'https://pbs.twimg.com/profile_images/1557496276375244801/THyqHHcj_400x400.jpg',
+    link: 'https://cenyeliztli.org/index.php/servicios1/'
+  }              
+                
+                ]
+
+   
+    
+    return {
+      
+      goBack,
+      linkDoc,
+      contacts,
+      offline,
+      tab: ref('mails'),
+      slide: ref('style'),
+      lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
+    }
+  }
+})
+
+app.use(Quasar, { config: {} })
+app.mount('#q-app')
+
+    </script>
+
+
+
+<script src="//code.tidio.co/yrvh7kyn3utbz4njgndiokx2k0s5wtio.js" async></script>
+    
+  </body>
+</html>

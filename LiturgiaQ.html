@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <!--
+    WARNING! Make sure that you match all Quasar related
+    tags to the same version! (Below it's "@2.12.5")
+  -->
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLiturgia</title>
+  
+  <script type="module">
+    import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.menuController = menuController;
+  </script>
+
+    
+  </head>
+
+  <body>
+
+
+    
+    <!-- example of injection point where you write your app template -->
+   <!--
+Forked from:
+https://quasar.dev/vue-components/carousel#example--vertical-mode
+-->
+<div id="q-app" style="min-height: 100vh;">
+
+  
+  <div class="q-pa-md">
+<q-layout view="hHh lpR fFf" >
+      <q-header reveal elevated class="bg-white text-grey-8 q-py-xs" height-hint="58">
+        <q-toolbar>
+          
+        <q-btn label="" outline rounded padding="none" icon="keyboard_arrow_left" color="white" text-color="black" @click="goBack()"></q-btn>
+
+          <q-toolbar-title>Liturgia </q-toolbar-title>
+
+          <q-btn flat round dense icon="img:https://mariavguadalupe.github.io/Alegra512.svg" />
+        </q-toolbar>
+      </q-header>
+      <q-page-container>
+<br>
+      <q-btn style="background: #FF0080; color: white" label="Liturgia de las horas" href="./Liturgia.html" class="full-width" size="xl"></q-btn>
+<br>     
+<br>
+        <q-btn style="background: #FF0080; color: white" label="Lecturas del día de hoy" href="https://www.vaticannews.va/es/evangelio-de-hoy.html" class="full-width" size="xl"></q-btn>
+<br>     
+<br>
+        <q-btn style="background: #FF0080; color: white" label="Color litúrgico" href="https://www.aciprensa.com/calendario" class="full-width" size="xl"></q-btn>
+  <br>     
+<br> 
+       <q-btn style="background: #FF0080; color: white" label="Misal diario" href="https://misal.mx/" class="full-width" size="xl"></q-btn>
+<br>     
+<br>
+         <q-btn style="background: #FF0080; color: white" label="INSTRUCCIÓN GENERAL
+DEL MISAL ROMANO" href="https://www.vatican.va/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_sp.html" class="full-width" size="xl"></q-btn>
+  <br>     
+<br>    
+      </q-page-container>
+    </q-layout>
+  
+</div>
+  
+          </div>
+  
+
+ 
+
+        
+    <!-- Add the following at the end of your body tag -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
+    
+    <script>
+      /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+    const { ref } = Vue
+
+const app = Vue.createApp({
+  setup () {
+    
+    function goBack() {
+ window.location.href = "https://mariavguadalupe.github.io/";
+}
+    
+    return {
+      
+      goBack,
+      tab: ref('mails'),
+      slide: ref('style'),
+      lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
+    }
+  }
+})
+
+app.use(Quasar, { config: {} })
+app.mount('#q-app')
+
+    </script>
+
+
+
+<script>
+  (function (w, d, s, o, f, js, fjs) {
+    w["botsonic_widget"] = o;
+    w[o] =
+      w[o] ||
+      function () {
+        (w[o].q = w[o].q || []).push(arguments);
+      };
+    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+    js.id = o;
+    js.src = f;
+    js.async = 1;
+    fjs.parentNode.insertBefore(js, fjs);
+  })(window, document, "script", "Botsonic", "https://widget.writesonic.com/CDN/botsonic.min.js");
+  Botsonic("init", {
+    serviceBaseUrl: "https://api.botsonic.ai",
+    token: "b993aa3d-d470-4e86-9137-c38c329a22b3",
+  });
+</script>
+
+
+    
+    
+  </body>
+</html>

@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html>
+<!--
+    WARNING! Make sure that you match all Quasar related
+    tags to the same version! (Below it's "@2.12.5")
+  -->
+
+<head>
+   
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+
+  <link rel="manifest" href="./manifest.json">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#a281b1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content=#a281b1">
+  <title>María alegra</title>
+
+  <script>                                                                               
+                                            
+  </script>
+
+</head>
+
+<body>
+
+  <!-- example of injection point where you write your app template -->
+  <!--
+Forked from:
+https://quasar.dev/vue-components/carousel#example--vertical-mode
+-->
+
+   <div id="loaderWrapper" class="container">
+    <img src="https://mariavguadalupe.github.io/Bienvenida3.gif" alt="Cargando..." style="width: 100%; height: auto; margin: auto;  max-width: 100%;">
+  </div>     
+
+    
+  <div id="q-app" style="min-height: 98vh; background: #EEEEEE;" hidden>
+                                                                
+                                                                
+
+    <div class="q-pa-md" style="max-width: 600px;">
+
+      <q-layout view="hHh lpR fFf" class="shadow-2 rounded-borders" style="background: #EEEEEE; ">
+        <q-header elevated style="background: #a281b1" height-hint="98">
+          <q-toolbar>
+            <q-toolbar-title>María alegra</q-toolbar-title>
+             <q-btn flat round dense icon="search" class="q-mr-xs" href="./Buscador.html"></q-btn>                                                           
+                                                                       
+            <q-btn flat @click="drawer = !drawer" round dense icon="menu"></q-btn>
+                                                                         
+          </q-toolbar>
+
+          <q-page-scroller expand position="top" :scroll-offset="50" :offset="[0, 0]">
+            <div class="col cursor-pointer q-pa-sm bg-accent text-white text-center">
+              Espíritu Santo, fuente del verdadero amor, llénanos. Fuente de sabiduría, guíanos. Fuente de luz, ilumínanos.
+            </div>
+          </q-page-scroller>
+
+        </q-header>
+
+        <q-footer bordered class="bg-grey-3 text-primary">
+          <div style="max-width: 590px">
+            <q-tabs v-model="tab" switch-indicator narrow-indicator class="text-white shadow-2" style="background: #e2bbb4">
+              <q-tab name="Verdades" icon="balance" label="Verdad"></q-tab>
+              <q-tab name="consejos" icon="mdi-book-cross" label="consejo"></q-tab>
+              <q-tab name="Testimonios" icon="volunteer_activism" label="testimonio"></q-tab>
+            </q-tabs>
+          </div>
+
+        </q-footer>
+
+        <q-drawer  content-class="bg-transparent" style="background-color: transparent !important; border-right: 5px solid #eac976" v-model="drawer" show-if-above :width="210" :breakpoint="400" >
+          
+          
+          <q-scroll-area light-dimmed	 style="height: calc(100% - 150px); margin-top: 150px; max-width: 195px; background-color: transparent !important;" content-class="bg-transparent">
+            <q-list padding id="draweri"  style="background-color: transparent !important;" content-class="bg-transparent">
+              <q-item clickable v-ripple href="./SagrarioLive.html">
+                <q-item-section avatar>
+                  <q-icon name="church"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Sagrario en vivo
+                </q-item-section>
+              </q-item>
+
+              <q-item active clickable v-ripple href="./Maria.html">
+                <q-item-section avatar>
+                  <q-icon name="star"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Santa María de Guadalupe
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="./LiturgiaQ.html">
+                <q-item-section avatar>
+                  <q-icon name="auto_stories"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Liturgia
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="./Buscador.html">
+                <q-item-section avatar>
+                  <q-icon name="search"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Buscador católico
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="https://iglesiaynuevaevangelizacion.blogspot.com/">
+                <q-item-section avatar>
+                  <q-icon name="rss_feed"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Iglesia y nueva Evangelización
+                </q-item-section>
+              </q-item>
+              <q-item clickable v-ripple href="./Psicologos.html">
+                <q-item-section avatar>
+                  <q-icon name="psychology"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Psicólogos recomendados
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-ripple href="./Sobrealegra.html">
+                <q-item-section avatar>
+                  <q-icon name="mdi-information-outline"></q-icon>
+                </q-item-section>
+
+                <q-item-section>
+                  Sobre Alegra ...
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-scroll-area>
+
+          <q-img class="absolute-top" src="https://mariavguadalupe.github.io/manto7.png" style="height: 155px; width: 205px; ">
+            <div  class="absolute-bottom bg-transparent">
+              <q-avatar  size="70px" class="q-mb-sm">
+                <img src="https://mariavguadalupe.github.io/Alegra512.png">
+              </q-avatar>
+              <div class="text-weight-bold" style="color: #0e0e0e;">"¿Acaso no estoy yo aquí, yo que tengo el honor de ser tu madre?"</div>
+              <div></div>
+            </div>
+          </q-img>                                                                                                     
+        </q-drawer>
+
+        <q-page-container style="background: #EEEEEE;" transition="flip-right">
+
+          <q-page padding>
+
+            <div id="banner1" style="width: 100%;  border: 0px solid transparent; max-width: 600px; display: none">
+
+              <q-banner rounded :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
+
+                <img src="https://mariavguadalupe.github.io/BannerFin.gif" alt="Banner GIF" style="width: 97%; height: 98%; border: 1px solid transparent; max-width: 400px;">
+
+                <q-btn id="btninstalar" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z"></path>
+                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
+                  </svg>&nbspInstalar App</q-btn>
+
+                <q-btn id="btnChrome" flat label="Abrir Chrome" href="https://www.google.com.mx/url?sa=t&source=web&rct=j&opi=89978449&url=https://play.google.com/store/apps/details%3Fid%3Dcom.android.chrome%26hl%3Des%26gl%3DUS%26referrer%3Dutm_source%253Dgoogle%2526utm_medium%253Dorganic%2526utm_term%253Dchrome%26pcampaignid%3DAPPU_1_2fEyZYznEZ3LkPIPqsCQmAk&ved=2ahUKEwjMt8fWyYWCAxWdJUQIHSogBJMQ8oQBegQIChAB&usg=AOvVaw0151vmFDLSjJUprX_8zi3B" target="_blank"></q-btn>
+
+              </q-banner>
+
+           <q-btn color="purple" @click="showCustom" label="Custom spinner" v-show="false"></q-btn>            
+
+ <div class="q-pa-md q-gutter-sm" >
+                                 
+    <a href="https://mariavguadalupe.github.io/Maria.html">                             
+    <q-avatar     
+      size="75px"
+      class="overlapping"
+      :style="'border: 2px solid white'"
+    >
+       <img src="https://mariavguadalupe.github.io/virgencita2.jpg" >
+    </q-avatar>
+                                                                  
+     </a>                                                                
+                                                                   
+        <a href="https://mariavguadalupe.github.io/SagrarioLive.html">
+    <q-avatar                                                     
+      size="75px"
+      class="overlapping"
+      :style="'border: 2px solid white'"                                  
+    >
+        <img src="https://mariavguadalupe.github.io/custodia2.png" >
+    </q-avatar>
+    </a>
+                                                                  
+    <a href="https://www.elsantorosario.es/como-rezar-el-rosario/">
+    <q-avatar                                                     
+      size="75px"
+      class="overlapping"
+      :style="'border: 2px solid white'"                                  
+    >
+        <img src="https://santamariacatholic.com/cdn/shop/products/image_bfde4da5-0445-4c5b-a3a2-3882d74cd0cd_1024x1024@2x.jpg?v=1593542902" >
+    </q-avatar>
+    </a>                                                              
+           <a href="https://www.aciprensa.com/Oracion/laudes.htm">
+    <q-avatar                                                     
+      size="75px"
+      class="overlapping"
+      :style="'border: 2px solid white'"                                  
+    >
+        <img src="https://shalombooksny.com/4319-large_default/liturgia-de-las-horas-para-los-fieles.jpg" >
+    </q-avatar>
+    </a>                                                             
+  </div>
+                                                                              
+                                                                                          
+                                                                                          
+
+            </div>
+
+            <div style="max-width: 600px font-family: 'Times New Roman'; font-size: 20px;"  >
+
+              <div class="q-gutter-y-sm">
+                <q-tab-panels v-model="tab" animated transition-prev="scale" transition-next="scale" class="text-center">
+                  <q-tab-panel name="Verdades">
+
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div class="text-h5"></div>
+                            <p> Dios nos manda amar como quien sabe lo que nos conviene, lo que nos hace mejores, más grandes, más personas, verdaderamente cristianos. Y espera pacientemente nuestra respuesta libre.</p>
+                            <p> (P.Ramiro Pellitero) </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn round @click="play2" icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2015/05/sobre-el-miedo-y-el-amor.html">
+                            Leer articulo
+                          </q-btn>
+
+                          <q-btn id="debocina" v-show="false" label="Click" color="primary" @click="persistent = true"></q-btn>
+                        </q-card-actions>
+                    </q-card>
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <div class="text-h5"></div>
+                            <p> “El amor siempre vence... Dios siempre puede más”
+                            </p>
+                            <p> (Juan Pablo II) </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn icon="mdi-youtube" color="red" href="https://www.youtube.com/watch?v=BaPYiF86Ed8l"></q-btn>
+
+                          <q-btn flat color="primary" href="https://www.youtube.com/watch?v=BaPYiF86Ed8l">
+                            Ver Discurso
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="">
+                            <div class="text-h5"></div>
+                            <p> Durante su homilía, el párroco de San Pabo Apóstol de la Diócesis de Texcoco, 
+                              compartió el testimonio de una mujer que se ha curado de cáncer de colon. 
+                              Ella se acercó a él para agradecerle su consejo de tener fe en la bondad y misericordia de Dios, 
+                              por el cuál la mujer se curó. Ahora ella quiere dar gracias a Dios por una nueva oportunidad de vida, 
+                              y el sacerdote le aconsejó que fuera luz para los demás.
+                            </p>
+                            <p>
+                              Esto ocurrió justo antes de la celebración de la Semana Santa del año 2024.
+                              Y me inspiró para colocarlo como el primer testimonio de esta app, ya que,
+                              poco antes reflexionaba sobre la importancia de colocar testimonios 
+                              para comunicar la verdad sobre la fe en Jesús. 
+                              
+                      
+                            </p>
+                            <q-separator></q-separator>
+                            (Author de María Alegra )
+                          </div>
+                        </div>
+                        
+                        <q-card-actions>
+                          <q-btn v-show="false" round icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="fade" transition-next="fade" class=" text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div class="text-h5"></div>
+                            <p> Seamos felices siempre, porque para ser felices hemos nacido y estamos destinados... </p> <br>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn  round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://mariavguadalupe.github.io/Articulo1.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <div class="text-h5"></div>
+                            <p> “En mi angustia
+                              llamé al Señor,
+                              pedí ayuda a mi Dios, y Él me escuchó desde
+                              su templo; mis gritos llegaron hasta sus oídos” </p>
+                            <p> (Salmos 18,6). </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            
+                             <p>El testimonio de vida de San Francisco fue tan impactante que movió a otros a convertirse y seguirle en pos de Dios. De tal manera que, San Francisco, al ver que el número de hermanos iba creciendo, decidió ordenar sus consejos de manera que todos vivieran bajo una misma forma de vida. Es por ello que se llama “Regla y Vida” (Rb 1, 1). ¿Quieres ordenar tu vida? Empieza por tu cuarto. Dios no es un Dios de confusión (1 Co 14, 33), así que una manera de ser santo es ordenar poco a poco todo tu alrededor. Se necesitan pequeños pasos para ir ordenando todas las piezas de tu existencia.</p>
+
+
+                            <p>
+
+                            </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round icon="volume_up" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+                  <q-tab-panel name="Verdades">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p> “Donde hay más alegría, allí también hay más verdad” </p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn  round icon="article" class="small" style="background: #8ae0db"></q-btn>
+                          <q-btn flat color="primary" href="https://es.catholic.net/op/articulos/60123/cat/874/donde-hay-mas-alegria-alli-tambien-hay-mas-verdad.html">
+                            Leer articulo
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p> «No se inquieten
+                              por el día de mañana;
+                              A cada día le bastan sus propias preocupaciones» </p>
+                            <p> (Mateo 6,34). </p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            
+                            <p>  Cuanto más espacio demos a la oración, más descubriremos “la fuerza concreta del amor de Dios”, a pesar de la aridez, como testimonia la vida de la beata  de Calcuta.</p>
+
+                           
+                            <p>
+
+                           </p>
+                            
+                             </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                            “Yo —te dice Jesús—
+                            he probado la muerte por ti,
+                            he cargado sobre mí tu mal. Ahora he resucitado para decírtelo: estoy aquí, contigo, para siempre. ¡No temas!
+                            No tengáis miedo” .
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn  round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2022/04/la-pascua-ver-escuchar-y-anunciar-sin.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>"El camino de la
+                              vida humana puede
+                              verse como una
+                              llamada a la felicidad
+                              que se encuentra en el don sincero de sí mismo
+                              a los demás"
+                            </p>
+                            <p>
+                              (San Juan Pablo II)
+                            </p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+<p>En ocasiones cuando alguien nos falla, es fácil juzgarle, cuestionarle e incluso condenarle por la herida que ha causado en nosotros. Sin embargo, una manera de ser santo es vivir lo que San Francisco nos recuerda: “Y deben evitar airarse o turbarse por el pecado de alguno, porque la ira y la turbación impiden en sí y en los otros la caridad.” </p>
+                        <p>(Rb 7, 3).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+                
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>“El que trabaja por la paz, según la bienaventuranza de Jesús, es aquel que busca el bien del otro, el bien total del alma y el cuerpo, hoy y mañana”. </p>
+
+                           <p> Benedicto XVI</p> 
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        
+
+                        <q-card-actions>
+
+                          <q-btn  round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2013/01/trabajar-y-educar-para-la-paz.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>
+                              “Aconsejo, también, amonesto y exhorto a mis hermanos en el Señor Jesucristo, a que, cuando van por el mundo, no litigue, ni se enfrente a nadie de palabra ni juzguen a otros sino sean afables, pacíficos y mesurados, mansos y humildes, hablando a todos honestamente, según conviene.” 
+                            </p>
+                            <p>(Rb 3, 10-11) San Francisco de Asis</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+<p>San Francisco tuvo amigos, y dentro de esas amistades estuvo Santa Clara de Asís. Hay un escrito de San Francisco que le dirige a Santa Clara y las jóvenes que le acompañaban donde le expresa: “Quiero y prometo, por mí mismo y por medio de mis hermanos, tener siempre diligente cuidado y especial solicitud de ustedes, lo mismo que de ellos.” (ForVi). </p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p> «Estaréis tristes, pero vuestra tristeza se convertirá en alegría» </p>
+                            <p> (Jn 16,20)</p>
+                          </div>
+                        </div>
+                        
+
+                        
+
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>
+                              “Confía tu suerte al Señor, y Él te sostendrá”
+                            </p>
+                            <p>
+                              (Salmos 55).
+                            </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                        <p>"Amaba tanto la Eucaristía, que aún cuando estuvo gravemente enfermo recibía la Sagrada Comunión a diario, y si no le traían a Jesús muy tempranito en la mañana, se trastornaba mucho y no encontraba reposo de ningún modo. "Mi deseo de recibir a Jesús es tanto,- exclamaba,- que no puedo encontrar paz mientras espero"." </p>
+                          
+                      
+                      
+                      </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <p> Testimonio de San  Felipe Neri </p>
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+            
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>  La vida más perfecta es la consciente de sí misma.
+                            </p>
+
+                            <p> Así lo dice Santo Tomás: “El que no entiende, no vive perfectamente, sino que tiene una vida a medias”.</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn  round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2015/09/la-vida-como-algo-divino.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                            <p> «Señala San Pablo: 
+                              estad siempre alegres en
+                               el Señor, os repito, 
+                              estad alegres» </p>
+
+                            <p> (Fil 4,4).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p>Cuando asistía a la Santa Misa, al voltear hacia el altar, nunca dejaba de mirar al Crucifijo y las velas encendidas. ¿Por qué? Lo hacía para imprimir en su mente y su corazón, dos cosas: El Crucifijo le recordaba lo que Jesús había hecho por ella; las velas encendidas le recordaban lo que ella debía hacer por Jesús, 
+                              es decir, sacrificarse y consumirse por El y por las almas.</p>
+
+                            <p>Testimonio de Santa  Margarita María Alacoque   </p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                              <p> “Para Dios, nada es imposible” </p>
+
+                            <p> (Lucas 1:37)</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                            <p> “Que Dios me conceda serenidad
+                              para aceptar las cosas que no puedo cambiar, valentía para cambiar las 
+                             que sí puedo, y sabiduría 
+                             para ver la diferencia”.</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p>"Cuando vamos a la Sagrada Comunión, todos nosotros recibimos al mismo Señor Jesús, mas no todos reciben las mismas gracias, ni tampoco los mismos efectos se producen en todos. Esto se debe a nuestra mayor o menor disposición. Para explicar esto, tomaré un ejemplo de la naturaleza. Consideren el proceso de injertar: entre más similar es una planta a la otra, se logra mejor el injerto. De la misma manera, entre mas parecido hay entre el que va a Comunión y Jesús, 
+                              mucho mejor serán los frutos de la Sagrada Comunión" </p>
+
+                            <p>San  Antonio María Claret </p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>“La unión con Dios no aleja del mundo, sino que nos da la fuerza para permanecer de tal modo, que se pueda hacer lo que se debe hacer en el mundo”.</p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn  round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2012/06/fuerza-de-la-oracion-y-vida-ordinaria.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                            <p> Busca oportunidades para servir y ayudar a los demás, mostrando compasión, generosidad y perdón. Ama a tu prójimo como a ti mismo, siguiendo el ejemplo de Jesús
+                            </p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p> Cuando se le permitió recibir la Sagrada Eucaristía antes de 
+                              ser ejecutada al poste. Cuando Jesús entró a su obscura prisión, 
+                              la Santa cayó de rodillas, y, arrastrando sus cadenas, recibió a Jesús 
+                              y se perdió absorta en oración. Tan pronto que fue ordenada caminar hacia 
+                              el patíbulo, se levantó y sin interrumpir su oración caminó hacia su 
+                              muerte. Procedió hasta la estaca y murió entre las llamas, siempre en
+                               unión con Jesús, Quien permaneció en su alma y en ese cuerpo al ser 
+                               sacrificado.</p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          Santa  Juana de Arco
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>La persona prudente no se contenta con que el fin de su obrar sea recto: quiere que sean también rectos los medios y el modo de actuar.   </p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn  round icon="mdi-plus-circle-outline" class="small" style="background: #8ae0db"></q-btn>
+
+                          <q-btn flat color="primary" href="https://iglesiaynuevaevangelizacion.blogspot.com/2019/08/educacion-de-la-moral-cristiana.html">
+                            Saber más...
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                           <p> Rodéate de amistades basadas en Dios</p>
+
+                            <p></p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p>Cuando la salud del santo empezó a causar seria alarma, se llamó a dos médicos para consulta. Al notar esto, el santo comprendió la gravedad de su enfermedad, y dijo: "Comprendo, pero primero debemos preocuparnos por el alma, y después por el cuerpo." Y pidió recibir inmediatamente los Sacramentos. 
+                              Después de hacer esto, envió por los médicos y les dijo: 
+                              "Ahora hagan lo que ustedes gusten".</p>
+
+
+                            <p>San Antonio María Claret</p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>"Dios es amor y alegría y El nos la comunica. Solo Dios basta. Fuera de El no hay felicidad posible". </p>
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                            <p> El Señor irá delante de ti; Él estará contigo, no te desamparará; no temas, no te acobardes”</p>
+
+                            <p>  (Deuteronomio 31,8).</p>                            
+
+
+                            <p> </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p>Una vez, una niñita quería hacer feliz a su padre por el día de su cumpleaños
+                               y, después de pensarlo mucho, decidió envolver una cajita de cartón vacía 
+                               con un bonito papel de regalo. Y se lo entregó a su papá con todo cariño. 
+                               Su papá, cuando abrió el regalo y vio que la caja estaba vacía, se quedó extrañado y un poco 
+                               triste. Pero ella le aclaró: Papá, antes de cerrar la cajita, 
+                               la llené de besos para ti.
+                              </p>
+                               <p> ¡Qué hermoso regalo! ¡Una caja llena de besos para su papá! </p>
+                              
+                               <p> Pues bien, nuestro Padre Dios, quiere que nosotros, sus hijos pequeños, 
+                              también le demos alegría todos los días y le digamos que lo amamos y le 
+                              demos muchos besos y flores de amor. Le podrías decir:</p>
+                              
+                              <p>   Padre mío, concédeme que toda mi alma se postre ante tu puerta
+                                saludándote. Permíteme que todas mis canciones junten sus melodías 
+                                para alegrarte. Que toda mi vida sea un largo caminar hacia tu eterno 
+                                cielo, amándote y saludándote a cada paso. Te entrego y te ofrezco todas 
+                                las flores del jardín de mi alma y todos los besos de mi corazón. 
+                                Te ofrezco mi vida y te ofrezco mi corazón con todo mi amor. </p>
+
+                            
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                            Catholic.net
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>Corregir con caridad. Eso es un signo de santidad. </p>
+
+                            
+
+                          </div>
+                        </div>
+                        
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                            <p>
+                              "Sed misericordiosos como vuestro Padre es misericordioso"                            </p>
+                            <p>(Lc 6,36). </p>
+                            
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+                          
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+                            <p>La Madre Teresa de Calcuta entregó su vida al cuidado de los más pobres de entre los pobres. 
+                              A lo largo de su vida, atendió a millares de enfermos, moribundos,                             
+                          leprosos y a pobres de toda 
+                              clase y condición. Para ella todos los que sufren son, 
+                              especialmente, el Cristo
+                               sufriente en la tierra. </p>
+                              <p>Ella decía: "Los pobres son el cuerpo de Cristo que sufre. 
+                                Son Cristo mismo".</p>
+                        
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+
+
+
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                          <p>"Jesús dice en el Evangelio: éste es el mandamiento nuevo, que os améis los unos a los 
+                            otros como yo los he amado"</p>
+                          <p>(Jn 13,34)</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                          <p> "Por tanto, todo cuanto queráis que os hagan los hombres, hacédselo también vosotros a ellos; porque ésta es la Ley y los Profetas" </p>
+                           <p>(Mt 7,12).</p>
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p>"Mi familia son aquellos a quienes nadie se acerca, porque son contagiosos y 
+                              están llenos de microbios y suciedad. Aquellos que no van a rezar, porque no pueden ir desnudos. 
+                              Aquellos que no comen, porque no les quedan fuerzas para hacerlo. Los que se caen desplomados por las aceras, sabiendo que están para morir y a cuyo lado pasan los vivos sin volver la mirada atrás. 
+                              Los que no lloran, porque se les han agotado ya las lágrimas de tanto sufrir"
+                                
+                            </p>
+
+                            <p>Santa Teresa de Calcuta </p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+                
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p> Dijo Cristo: 
+                              Dad y se os dará</p>
+
+                            <p>(Lc 6,38)</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                      
+                            <p>"Una respuesta blanda calma la ira, una palabra áspera, enciende la cólera" </p>
+
+
+                              <p>(Prov 15,1).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            
+                            <p> -Adjunto un pequeño cheque. Había decidido comprarme un abrigo para este
+                               invierno. Lo he pensado mejor: el que tengo puede durar todavía uno o
+                                dos años. El cheque corresponde al importe del abrigo, que por ahora
+                                 no me compro-. </p>
+
+                             <p> -Soy una telefonista y remito un giro postal. Es el importe de mis
+                               cenas de un mes. He renunciado a la cena en la pensión, donde me hospedo.
+                                Pienso que una persona que, como yo, gracias a Dios, goza de muy buena 
+                                salud, puede renunciar tranquilamente a la cena en beneficio de quienes
+                                 pasan hambre. Seguiré mandando la misma cantidad todos los meses-. </p>
+                              
+                                 <p> -Somos una pareja de novios. Nos casaremos dentro de un mes. 
+                                  Hemos propuesto a nuestra familia y amigos que, en lugar de hacernos
+                                   algún regalo, ya que queremos hacer una boda íntima y 
+                                   sin despilfarros, nos den en dinero lo equivalente a sus regalos 
+                                   para ofrecérselo a los pobres de la Madre Teresa-.</p>
+                              
+                                   <p> -Nosotros somos una familia normal y podemos comer tres veces
+                                    al día. Por eso, les he propuesto a mis dos hijos de 5 y 8 años 
+                                    de compartir nuestro pan con los más pobres. Mi hijo de ocho años
+                                     tuvo una idea: renunciar tres veces por semana al postre para darle
+                                      el importe a los pobres de la Madre Teresa-.</p>
+                                      <p> - La señora Josepha Gosselke de Alemania cuenta el caso de una colaboradora alemana 
+                                        de la Madre Teresa, que, cuando vio cercana su muerte pidió a sus familiares 
+                                        que no hubiese flores ni coronas ni gastos supérfluos en su funeral y que, todo lo ahorrado,
+                                         se lo diesen a la . Lo recaudado fue de 833 marcos alemanes.</p>
+                              
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                           <p> Estos son algunos testimonios de colaboradores de Santa Teresa de Calcuta</p>
+                           <p> Fuente: Catholic.net</p>
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+                <q-tab-panels v-model="tab" animated transition-prev="jump-up" transition-next="jump-down" class="text-center">
+
+                  <q-tab-panel name="Verdades">
+                    <div class="text-h6"></div>
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+                        <div class="row no-wrap items-center">
+                          <div class="col" style="font-family: 'Times New Roman'; font-size: 20px; color: #000000; text-shadow: 2px 2px #FFF;">
+                            <div></div>
+                           
+                            <p>Dice San Juan: Y hemos recibido de él este mandamiento: 
+                              quien ama a Dios, ame también a su hermano </p>
+
+                            <p>(1Jn 4,21) </p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="consejos">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+                           
+                            <p> "No amemos sólo de palabra y con la lengua, sino con obras y de verdad 
+                              "</p>
+
+                            <p>(1Jn 3,18).</p>
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+                          <q-btn v-show="false" round style="background: #8ae0db" icon="volume_up" class="small" style=""></q-btn>
+
+                          <q-btn flat color="primary">
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                  <q-tab-panel name="Testimonios">
+
+                    <q-card class="my-card" flat bordered>
+
+                      <q-card-section>
+
+                        <div class="row no-wrap items-center">
+                          <div class="col">
+
+
+                            <p>Todos los días, mucha gente hacemos el bien, una mamá prepara con mucho amor la comida para sus hijos,
+                              un médico se esfuerza por conservar la salud de sus pacientes, cada día alguien celebra el cumpleaños de algún ser querido, muchos niños buscan
+                              ayudar a sus papás con pequeños detalles,etc.
+                            </p>
+
+                            <p>Los pequeños y bellos momentos dan testimonio del proyecto de amor que Dios nos ha regalado al darnos la vida</p>
+
+
+                          </div>
+                        </div>
+                        <q-separator></q-separator>
+                        <q-card-actions>
+
+                          <q-btn flat color="primary">
+
+                          </q-btn>
+
+                        </q-card-actions>
+                    </q-card>
+
+                  </q-tab-panel>
+
+                </q-tab-panels>
+
+
+
+              </div>
+
+            </div>
+
+            <div style="max-width: 600px">
+
+            </div>
+
+            <q-btn id="btn_modal" v-show="false" label="Full Height" color="primary" @click="fullHeight = true"></q-btn>
+
+            <q-dialog v-model="fullHeight" full-height>
+              <q-card class="column full-height" style="width: 300px">
+                <q-card-section>
+                  <div class="text-h6"> </div>
+                </q-card-section>
+
+                <q-card-section class="col q-pt-none">
+                  <p>La principal característica de Alegra es el envio de notificaciones a lo largo del día que permiten recordar la verdad acerca de Dios y ayudan a manterner una vida de oración.
+                  </p>
+                  <p> En este momento las notificaciónes se encuentran bloquedas por el navegador, para poder reactivarlas configure los permisos que se otorgan al sitio por favor.
+                  </p>
+                </q-card-section>
+
+                <q-card-actions align="right" class="bg-white text-teal">
+                  <q-btn flat label="OK" v-close-popup></q-btn>
+                </q-card-actions>
+              </q-card>
+            </q-dialog>
+
+            <q-dialog v-model="persistent" persistent transition-show="scale" transition-hide="scale" position="right">
+              <q-card style="width: 350px">
+                <q-linear-progress :value="0.6" color="pink"></q-linear-progress>
+
+                <q-card-section class="row items-center no-wrap">
+                  <div>
+
+                    <audio id="miAudio" src="https://asisapp.github.io/Asisapp/MARTES%2C%2019%20DE%20MAYO%20DE%202015.ogg" controls autoplay></audio>
+                    <br>
+                    <q-space></q-space>
+
+                    <q-btn @click="atras1" flat round icon="fast_rewind"></q-btn>
+                    <q-btn @click="adelante1" flat round icon="fast_forward"></q-btn>
+                    <q-btn flat round icon="stop" v-close-popup></q-btn>
+                </q-card-section>
+              </q-card>
+            </q-dialog>
+
+          </q-page>
+        </q-page-container>
+
+      </q-layout>
+
+    </div>
+
+  </div>
+
+  <!-- Add the following at the end of your body tag -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.12.5/dist/quasar.umd.prod.js"></script>
+
+  <script>
+    /*
+        Example kicking off the UI. Obviously, adapt this to your specific needs.
+        Assumes you have a <div id="q-app"></div> in your <body> above
+       */
+                                          
+       const { useQuasar, QSpinnerGears } = Quasar                                   
+                                          
+    const {
+      ref
+    } = Vue
+    const app = Vue.createApp({
+      setup() {
+              
+        const $q = useQuasar()
+                                          
+        function play2() {
+          var btnBocina = document.getElementById("debocina");
+          btnBocina.click();
+        }
+
+        function atras1() {
+          var audio = document.getElementById("miAudio");
+          audio.currentTime -= 5;
+          if (audio.currentTime < 0) {
+            audio.currentTime = 0;
+          }
+        }
+
+        function adelante1() {
+          var audio = document.getElementById("miAudio");
+          audio.currentTime += 5;
+          audio.play();
+        }
+                                                       
+          function showCustom () {
+        $q.notify({
+          spinner: false,
+           message: '<img src="https://mariavguadalupe.github.io/Bienvenida.gif" alt="Banner GIF" style="width: 97%; height: 98%; border: 1px solid transparent; max-width: 900px;">',
+          html: true,
+          color: 'red',
+          progress: true,
+          position: 'center',
+          timeout: 5000
+        })
+      }                                                   
+                                                       
+                                                       
+        return {
+          atras1,
+          adelante1,
+          play2,
+          showCustom,
+          persistent: ref(false),
+          tab: ref('Verdades'),
+          fullHeight: ref(false),
+          drawer: ref(false),
+          slide: ref(1)
+                                                       
+                                                       
+        }
+      }
+    })
+    app.use(Quasar, {
+      config: {}
+    })
+    app.mount('#q-app')
+  </script>
+
+  <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+    document.getElementById('btninstalar').addEventListener('click', () => {
+      // alert('dentro');
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('La página se ha instalado correctamente');
+            document.getElementById('btninstalar').style.display = 'none';
+            document.getElementById('banner1').style.display = 'none';
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  </script>
+
+  <script>
+    let promptEvent;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      promptEvent = e;
+    });
+    /*	  
+      if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function() { console.log("Service worker registrado"); });
+        }
+
+    	*/
+    console.log("Service worker tpush");
+  </script>
+
+  <script>
+                                      
+    const aside = document.querySelector('.q-drawer.q-drawer--left.q-drawer--on-top.q-drawer--mobile.q-drawer--top-padding');
+
+aside.style.opacity = "0.8";
+
+aside.style.background = "#B2EBF2";                            
+                                      
+                                      
+    //window.addEventListener("load", finicio);
+
+    function finicio() {
+      if (navigator.userAgent.match(/Android/i)) {
+        // Código para dispositivos Android
+        // alert('Ejecutándose en un dispositivo Android');
+      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        // Código para dispositivos iOS
+        //alert('Ejecutándose en un dispositivo iOS');
+      }
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone || document.referrer.includes('android-app://')) {
+        // La página ha sido instalada      
+      } else {
+        document.getElementById('banner1').style.display = 'block';
+        if (bowser.name !== "Chrome") {
+          document.getElementById('btninstalar').style.display = 'none';
+          console.log("no es Chrome");
+        } else {
+          document.getElementById('btnChrome').style.display = 'none';
+          console.log("Es Chrome");
+        }
+      }
+      if (Notification.permission === 'denied') {
+        const btnModal = document.getElementById('btn_modal');
+        btnModal.click();
+        // $("#notiDes").hide();
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.4/bowser.min.js"></script>
+
+  <script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.4/app.js" async></script>
+  <script>
+    var truepush = window.truepush || [];
+    truepush.push(function() {
+      truepush.Init({
+        id: "64e110cabdb78352b845fe0f"
+      }, function(error) {
+        if (error) console.error(error);
+      })
+    })
+  </script>
+
+<script>
+
+                              
+
+document.addEventListener('DOMContentLoaded', function() {
+                                      
+                              
+       var divQ = document.getElementById('q-app');                                     
+       var loaderWrapper = document.getElementById('loaderWrapper');
+
+  loaderWrapper.style.display = 'block';
+
+  setTimeout(function() {
+                          
+    loaderWrapper.style.display = 'none';
+    divQ.style.display = 'block';
+    
+       finicio();                               
+     //window.addEventListener("load", finicio);                                 
+                              
+  },1300); 
+});
+                              
+               
+      </script>                                            
+                                     
+                   
+</body>
+
+</html>

@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <base target="_top">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+<div class="app-container">
+
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#">Alegra</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+
+          <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+
+        </li>
+
+        <li class="nav-item">
+</li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="./Maria.html">Sta. María </a>
+
+        </li>
+	      
+	    <li class="nav-item">
+
+          <a class="nav-link" href="./Evangelio.html">Sta. María </a>
+
+        </li>  
+	      
+
+      </ul>
+
+    
+
+    </div>
+
+  </div>
+
+</nav>
+  </header>
+	
+	
+  
+      <div class="container" style="text-align:center;">
+      </br>
+
+          <h1 class="alin"></h1>
+<script async src="https://cse.google.com/cse.js?cx=b5c2a568cff5c4b92">
+</script>
+<div class="gcse-search"></div>
+	    </br>
+
+
+<button id="autorizarNotificacion">Autorizar notificaciones</button>
+<button id="mostrarNotificacion">Mostrar notificaciones</button>
+
+    
+<iframe src="" style="width:100%; height:600px; border:0;"></iframe>
+      </br>
+
+      <div class="contenedor">
+        <div class="t">Hora:</div>
+        <div class="timeis" id="tm"></div>
+      </div>
+      <div class="desperta">
+        DESPERTADOR:<br/><br/> hora: <input type="text" id="hora"> minuto: <input type="text" id="minuto">
+        <button>OK!</button>
+      </div>
+      
+      
+
+    </br>
+  </br>
+
+
+      </div>
+    </br>
+
+  </br>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+ 
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function(){
+
+    $("#autorizarNotificacion").on("click", function(){
+
+        autorizarNotificacion();
+
+    });
+
+    $("#mostrarNotificacion").on("click", function(){
+
+        mostrarNotifiacion();
+
+    });
+
+});
+
+
+
+function mostrarNotifiacion(){
+
+        Push.create("Objetivo",{
+            body: "Construir el Reindo de Dios",
+            icon: "/Alegra512.png",
+            timeout: 4000,
+            onClick: function () {
+                window.focus();
+                this.close();
+        }
+    });
+
+}
+
+function autorizarNotificacion(){
+
+    Push.Permission.request(onGranted, onDenied);
+
+}
+
+
+
+function onGranted(){
+
+    $("#autorizarNotificacion").css("background-color", "green");
+
+}
+
+
+
+function onDenied(){
+
+    $("#autorizarNotificacion").css("background-color", "red");
+
+}
+
+
+
+
+
+
+
+
+
+
+function reloj() {
+  var hoy = new Date();
+  var hora = hoy.getHours();
+  var minuto = hoy.getMinutes();
+  var segundo = hoy.getSeconds();
+  var horaD = parseInt(document.getElementById("hora").value);
+  var minutoD = parseInt(document.getElementById("minuto").value);
+
+  if (minuto < 10) {
+    minuto = "0" + minuto
+  };
+  if (segundo < 10) {
+    segundo = "0" + segundo
+  };
+  if (hora == horaD && minuto == minutoD && segundo == 00) {
+   
+    mostrarNotifiacion();
+    
+  };
+
+  var tm = document.getElementById("tm");
+  tm.textContent = (hora + ":" + minuto + ":" + segundo);
+
+};
+
+setInterval(reloj, 1000);
+
+
+// modos de abrir página fullscreen
+// https://www.w3schools.com/jsref/met_win_open.asp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+  </body>  
+
+	
+  
+      
+
+
+
+
+
