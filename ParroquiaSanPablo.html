@@ -1,154 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Parroquia San Pablo</title>
 
-  <!-- Quasar CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.prod.css" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Vue + Quasar -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.umd.prod.js"></script>
+  <!-- React -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel (para JSX) -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
-<body>
-<div id="app">
+<body class="bg-gray-100">
 
-  <!-- 🔝 ENCABEZADO -->
-  <q-header elevated class="bg-primary text-white">
-    <q-toolbar>
+<div id="root"></div>
 
-      <!-- 🔙 Botón de regreso -->
-      <q-btn flat dense icon="arrow_back"
-        @click="irInicio" />
+<script type="text/babel">
 
-      <q-toolbar-title class="text-center">
-        Parroquia de San Pablo Apóstol<br>
-        <span class="text-caption">
-          II Vicaria Diócesis de Texcoco A.R
-        </span>
-      </q-toolbar-title>
+function App() {
 
-    </q-toolbar>
-  </q-header>
+  const [mostrarAviso, setMostrarAviso] = React.useState(false);
 
-  <q-page class="q-pa-md">
+  return (
+    <div className="max-w-md mx-auto bg-white min-h-screen shadow">
 
-    <!-- 🖼️ LOGO -->
-    <div class="text-center q-mb-md">
-      <!-- Reemplaza src por tu logo -->
-      <img src="logo.png" style="max-width:120px;">
-    </div>
+      {/* 🔝 HEADER */}
+      <div className="bg-blue-900 text-white p-4 flex items-center">
+        <button 
+          onClick={() => window.location.href = "https://espadadelespiritu.github.io/"}
+          className="mr-3 text-xl">
+          ←
+        </button>
 
-    <!-- 📍 INFORMACIÓN GENERAL -->
-    <q-card class="q-mb-md">
-      <q-card-section>
-        <div class="text-h6">Información General</div>
-        <div>Dirección: Texcoco, Estado de México</div>
-        <div>Teléfono: 55 0000 0000</div>
-      </q-card-section>
-    </q-card>
-
-    <!-- 🗺️ MAPA GOOGLE -->
-    <q-card class="q-mb-md">
-      <q-card-section>
-        <div class="text-h6">Ubicación</div>
-
-        <!-- Puedes cambiar la ubicación en el src -->
-        <iframe
-          width="100%"
-          height="250"
-          style="border:0; border-radius:12px;"
-          loading="lazy"
-          allowfullscreen
-          src="https://www.google.com/maps?q=Texcoco&output=embed">
-        </iframe>
-
-      </q-card-section>
-    </q-card>
-
-    <!-- ⛪ HORARIOS -->
-    <q-card class="q-mb-md">
-      <q-card-section>
-        <div class="text-h6">Horarios</div>
-
-        <div><b>Misa:</b> Domingo 8:00, 10:00, 12:00</div>
-        <div><b>Confesiones:</b> Sábado 5:00 PM</div>
-        <div><b>Hora Santa:</b> Jueves 6:00 PM</div>
-
-      </q-card-section>
-    </q-card>
-
-    <!-- 🙏 PASTORALES -->
-    <q-card class="q-mb-md">
-      <q-card-section>
-        <div class="text-h6">Pastorales</div>
-
-        <ul>
-          <li>Pastoral Juvenil</li>
-          <li>Pastoral Familiar</li>
-          <li>Catequesis</li>
-          <li>Grupo de Oración</li>
-        </ul>
-
-      </q-card-section>
-    </q-card>
-
-    <!-- 📢 AVISOS PARROQUIALES -->
-    <q-card class="q-mb-md cursor-pointer"
-      @click="mostrarAviso = true">
-
-      <q-img src="aviso.jpg" height="200px">
-        <div class="absolute-bottom text-white text-subtitle1 bg-black bg-opacity-50">
-          Avisos parroquiales (toca para ver)
+        <div>
+          <h1 className="text-sm font-bold leading-tight">
+            Parroquia de San Pablo Apóstol
+          </h1>
+          <p className="text-xs">
+            II Vicaria Diócesis de Texcoco A.R
+          </p>
         </div>
-      </q-img>
+      </div>
 
-    </q-card>
+      {/* 🖼️ LOGO */}
+      <div className="text-center p-4">
+        <img src="logo.png" className="mx-auto w-24"/>
+      </div>
 
-    <!-- 🔥 MODAL PANTALLA COMPLETA -->
-    <q-dialog v-model="mostrarAviso" maximized>
+      {/* 📍 INFO */}
+      <div className="p-4">
+        <div className="bg-white rounded-xl shadow p-4 mb-4">
+          <h2 className="font-bold mb-2">Información</h2>
+          <p>Dirección: Texcoco, Estado de México</p>
+          <p>Teléfono: 55 0000 0000</p>
+        </div>
 
-      <q-card class="bg-black text-white">
+        {/* 🗺️ MAPA */}
+        <div className="bg-white rounded-xl shadow p-4 mb-4">
+          <h2 className="font-bold mb-2">Ubicación</h2>
+          <iframe
+            className="w-full h-56 rounded-xl"
+            src="https://www.google.com/maps?q=Texcoco&output=embed"
+          ></iframe>
+        </div>
 
-        <q-btn icon="close" flat round
-          class="absolute-top-right q-ma-md"
-          @click="mostrarAviso = false" />
+        {/* ⛪ HORARIOS */}
+        <div className="bg-white rounded-xl shadow p-4 mb-4">
+          <h2 className="font-bold mb-2">Horarios</h2>
+          <p><b>Misa:</b> Domingo 8:00, 10:00, 12:00</p>
+          <p><b>Confesiones:</b> Sábado 5:00 PM</p>
+          <p><b>Hora Santa:</b> Jueves 6:00 PM</p>
+        </div>
 
-        <q-img src="aviso.jpg" style="height:100vh;" />
+        {/* 🙏 PASTORALES */}
+        <div className="bg-white rounded-xl shadow p-4 mb-4">
+          <h2 className="font-bold mb-2">Pastorales</h2>
+          <ul className="list-disc ml-4">
+            <li>Pastoral Juvenil</li>
+            <li>Pastoral Familiar</li>
+            <li>Catequesis</li>
+            <li>Grupo de Oración</li>
+          </ul>
+        </div>
 
-      </q-card>
+        {/* 📢 AVISOS */}
+        <div 
+          className="rounded-xl overflow-hidden shadow cursor-pointer"
+          onClick={() => setMostrarAviso(true)}
+        >
+          <img src="aviso.jpg" className="w-full h-48 object-cover"/>
+          <div className="bg-black bg-opacity-60 text-white p-2 text-center">
+            Avisos parroquiales (tocar)
+          </div>
+        </div>
 
-    </q-dialog>
+      </div>
 
-  </q-page>
+      {/* 🔥 MODAL FULLSCREEN */}
+      {mostrarAviso && (
+        <div className="fixed inset-0 bg-black z-50 flex flex-col">
 
-</div>
+          <button 
+            onClick={() => setMostrarAviso(false)}
+            className="text-white text-2xl p-4 self-end">
+            ✕
+          </button>
 
-<script>
-const { createApp, ref } = Vue;
+          <img 
+            src="aviso.jpg" 
+            className="w-full h-full object-contain"
+          />
 
-createApp({
-  setup() {
+        </div>
+      )}
 
-    // 🔔 Control del modal de avisos
-    const mostrarAviso = ref(false);
+    </div>
+  );
+}
 
-    // 🔙 Función para regresar a la app principal
-    const irInicio = () => {
-      window.location.href = "https://espadadelespiritu.github.io/";
-    };
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
-    return {
-      mostrarAviso,
-      irInicio
-    };
-  }
-})
-.use(Quasar)
-.mount("#app");
 </script>
 
 </body>
