@@ -12,7 +12,7 @@
 
 {  
 
-	"src": "/espada192.png",
+	"src": "/espada2192.png",
 	"type": "image/png",
 	"sizes": "192x192",
     "purpose": "any maskable"
@@ -20,7 +20,7 @@
 },
 {  
 
-	"src": "/espada.png",
+	"src": "/espada2512.png",
 	"type": "image/jpeg",
 	"sizes": "512x512",
     "purpose": "maskable"
@@ -28,7 +28,7 @@
 },
 {  
 
-	"src": "/espada360.png",
+	"src": "/espada2360.png",
 	"type": "image/jpeg",
 	"sizes": "360x360",
     "purpose": "maskable"
@@ -36,7 +36,7 @@
 },	
 {  
 
-	"src": "/espada192.png",
+	"src": "/espada2192.png",
 	"type": "image/png",
 	"sizes": "180x180",
     "purpose": "maskable"
