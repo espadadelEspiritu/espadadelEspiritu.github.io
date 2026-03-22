@@ -218,7 +218,7 @@ Chiconcuac México C.P 56270</p>
     const app = Vue.createApp({
       setup() {
         function goBack() {
-          window.location.href = "/index.html";
+          window.location.href = "https://espadadelespiritu.github.io/";
         }
 
            function shareLink() {
@@ -227,7 +227,7 @@ Chiconcuac México C.P 56270</p>
       if (navigator.share) {
         navigator.share({
           title: 'Comparte este enlace',
-          text: 'Parroquia de San Pablito',
+          text: 'Página web de Parroquia de San Pablito',
           url: "https://espadadelespiritu.github.io/miparroquia.html" // <-- CORRECCIÓN: comillas añadidas
         })
         .then(() => console.log('Compartido con éxito'))
