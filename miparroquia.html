@@ -220,26 +220,7 @@ Chiconcuac México C.P 56270</p>
         function goBack() {
           window.location.href = "https://espadadelespiritu.github.io/";
         }
-        return {
-          goBack,
-          tab: ref('mails'),
-          slide: ref('style'),
-          lorem: 'Pastorales'
-        }
-      }
-    })
-    app.use(Quasar, {
-      config: {}
-    })
-    app.mount('#q-app')
-  </script>
-
-</body>
-
-    <script>
-export default {
-  methods: {
-    shareLink() {
+        function shareLink() {
       const link = "https://espadadelespiritu.github.io/miparroquia.html"; // el link que quieres compartir
 
       if (navigator.share) {
@@ -257,8 +238,23 @@ export default {
           .catch(() => alert('No se pudo copiar el link'));
       }
     }
-  }
-}
-</script>
+          
+        return {
+          goBack,
+        shareLink,
+          tab: ref('mails'),
+          slide: ref('style'),
+          lorem: 'Pastorales'
+        }
+      }
+    })
+    app.use(Quasar, {
+      config: {}
+    })
+    app.mount('#q-app')
+  </script>
 
+</body>
+
+    
 </html>
