@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Imprenta Offline PRO</title>
+<style>
+body { font-family: Arial; background: #f5f5f5; text-align:center; padding: 20px; }
+.box { background: white; padding:20px; border-radius:12px; max-width:500px; margin:auto; box-shadow:0 5px 20px rgba(0,0,0,0.1); }
+input, select, button { margin:10px; padding:10px; }
+button { background:#007bff; color:white; border:none; border-radius:8px; cursor:pointer; }
+button:hover { background:#0056b3; }
+</style>
+</head>
+<body>
+
+<h1>📚 Imprenta Offline PRO</h1>
+<div class="box">
+  <input type="file" id="files" multiple accept="image/*,application/pdf"><br>
+  <select id="mode">
+    <option value="double">2 páginas por hoja</option>
+    <option value="booklet">Cuadernillo</option>
+  </select><br>
+  <button onclick="generatePDF()">Generar PDF</button>
+</div>
+
+<script>
+async function generatePDF() {
+  const files = document.getElementById('files').files;
+  const mode = document.getElementById('mode').value;
+  if (!files.length) return alert("Sube tus imágenes o PDF");
+
+  let images = [];
+
+  for (let file of files) {
+    if (file.type === "application/pdf") {
+      alert("PDF nativo no soportado offline en este ejemplo. Usa imágenes exportadas de Canva.");
+      return;
+    } else {
+      images.push(await loadImage(await fileToDataURL(file)));
+    }
+  }
+
+  if (mode === "booklet") {
+    while (images.length % 4 !== 0) images.push(null);
+    images = reorderBooklet(images);
+  }
+
+  createPDF(images);
+}
+
+function reorderBooklet(images) {
+  let result = [];
+  let total = images.length;
+  for (let i = 0; i < total/2; i++) {
+    result.push(images[total-1-i]);
+    result.push(images[i]);
+  }
+  return result;
+}
+
+function fileToDataURL(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = e => resolve(e.target.result);
+    reader.readAsDataURL(file);
+  });
+}
+
+function loadImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.src = src;
+  });
+}
+
+function createPDF(images) {
+  const W = 279; // carta horizontal mm
+  const H = 216;
+  const half = W/2;
+  const margin = 10;
+
+  const pdfPages = [];
+
+  for (let i=0;i<images.length;i+=2){
+    const canvas = document.createElement("canvas");
+    canvas.width = W * 3.78; // px por mm aprox
+    canvas.height = H * 3.78;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    if(images[i]) drawImageOnCanvas(ctx, images[i], 0, half, H, margin, canvas.width, canvas.height);
+    if(images[i+1]) drawImageOnCanvas(ctx, images[i+1], half, half, H, margin, canvas.width, canvas.height);
+
+    pdfPages.push(canvas.toDataURL("image/jpeg"));
+  }
+
+  downloadPDF(pdfPages, "imprenta_local.pdf");
+}
+
+function drawImageOnCanvas(ctx,img,offsetX,areaW,areaH,margin,cWidth,cHeight){
+  const scale = Math.min((areaW-margin*2)/(img.width/3.78),(areaH-margin*2)/(img.height/3.78));
+  const w = (img.width/3.78)*scale;
+  const h = (img.height/3.78)*scale;
+  const x = offsetX + (areaW - w)/2;
+  const y = (areaH - h)/2;
+  ctx.drawImage(img,x*cWidth/W, y*cHeight/H, w*cWidth/W, h*cHeight/H);
+}
+
+function downloadPDF(pages, filename){
+  const pdfDoc = document.createElement("a");
+  const doc = pages.map(p => `<img src="${p}" width="100%" /><div style="page-break-after: always;"></div>`).join("");
+  const blob = new Blob([doc], {type:"application/pdf"});
+  pdfDoc.href = URL.createObjectURL(blob);
+  pdfDoc.download = filename;
+  pdfDoc.click();
+}
+</script>
+
+</body>
+</html>
