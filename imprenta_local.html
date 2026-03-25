@@ -2,17 +2,18 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Imprenta PDF con Librerías</title>
+<title>Imprenta PDF Robusta</title>
 <style>
 body { font-family: Arial; text-align:center; padding:20px; background:#f4f4f4; }
 .box { background:white; padding:20px; border-radius:10px; max-width:500px; margin:auto; box-shadow:0 5px 20px rgba(0,0,0,0.1);}
 button { padding:10px 20px; margin-top:10px; background:#007bff; color:white; border:none; border-radius:8px; cursor:pointer; }
 button:hover { background:#0056b3; }
+#status { margin-top: 15px; font-weight:bold; }
 </style>
 </head>
 <body>
 
-<h1>📚 Imprenta PDF</h1>
+<h1>📚 Imprenta PDF Robusta</h1>
 <div class="box">
   <input type="file" id="pdfFile" accept="application/pdf"><br>
   <select id="mode">
@@ -20,6 +21,7 @@ button:hover { background:#0056b3; }
     <option value="booklet">Cuadernillo</option>
   </select><br>
   <button onclick="processPDF()">Generar PDF</button>
+  <div id="status"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
@@ -27,31 +29,43 @@ button:hover { background:#0056b3; }
 
 <script>
 async function processPDF() {
+  const status = document.getElementById("status");
+  status.textContent = "Procesando PDF…";
+
   const file = document.getElementById('pdfFile').files[0];
   const mode = document.getElementById('mode').value;
-  if(!file) return alert("Sube un PDF primero");
-
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({data:arrayBuffer}).promise;
-
-  let pages = [];
-  for(let i=1;i<=pdf.numPages;i++){
-    const page = await pdf.getPage(i);
-    const viewport = page.getViewport({scale:2});
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-    await page.render({canvasContext:context, viewport}).promise;
-    pages.push(canvas.toDataURL("image/jpeg"));
+  if(!file) {
+    status.textContent = "❌ Por favor sube un PDF.";
+    return;
   }
 
-  if(mode==="booklet"){
-    while(pages.length%4!==0) pages.push(null);
-    pages = reorderBooklet(pages);
-  }
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
 
-  generateOutput(pages);
+    let pages = [];
+    for(let i=1; i<=pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({scale:2});
+      const canvas = document.createElement("canvas");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const context = canvas.getContext("2d");
+      await page.render({canvasContext:context, viewport}).promise;
+      pages.push(canvas.toDataURL("image/jpeg"));
+    }
+
+    if(mode==="booklet"){
+      while(pages.length % 4 !== 0) pages.push(null);
+      pages = reorderBooklet(pages);
+    }
+
+    await generateOutput(pages);
+    status.textContent = "✅ PDF generado correctamente.";
+  } catch(err) {
+    console.error(err);
+    status.textContent = "❌ Error procesando el PDF.";
+  }
 }
 
 function reorderBooklet(pages){
@@ -64,31 +78,40 @@ function reorderBooklet(pages){
   return result;
 }
 
-function generateOutput(pages){
+async function generateOutput(pages){
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({orientation:"landscape", unit:"mm", format:"letter"});
-  const pageW = 279, pageH = 216, half=pageW/2, margin=10;
+  const pageW = 279, pageH = 216, half = pageW/2, margin=10;
 
-  for(let i=0;i<pages.length;i+=2){
-    if(pages[i]) draw(pdf,pages[i],0,half,pageH,margin);
-    if(pages[i+1]) draw(pdf,pages[i+1],half,half,pageH,margin);
-    if(i+2<pages.length) pdf.addPage();
+  for(let i=0; i<pages.length; i+=2){
+    // Esperar a que las imágenes carguen
+    if(pages[i]) await drawImage(pdf, pages[i], 0, half, pageH, margin);
+    if(pages[i+1]) await drawImage(pdf, pages[i+1], half, half, pageH, margin);
+    if(i+2 < pages.length) pdf.addPage();
   }
 
   pdf.save("imprenta_pro.pdf");
 }
 
-function draw(pdf,imgData,offsetX,areaW,areaH,margin){
-  const img = new Image();
-  img.src = imgData;
-  img.onload = () => {
-    const ratio = Math.min((areaW-margin*2)/img.width,(areaH-margin*2)/img.height);
-    const w = img.width*ratio;
-    const h = img.height*ratio;
-    const x = offsetX+(areaW-w)/2;
-    const y = (areaH-h)/2;
-    pdf.addImage(imgData,"JPEG",x,y,w,h);
-  }
+function drawImage(pdf, imgData, offsetX, areaW, areaH, margin){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const ratio = Math.min((areaW-margin*2)/img.width, (areaH-margin*2)/img.height);
+        const w = img.width * ratio;
+        const h = img.height * ratio;
+        const x = offsetX + (areaW - w)/2;
+        const y = (areaH - h)/2;
+        pdf.addImage(imgData, "JPEG", x, y, w, h);
+        resolve();
+      } catch(e) {
+        reject(e);
+      }
+    };
+    img.onerror = () => reject(new Error("Error cargando la imagen"));
+    img.src = imgData;
+  });
 }
 </script>
 
