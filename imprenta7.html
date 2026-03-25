@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuadernillo PDF Profesional</title>
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  background: #007bff;
+  color: white;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1.5em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.container {
+  margin: 40px auto;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+button {
+  padding: 12px 25px;
+  margin-top: 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+button:hover {
+  background: #1e7e34;
+}
+
+#status {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1em;
+  color: #333;
+}
+input[type=file] {
+  padding: 8px;
+  font-size: 1em;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<header>📖 Generador de Cuadernillo PDF Profesional</header>
+
+<div class="container">
+  <input type="file" id="pdfFile" accept="application/pdf"><br>
+  <button onclick="processPDF()">Generar PDF para Cuadernillo</button>
+  <div id="status"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+async function processPDF() {
+  const status = document.getElementById("status");
+  status.textContent = "Procesando PDF…";
+
+  const file = document.getElementById('pdfFile').files[0];
+  if(!file) {
+    status.textContent = "❌ Por favor sube un PDF.";
+    return;
+  }
+
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+
+    let pages = [];
+    for(let i=1; i<=pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({scale:2});
+      const canvas = document.createElement("canvas");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const context = canvas.getContext("2d");
+      await page.render({canvasContext:context, viewport}).promise;
+      pages.push(canvas.toDataURL("image/jpeg"));
+    }
+
+    // Portada + Contraportada
+    const firstPage = pages[0];
+    const lastPage = pages[pages.length-1];
+    let middlePages = pages.slice(1, pages.length-1);
+
+    // Agregar hoja en blanco si impar
+    if(middlePages.length % 2 !== 0) middlePages.push(null);
+
+    // Crear orden para cuadernillo
+    let bookletPages = createBookletOrder(firstPage, lastPage, middlePages);
+
+    await generateOutput(bookletPages);
+    status.textContent = "✅ PDF generado correctamente. ¡Listo para imprimir!";
+  } catch(err) {
+    console.error(err);
+    status.textContent = "❌ Error procesando el PDF.";
+  }
+}
+
+// Genera el orden de páginas para cuadernillo
+function createBookletOrder(first, last, middle) {
+  let allPages = [first, ...middle, last];
+  let result = [];
+  let left = 0;
+  let right = allPages.length - 1;
+
+  while(left < right) {
+    result.push(allPages[right]); // hoja izquierda
+    result.push(allPages[left]);  // hoja derecha
+    left++;
+    right--;
+  }
+  return result;
+}
+
+async function generateOutput(pages){
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({orientation:"landscape", unit:"mm", format:"letter"});
+  const pageW = 279, pageH = 216;
+  const half = pageW/2;
+  const outerMargin = 5;
+  const gutter = 5;
+
+  for(let i=0; i<pages.length; i+=2){
+    if(pages[i]) await drawImage(pdf, pages[i], 0, half, pageH, outerMargin, gutter, true);
+    if(pages[i+1]) await drawImage(pdf, pages[i+1], half, half, pageH, outerMargin, gutter, false);
+    
+    if(i+2 < pages.length) pdf.addPage();
+  }
+
+  pdf.save("cuadernillo_profesional.pdf");
+}
+
+function drawImage(pdf, imgData, offsetX, areaW, areaH, outerMargin, gutter, isLeftSide){
+  return new Promise((resolve, reject) => {
+    if(!imgData) return resolve(); // hoja en blanco
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const extraMargin = isLeftSide ? gutter : 0;
+        const usableW = areaW - outerMargin*2 - extraMargin;
+        const usableH = areaH - outerMargin*2;
+        const ratio = Math.min(usableW / img.width, usableH / img.height);
+        const w = img.width * ratio;
+        const h = img.height * ratio;
+        const x = offsetX + (areaW - w)/2 + (isLeftSide ? gutter/2 : -gutter/2);
+        const y = (areaH - h)/2;
+        pdf.addImage(imgData, "JPEG", x, y, w, h);
+
+        // Números de página eliminados
+
+        resolve();
+      } catch(e) { reject(e); }
+    };
+    img.onerror = () => reject(new Error("Error cargando la imagen"));
+    img.src = imgData;
+  });
+}
+</script>
+
+</body>
+</html>
