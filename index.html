@@ -3,85 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Punto de Venta PRO</title>
 
+<!-- 🎨 Tailwind (UI rápida tipo app moderna) -->
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<!-- 📄 PDF export -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- 📸 (opcional futuro: tickets como imagen) -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<!-- 💬 Bootstrap Icons (WhatsApp icono) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
-<!-- 🔐 LOGIN -->
-<div id="loginScreen" class="fixed inset-0 bg-black flex items-center justify-center">
-  <div class="bg-white p-6 rounded-xl w-72 text-center">
+<!-- ======================================================
+🔐 PANTALLA DE LOGIN (PIN por usuario)
+====================================================== -->
+<div id="loginScreen" class="fixed inset-0 bg-black flex items-center justify-center z-50">
 
-    <h2 class="font-bold mb-3">Ingresar PIN</h2>
+  <div class="bg-white p-6 rounded-xl w-72 text-center shadow-xl">
 
-    <input id="pinInput" type="password"
+    <h2 class="font-bold text-lg mb-3">Acceso al sistema</h2>
+
+    <!-- PIN del usuario (identifica vendedor) -->
+    <input id="pinInput"
+      type="password"
       maxlength="6"
-      class="border p-2 w-full text-center text-xl tracking-widest"
+      class="border p-2 w-full text-center text-xl tracking-widest rounded"
       placeholder="PIN"
     >
 
-    <button id="btnLogin" class="bg-blue-600 text-white w-full mt-3 py-2 rounded">
+    <!-- login -->
+    <button id="btnLogin"
+      class="bg-blue-600 text-white w-full mt-3 py-2 rounded">
       Entrar
     </button>
 
+    <p class="text-xs text-gray-400 mt-2">
+      Sistema POS - Tienda
+    </p>
+
   </div>
+
 </div>
 
-<!-- HEADER -->
-<div class="p-4 flex gap-2">
-  <button id="btnNuevaVenta" class="bg-green-600 text-white px-4 py-2 rounded">
-    Nueva venta
+<!-- ======================================================
+📌 HEADER (acciones principales)
+====================================================== -->
+<div class="p-4 flex gap-2 flex-wrap">
+
+  <!-- abrir nueva venta -->
+  <button id="btnNuevaVenta"
+    class="bg-green-600 text-white px-4 py-2 rounded">
+    + Nueva venta
   </button>
 
-  <button id="btnCorteCaja" class="bg-purple-600 text-white px-4 py-2 rounded">
+  <!-- corte de caja (lógica futura o ya activa en JS) -->
+  <button id="btnCorteCaja"
+    class="bg-purple-600 text-white px-4 py-2 rounded">
     Corte de caja
   </button>
 
-  <button id="btnPDF" class="bg-blue-600 text-white px-4 py-2 rounded">
-    PDF
-  </button>
 </div>
 
-<!-- LISTA VENTAS -->
+<!-- ======================================================
+📦 LISTA DE VENTAS DEL DÍA
+====================================================== -->
 <div id="listaVentas" class="p-4 grid gap-4"></div>
 
-<!-- TOTAL -->
-<div class="p-4 bg-white flex justify-between shadow-inner">
+<!-- ======================================================
+📊 FOOTER (TOTAL DEL DÍA + PDF)
+====================================================== -->
+<div class="p-4 bg-white shadow-inner flex justify-between items-center">
+
+  <!-- total del día -->
   <div>
     <p class="text-sm text-gray-500">Total del día</p>
     <p id="totalDia" class="text-xl font-bold text-blue-600">$0</p>
   </div>
+
+  <!-- 📄 botón PDF (reporte diario) -->
+  <button id="btnPDF"
+    class="bg-black text-white px-4 py-2 rounded">
+    📄 Reporte del día
+  </button>
+
 </div>
 
-<!-- MODAL -->
-<dialog id="modal" class="rounded-xl p-6 w-96 shadow-xl relative">
+<!-- ======================================================
+🧾 MODAL - VENTA ACTIVA
+====================================================== -->
+<dialog id="modal"
+  class="rounded-xl p-6 w-96 shadow-xl relative">
 
-  <button id="btnCerrar" class="absolute top-2 right-3 text-xl">✕</button>
+  <!-- cerrar modal -->
+  <button id="btnCerrar"
+    class="absolute top-2 right-3 text-xl">
+    ✕
+  </button>
 
+  <!-- título -->
   <h2 class="font-bold mb-2">Nueva venta</h2>
 
-  <input id="inputProducto" type="text"
+  <!-- input principal de productos -->
+  <input id="inputProducto"
+    type="text"
     placeholder="Ej: funda 150 | 2 fundas 120"
     class="w-full p-2 border rounded mb-2"
   >
 
+  <!-- preview de cálculo automático -->
   <p id="preview" class="text-sm text-blue-500 mb-2"></p>
 
+  <!-- lista dinámica de productos en la venta -->
   <div id="preVenta" class="space-y-2"></div>
 
-  <p class="mt-2">Total: <span id="totalVenta">$0</span></p>
+  <!-- total de venta actual -->
+  <p class="mt-3 font-semibold">
+    Total: <span id="totalVenta">$0</span>
+  </p>
 
-  <button id="btnFinalizar" class="w-full mt-3 bg-red-500 text-white py-2 rounded">
+  <!-- finalizar venta -->
+  <button id="btnFinalizar"
+    class="w-full mt-3 bg-red-500 text-white py-2 rounded">
     Finalizar venta
   </button>
 
 </dialog>
 
+<!-- ======================================================
+📌 JS PRINCIPAL
+====================================================== -->
 <script src="app.js"></script>
 
 </body>
