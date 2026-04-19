@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Punto de Venta - Fundas</title>
+<title>Punto de Venta PRO</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -13,22 +13,45 @@
 
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
+<!-- 🔐 LOGIN -->
+<div id="loginScreen" class="fixed inset-0 bg-black flex items-center justify-center">
+  <div class="bg-white p-6 rounded-xl w-72 text-center">
+
+    <h2 class="font-bold mb-3">Ingresar PIN</h2>
+
+    <input id="pinInput" type="password"
+      maxlength="6"
+      class="border p-2 w-full text-center text-xl tracking-widest"
+      placeholder="PIN"
+    >
+
+    <button id="btnLogin" class="bg-blue-600 text-white w-full mt-3 py-2 rounded">
+      Entrar
+    </button>
+
+  </div>
+</div>
+
 <!-- HEADER -->
 <div class="p-4 flex gap-2">
   <button id="btnNuevaVenta" class="bg-green-600 text-white px-4 py-2 rounded">
     Nueva venta
   </button>
 
+  <button id="btnCorteCaja" class="bg-purple-600 text-white px-4 py-2 rounded">
+    Corte de caja
+  </button>
+
   <button id="btnPDF" class="bg-blue-600 text-white px-4 py-2 rounded">
-    PDF del día
+    PDF
   </button>
 </div>
 
-<!-- LISTA DE VENTAS -->
+<!-- LISTA VENTAS -->
 <div id="listaVentas" class="p-4 grid gap-4"></div>
 
-<!-- FOOTER -->
-<div class="p-4 bg-white shadow-inner flex justify-between">
+<!-- TOTAL -->
+<div class="p-4 bg-white flex justify-between shadow-inner">
   <div>
     <p class="text-sm text-gray-500">Total del día</p>
     <p id="totalDia" class="text-xl font-bold text-blue-600">$0</p>
@@ -38,27 +61,21 @@
 <!-- MODAL -->
 <dialog id="modal" class="rounded-xl p-6 w-96 shadow-xl relative">
 
-  <!-- cerrar -->
   <button id="btnCerrar" class="absolute top-2 right-3 text-xl">✕</button>
 
   <h2 class="font-bold mb-2">Nueva venta</h2>
 
-  <!-- input principal -->
   <input id="inputProducto" type="text"
     placeholder="Ej: funda 150 | 2 fundas 120"
     class="w-full p-2 border rounded mb-2"
   >
 
-  <!-- preview cálculo -->
   <p id="preview" class="text-sm text-blue-500 mb-2"></p>
 
-  <!-- lista de productos en venta -->
-  <div id="preVenta" class="mt-2 space-y-2"></div>
+  <div id="preVenta" class="space-y-2"></div>
 
-  <!-- total actual -->
   <p class="mt-2">Total: <span id="totalVenta">$0</span></p>
 
-  <!-- finalizar -->
   <button id="btnFinalizar" class="w-full mt-3 bg-red-500 text-white py-2 rounded">
     Finalizar venta
   </button>
