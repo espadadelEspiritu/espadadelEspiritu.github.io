@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punto de Venta</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<!-- HEADER -->
+<div class="p-4 flex gap-2">
+  <button id="nuevaVenta" class="bg-green-600 text-white px-4 py-2 rounded">
+    Nueva venta
+  </button>
+</div>
+
+<!-- CONTENIDO -->
+<div id="cards" class="p-4 grid gap-4"></div>
+
+<!-- FOOTER TOTAL DEL DÍA -->
+<div id="footer" class="p-4 bg-white shadow-inner flex justify-between items-center">
+  <div>
+    <p class="text-sm text-gray-500">Total del día</p>
+    <p id="totalDia" class="text-xl font-bold text-blue-600">$0</p>
+  </div>
+
+  <button id="pdf" class="bg-blue-600 text-white px-4 py-2 rounded">
+    Descargar PDF
+  </button>
+</div>
+
+<!-- MODAL -->
+<dialog id="modal" class="rounded-xl p-6 w-96 shadow-xl">
+
+  <h2 class="text-lg font-bold mb-2">Agregar producto</h2>
+
+  <input id="input" type="text"
+    placeholder="Ej: 4 huevo 80 o 80 huevo"
+    class="w-full p-2 border rounded mb-2 focus:ring-2 focus:ring-blue-400"
+    autofocus
+  >
+
+  <!-- PREVIEW -->
+  <p id="preview" class="text-sm text-gray-500 mb-3"></p>
+
+  <p class="mb-3">
+    Total actual: <span id="totalVenta" class="font-bold text-green-600">$0</span>
+  </p>
+
+  <div class="flex gap-2">
+    <button id="cerrar" class="w-1/2 bg-gray-400 text-white py-2 rounded">
+      Cerrar
+    </button>
+
+    <button id="finalizar" class="w-1/2 bg-red-500 text-white py-2 rounded">
+      Finalizar
+    </button>
+  </div>
+
+</dialog>
+
+<script>
+const modal = document.getElementById("modal");
+const input = document.getElementById("input");
+const preview = document.getElementById("preview");
+const cards = document.getElementById("cards");
+
+const totalVentaSpan = document.getElementById("totalVenta");
+const totalDiaSpan = document.getElementById("totalDia");
+
+let totalVenta = 0;
+let totalDia = 0;
+let ventaItems = [];
+
+// abrir modal
+modal.showModal();
+
+// detectar números
+function getNumeros(texto) {
+  return texto.match(/\d+(\.\d+)?/g)?.map(Number) || [];
+}
+
+// procesar input
+function procesar(texto) {
+  const nums = getNumeros(texto);
+
+  let cantidad = 1;
+  let precio = 0;
+
+  if (nums.length === 1) {
+    precio = nums[0];
+  } else if (nums.length >= 2) {
+    cantidad = nums[0];
+    precio = nums[1];
+  }
+
+  return { cantidad, precio, texto };
+}
+
+// preview en vivo
+input.addEventListener("input", () => {
+  const val = input.value.trim();
+  if (!val) return preview.textContent = "";
+
+  const d = procesar(val);
+
+  if (!d.precio) return;
+
+  const subtotal = d.cantidad * d.precio;
+
+  preview.textContent = `${d.cantidad} × ${d.precio} = $${subtotal}`;
+});
+
+// guardar con ENTER
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const val = input.value.trim();
+    if (!val) return;
+
+    const d = procesar(val);
+    if (!d.precio) return;
+
+    const subtotal = d.cantidad * d.precio;
+
+    ventaItems.push({ ...d, subtotal });
+
+    totalVenta += subtotal;
+    totalVentaSpan.textContent = "$" + totalVenta;
+
+    // card producto
+    const div = document.createElement("div");
+    div.className = "bg-white p-3 rounded shadow";
+
+    div.innerHTML = `
+      <p>${d.texto}</p>
+      <p class="text-green-600 font-bold">$${subtotal}</p>
+    `;
+
+    cards.appendChild(div);
+
+    input.value = "";
+    preview.textContent = "";
+  }
+});
+
+// finalizar venta
+document.getElementById("finalizar").onclick = () => {
+
+  if (ventaItems.length === 0) return;
+
+  totalDia += totalVenta;
+  totalDiaSpan.textContent = "$" + totalDia;
+
+  // card venta (ticket)
+  const ticket = document.createElement("div");
+  ticket.className = "bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded shadow";
+
+  let lista = ventaItems.map(i => `
+    <div class="flex justify-between text-sm">
+      <span>${i.texto}</span>
+      <span>$${i.subtotal}</span>
+    </div>
+  `).join("");
+
+  ticket.innerHTML = `
+    <div class="mb-2 font-bold">Venta</div>
+    ${lista}
+    <hr class="my-2">
+    <div class="flex justify-between font-bold">
+      <span>Total</span>
+      <span>$${totalVenta}</span>
+    </div>
+
+    <div class="flex gap-2 mt-3">
+      <button class="bg-green-500 text-white px-2 py-1 rounded compartir">
+        Compartir
+      </button>
+
+      <button class="bg-blue-500 text-white px-2 py-1 rounded nueva">
+        Nueva venta
+      </button>
+    </div>
+  `;
+
+  cards.appendChild(ticket);
+
+  // compartir imagen
+  ticket.querySelector(".compartir").onclick = async () => {
+    const canvas = await html2canvas(ticket);
+    const link = document.createElement("a");
+    link.download = "venta.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  };
+
+  // nueva venta
+  ticket.querySelector(".nueva").onclick = resetVenta;
+
+  resetVenta();
+  modal.close();
+};
+
+// reset venta
+function resetVenta() {
+  ventaItems = [];
+  totalVenta = 0;
+  totalVentaSpan.textContent = "$0";
+  modal.showModal();
+}
+
+// cerrar
+document.getElementById("cerrar").onclick = () => modal.close();
+
+// nueva venta global
+document.getElementById("nuevaVenta").onclick = resetVenta;
+
+// PDF del día
+document.getElementById("pdf").onclick = () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text("Reporte del día", 10, 10);
+  doc.text("Total: $" + totalDia, 10, 20);
+
+  doc.save("reporte.pdf");
+};
+</script>
+
+</body>
+</html>
