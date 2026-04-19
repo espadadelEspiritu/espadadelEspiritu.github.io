@@ -24,7 +24,7 @@
   </button>
 </div>
 
-<!-- CONTENIDO -->
+<!-- LISTA DE VENTAS -->
 <div id="listaVentas" class="p-4 grid gap-4"></div>
 
 <!-- FOOTER -->
@@ -38,19 +38,27 @@
 <!-- MODAL -->
 <dialog id="modal" class="rounded-xl p-6 w-96 shadow-xl relative">
 
+  <!-- cerrar -->
   <button id="btnCerrar" class="absolute top-2 right-3 text-xl">✕</button>
 
-  <h2 class="font-bold mb-2">Agregar producto</h2>
+  <h2 class="font-bold mb-2">Nueva venta</h2>
 
+  <!-- input principal -->
   <input id="inputProducto" type="text"
-    placeholder="Ej: funda iPhone 150  |  2 fundas 120"
+    placeholder="Ej: funda 150 | 2 fundas 120"
     class="w-full p-2 border rounded mb-2"
   >
 
+  <!-- preview cálculo -->
   <p id="preview" class="text-sm text-blue-500 mb-2"></p>
 
-  <p>Total: <span id="totalVenta">$0</span></p>
+  <!-- lista de productos en venta -->
+  <div id="preVenta" class="mt-2 space-y-2"></div>
 
+  <!-- total actual -->
+  <p class="mt-2">Total: <span id="totalVenta">$0</span></p>
+
+  <!-- finalizar -->
   <button id="btnFinalizar" class="w-full mt-3 bg-red-500 text-white py-2 rounded">
     Finalizar venta
   </button>
