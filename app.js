@@ -1,15 +1,15 @@
-// ==============================
-// 🔥 ESTADO GLOBAL DE LA APP
-// ==============================
 
-let ventaActual = []; // productos actuales en la venta
-let totalVenta = 0;   // total de la venta actual
-let historial = JSON.parse(localStorage.getItem("ventas")) || []; // ventas guardadas
+// ======================================================
+// 🔥 ESTADO GLOBAL (persistente en memoria del navegador)
+// ======================================================
 
+let ventaActual = []; // productos en venta activa
+let totalVenta = 0;   // total actual de la venta
+let historial = JSON.parse(localStorage.getItem("ventas")) || []; // historial guardado
 
-// ==============================
-// 🎯 ELEMENTOS DEL DOM
-// ==============================
+// ======================================================
+// 🎯 ELEMENTOS DEL DOM (control central de UI)
+// ======================================================
 
 const modal = document.getElementById("modal");
 const input = document.getElementById("inputProducto");
@@ -20,39 +20,37 @@ const totalDiaSpan = document.getElementById("totalDia");
 
 const listaVentas = document.getElementById("listaVentas");
 
-const preVenta = document.getElementById("preVenta"); // 🔥 NUEVO
+const preVenta = document.getElementById("preVenta"); // lista dentro del modal
 
-
-// ==============================
-// 🚀 INICIALIZAR APP
-// ==============================
+// ======================================================
+// 🚀 INICIO DE LA APP
+// ======================================================
 
 function init() {
-  renderHistorial(); // (si lo tienes en otro lado)
-  actualizarTotalDia();
-  modal.showModal();
+  actualizarTotalDia(); // calcula total global
+  modal.showModal();    // abre venta automáticamente (modo caja)
 }
 
 init();
 
-
-// ==============================
-// 🧠 PARSER INTELIGENTE
-// ==============================
+// ======================================================
+// 🧠 PARSER INTELIGENTE (detecta cantidad x precio)
+// ======================================================
 
 function parsear(texto) {
+
   const nums = texto.match(/\d+(\.\d+)?/g)?.map(Number) || [];
 
   let cantidad = 1;
   let precio = 0;
   let multiplicar = false;
 
-  // Si solo hay un número → es precio
+  // caso: solo precio
   if (nums.length === 1) {
     precio = nums[0];
   }
 
-  // Si hay dos o más → cantidad x precio
+  // caso: cantidad x precio
   if (nums.length >= 2) {
     cantidad = nums[0];
     precio = nums[1];
@@ -62,18 +60,17 @@ function parsear(texto) {
   return { texto, cantidad, precio, multiplicar };
 }
 
-
-// ==============================
-// 👀 PREVIEW EN TIEMPO REAL
-// ==============================
+// ======================================================
+// 👀 PREVIEW EN TIEMPO REAL (UX tipo caja)
+// ======================================================
 
 input.addEventListener("input", () => {
+
   const val = input.value.trim();
   if (!val) return preview.textContent = "";
 
   const d = parsear(val);
 
-  // Solo mostrar cuando hay multiplicación (evita ruido visual)
   if (!d.multiplicar) {
     preview.textContent = "";
     return;
@@ -82,49 +79,48 @@ input.addEventListener("input", () => {
   preview.textContent = `${d.cantidad} x ${d.precio} = $${d.cantidad * d.precio}`;
 });
 
-
-// ==============================
+// ======================================================
 // ➕ AGREGAR PRODUCTO (ENTER)
-// ==============================
+// ======================================================
 
 input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
 
-    const val = input.value.trim();
-    if (!val) return;
+  if (e.key !== "Enter") return;
 
-    const d = parsear(val);
-    if (!d.precio) return;
+  const val = input.value.trim();
+  if (!val) return;
 
-    const subtotal = d.multiplicar ? d.cantidad * d.precio : d.precio;
+  const d = parsear(val);
+  if (!d.precio) return;
 
-    // 🔥 agregar ID único para poder editar/eliminar correctamente
-    const item = {
-      id: Date.now(),
-      ...d,
-      subtotal
-    };
+  const subtotal = d.multiplicar ? d.cantidad * d.precio : d.precio;
 
-    ventaActual.push(item);
+  const item = {
+    id: Date.now(), // identificador único
+    ...d,
+    subtotal
+  };
 
-    totalVenta += subtotal;
-    actualizarTotalVenta();
+  ventaActual.push(item);
+  totalVenta += subtotal;
 
-    input.value = "";
-    preview.textContent = "";
+  actualizarTotalVenta();
 
-    renderPreVenta(); // 🔥 refresca lista editable
-  }
+  input.value = "";
+  preview.textContent = "";
+
+  renderPreVenta();
 });
 
-
-// ==============================
-// 🧾 RENDER PRE-VENTA (NUEVO)
-// ==============================
+// ======================================================
+// 🧾 RENDER LISTA INTERNA (MODAL)
+// ======================================================
 
 function renderPreVenta() {
 
-  preVenta.innerHTML = ""; // limpia lista
+  if (!preVenta) return;
+
+  preVenta.innerHTML = "";
 
   ventaActual.forEach((item, index) => {
 
@@ -136,38 +132,28 @@ function renderPreVenta() {
       <span>${item.texto}</span>
 
       <div class="flex gap-2 items-center">
-
         <span>$${item.subtotal}</span>
-
-        <!-- ✏️ EDITAR -->
         <button class="text-blue-500">✏️</button>
-
-        <!-- 🗑 ELIMINAR -->
         <button class="text-red-500">🗑</button>
-
       </div>
     `;
 
-    // 🗑 eliminar
-    div.querySelector(".text-red-500").onclick = () => {
-      eliminarItem(index);
-    };
+    // eliminar
+    div.querySelector(".text-red-500").onclick = () => eliminarItem(index);
 
-    // ✏️ editar (regresa al input y elimina temporalmente)
-    div.querySelector(".text-blue-500").onclick = () => {
-      editarItem(index);
-    };
+    // editar
+    div.querySelector(".text-blue-500").onclick = () => editarItem(index);
 
     preVenta.appendChild(div);
   });
 }
 
-
-// ==============================
-// 🗑 ELIMINAR PRODUCTO
-// ==============================
+// ======================================================
+// 🗑 ELIMINAR ITEM
+// ======================================================
 
 function eliminarItem(index) {
+
   totalVenta -= ventaActual[index].subtotal;
   ventaActual.splice(index, 1);
 
@@ -175,26 +161,20 @@ function eliminarItem(index) {
   renderPreVenta();
 }
 
-
-// ==============================
-// ✏️ EDITAR PRODUCTO
-// ==============================
+// ======================================================
+// ✏️ EDITAR ITEM
+// ======================================================
 
 function editarItem(index) {
 
-  const item = ventaActual[index];
+  input.value = ventaActual[index].texto;
 
-  // regresa texto al input
-  input.value = item.texto;
-
-  // lo elimina para poder re-agregarlo corregido
   eliminarItem(index);
 }
 
-
-// ==============================
+// ======================================================
 // 💰 FINALIZAR VENTA
-// ==============================
+// ======================================================
 
 document.getElementById("btnFinalizar").onclick = () => {
 
@@ -215,26 +195,27 @@ document.getElementById("btnFinalizar").onclick = () => {
   modal.close();
 };
 
-
-// ==============================
+// ======================================================
 // 📊 TOTALES
-// ==============================
+// ======================================================
 
 function actualizarTotalVenta() {
   totalVentaSpan.textContent = "$" + totalVenta;
 }
 
 function actualizarTotalDia() {
+
   const total = historial.reduce((acc, v) => acc + v.total, 0);
+
   totalDiaSpan.textContent = "$" + total;
 }
 
-
-// ==============================
-// 🔄 RESET DE VENTA (FIX IMPORTANTE)
-// ==============================
+// ======================================================
+// 🔄 RESET VENTA
+// ======================================================
 
 function resetVenta() {
+
   ventaActual = [];
   totalVenta = 0;
 
@@ -243,32 +224,59 @@ function resetVenta() {
   input.value = "";
   preview.textContent = "";
 
-  renderPreVenta(); // limpia UI
+  renderPreVenta();
 }
 
-
-// ==============================
+// ======================================================
 // 🆕 NUEVA VENTA
-// ==============================
+// ======================================================
 
 document.getElementById("btnNuevaVenta").onclick = () => {
   resetVenta();
   modal.showModal();
 };
 
-
-// ==============================
+// ======================================================
 // ❌ CERRAR MODAL
-// ==============================
+// ======================================================
 
 document.getElementById("btnCerrar").onclick = () => {
   modal.close();
 };
 
+// ======================================================
+// 📦 RENDER VENTA FINAL (CARD)
+// ======================================================
 
-// ==============================
-// 📄 PDF (sin cambios)
-// ==============================
+function renderVenta(venta) {
+
+  const div = document.createElement("div");
+
+  div.className = "bg-yellow-100 p-4 rounded shadow";
+
+  let items = venta.items.map(i => `
+    <div class="flex justify-between text-sm">
+      <span>${i.texto}</span>
+      <span>$${i.subtotal}</span>
+    </div>
+  `).join("");
+
+  div.innerHTML = `
+    <div class="font-bold mb-2">Venta</div>
+    ${items}
+    <hr class="my-2">
+    <div class="font-bold flex justify-between">
+      <span>Total</span>
+      <span>$${venta.total}</span>
+    </div>
+  `;
+
+  listaVentas.prepend(div);
+}
+
+// ======================================================
+// 📄 PDF DEL DÍA
+// ======================================================
 
 document.getElementById("btnPDF").onclick = () => {
 
